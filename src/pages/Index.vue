@@ -5,25 +5,26 @@
         <div class="p-4 w-full md:w-1/2 mb-12 md:mb-0">
           <NeonText text="<N />"></NeonText>
         </div>
-        <div class="p-4 w-full md:w-1/2 font-fira main-content">
+        <div class="p-4 w-full md:w-1/2 font-fira main-content dark:text-pale">
           <h1 class="text-xl mb-8">() => 'Hello, world.'</h1>
           <div class="main-content__body">
             <p>
               this is my personal website, I'm still planning what and how to present everything in my mind.
             </p>
-            <p class="mt-4 text-gray-500/50 italic">
+            <p class="mt-4 text-gray dark:text-gray italic">
               // will go on if something cross my mind ...<small class="text-cursor"></small>
             </p>
           </div>
 
-          <div class="main-content__footer flex flex-wrap mt-20">
+          <div class="main-content__footer flex flex-wrap text-sm mt-20">
             <a
               v-for="item in hashtags"
               :key="item.name"
               :href="item.link"
-              class="cursor-pointer px-2 py-1"
+              class="cursor-pointer py-2 mr-4"
+              :class="{ 'pointer-events-none': !item.link }"
               :style="item.style"
-              target="_blank">
+              :target="item.link ? '_blank' : ''">
               {{ item.name }}
             </a>
           </div>
@@ -45,12 +46,12 @@ type HashTag = {
 const hashtags: HashTag[] = [
   {
     name: '#major_front_end',
-    style: 'background: linear-gradient(45deg, #E33E33, #FFC831); -webkit-background-clip: text; -webkit-text-fill-color: transparent;',
-    link: 'https://vuejs.org/'
+    style: 'color: var(--c__white)',
+    link: ''
   },
   {
     name: '#Vue_developer',
-    style: 'color: #42b883',
+    style: 'background: linear-gradient(45deg, #42b883, #6089f2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;',
     link: 'https://vuejs.org/'
   },
   {
@@ -65,7 +66,7 @@ const hashtags: HashTag[] = [
   },
   {
     name: '#vite_is_awesome',
-    style: 'color: #646cff',
+    style: 'background: linear-gradient(45deg, #4dc2ff, #bd35fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;',
     link: 'https://vitejs.dev/'
   }
 ]
@@ -74,14 +75,14 @@ const hashtags: HashTag[] = [
 
 <style scoped>
 .page_root {
-  @apply h-screen bg-black text-white;
+  @apply h-screen;
 }
 
 .text-cursor {
-  @apply bg-gray-500/50 inline-block;
+  @apply bg-gray inline-block;
   opacity: 1;
   width: 3px;
-  height: 14px;
+  height: 16px;
   animation: blinking 2s infinite step-end;
 }
 
