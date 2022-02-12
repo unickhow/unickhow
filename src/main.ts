@@ -1,11 +1,15 @@
-import { createApp } from 'vue'
 import App from './App.vue'
 import 'virtual:windi.css'
-import { router } from './router'
+import { routes } from './routes'
 import '@/styles/main.css'
+import { ViteSSG } from 'vite-ssg'
 
-const app = createApp(App)
-
-app
-  .use(router)
-  .mount('#app')
+export const createApp = ViteSSG(
+  App,
+  {
+    routes
+  },
+  ({ app, router, routes, isClient, initialState }) => {
+    // install plugins etc.
+  }
+)
