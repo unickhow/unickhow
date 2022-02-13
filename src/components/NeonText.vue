@@ -29,7 +29,8 @@ onMounted(async () => {
 
 <style scoped>
 .kv {
-  @apply dark:text-white text-8xl tracking-widest text-center;
+  @apply dark:text-white tracking-widest text-center;
+  font-size: clamp(5rem, 50vw, 8rem);
 }
 .kv.neon-text {
   --c__neon-base: hsl(106, 100%, 65%);
@@ -60,7 +61,8 @@ onMounted(async () => {
     perspective(321px)
     rotateX(17deg)
     rotateY(43deg)
-    rotateZ(-15deg);
+    rotateZ(-15deg)
+    translateX(7vw);
   font-family: 'Monoton', cursive;
   text-shadow: var(--ts__origin);
   will-change: transform, opacity;
@@ -81,10 +83,10 @@ onMounted(async () => {
 
 @keyframes rotating {
   from {
-    transform: perspective(321px) rotateX(17deg) rotateY(43deg) rotateZ(-15deg);
+    transform: perspective(321px) rotateX(17deg) rotateY(43deg) rotateZ(-15deg) translateX(7vw);
   }
   to {
-    transform: perspective(432px) rotateX(37deg) rotateY(33deg) rotateZ(-7deg);
+    transform: perspective(432px) rotateX(37deg) rotateY(33deg) rotateZ(-7deg) translateX(7vw);
   }
   
 }
