@@ -1,11 +1,16 @@
 <template>
-  <div class="neon-text dark:text-white">
-    {{ propText }}
-  </div>
+  <Transition name="neon-fade">
+    <div
+      v-show="isReady"
+      class="kv"
+      :class="{ 'neon-text': isReady }">
+      {{ propText }}
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
-import { toRef } from 'vue'
+import { toRef, nextTick, onMounted, ref } from 'vue'
 
 const props = defineProps({
   text: {
@@ -13,12 +18,20 @@ const props = defineProps({
     default: ''
   }
 })
-
 const propText = toRef(props, 'text')
+
+const isReady = ref(false)
+onMounted(async () => {
+  await nextTick()
+  isReady.value = true
+})
 </script>
 
 <style scoped>
-.neon-text {
+.kv {
+  @apply dark:text-white text-8xl tracking-widest text-center;
+}
+.kv.neon-text {
   --c__neon-base: hsl(106, 100%, 65%);
   --c__neon-halo: hsl(125, 100%, 50%);
 
@@ -43,15 +56,18 @@ const propText = toRef(props, 'text')
     0 0 210px var(--c__neon-halo),
     0 30px 500px var(--c__neon-halo);
 
-  @apply text-8xl tracking-widest text-center;
   transform:
-    perspective(987px)
+    perspective(321px)
     rotateX(17deg)
     rotateY(43deg)
     rotateZ(-15deg);
   font-family: 'Monoton', cursive;
   text-shadow: var(--ts__origin);
-  animation: glowing 5s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  white-space: nowrap;
+  animation:
+    glowing 3s ease-in-out infinite alternate,
+    rotating 18s linear infinite alternate;
 }
 
 @keyframes glowing {
@@ -61,5 +77,15 @@ const propText = toRef(props, 'text')
   to {
     text-shadow: var(--ts__offset);
   }
+}
+
+@keyframes rotating {
+  from {
+    transform: perspective(321px) rotateX(17deg) rotateY(43deg) rotateZ(-15deg);
+  }
+  to {
+    transform: perspective(432px) rotateX(37deg) rotateY(33deg) rotateZ(-7deg);
+  }
+  
 }
 </style>
