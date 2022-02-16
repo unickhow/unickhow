@@ -10,7 +10,7 @@
           <h1 class="text-xl mb-8">() => 'Hello, world.'</h1>
           <div class="main-content__body mb-20">
             <p class="mb-4">
-              this is my personal website, I'm still planning what and how to present everything in my mind.
+              this is my personal website, I'm still planning what and how to present.
             </p>
             <code class="text-gray dark:text-gray italic">
               // will go on if something cross my mind ...<small class="text-cursor"></small>
