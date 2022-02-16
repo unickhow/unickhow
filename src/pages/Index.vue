@@ -37,11 +37,7 @@
 
 <script setup lang="ts">
 // import NeonText from '@/components/NeonText.vue'
-import { onMounted, nextTick, computed } from 'vue'
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-
+import { onMounted, nextTick } from 'vue'
 
 type HashTag = {
   name: string
@@ -78,6 +74,10 @@ const hashtags: HashTag[] = [
 ]
 
 onMounted(async () => {
+  const THREE = await import('three')
+  const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls')
+  const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader')
+
   await nextTick()
 
   const canvas = document.getElementById('logo') as HTMLCanvasElement
