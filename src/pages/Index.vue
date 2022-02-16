@@ -117,7 +117,7 @@ onMounted(async () => {
 
   let model: THREE.Object3D
   const loader = new GLTFLoader()
-  loader.load('../../src/assets/unickhow_logo.glb',
+  loader.load('/gltf/unickhow_logo.glb',
     gltf => {
       gltf.scene.traverse(child => {
         if ((child as THREE.Mesh).isMesh) {
@@ -134,7 +134,7 @@ onMounted(async () => {
         }
       })
       model = gltf.scene
-      model.rotation.z = .1
+      model.rotation.z = .15
       scene.add(gltf.scene)
     }
   )
