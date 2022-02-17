@@ -197,21 +197,4 @@ onUnmounted(() => {
 .page_root {
   @apply h-screen;
 }
-
-.text-cursor {
-  @apply bg-gray inline-block;
-  opacity: 1;
-  width: 3px;
-  height: 16px;
-  animation: blinking 2s infinite step-end;
-}
-
-@keyframes blinking {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
 </style>
