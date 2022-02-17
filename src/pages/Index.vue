@@ -1,9 +1,9 @@
 <template>
   <main class="page_root">
     <div class="container mx-auto">
-      <div class="row pt-10 md:pt-[20vh] flex flex-col md:flex-row">
-        <div class="p-4 w-full md:w-1/2 mb-12 md:mb-0">
-          <div id="logo" class="flex items-center justify-center"></div>
+      <div class="row sm:pt-10 md:pt-[20vh] flex flex-col md:flex-row">
+        <div class="p-4 w-full md:w-1/2">
+          <div id="logo" class="flex items-center justify-center aspect-video"></div>
         </div>
         <div class="p-8 w-full md:w-1/2 font-fira main-content dark:text-pale">
           <h1 class="text-xl mb-8">() => 'Hello, world.'</h1>
@@ -11,9 +11,7 @@
             <p class="mb-4">
               this is my personal website, I'm still planning what and how to present.
             </p>
-            <code class="text-gray dark:text-gray italic">
-              // will go on if something cross my mind ...<small class="text-cursor"></small>
-            </code>
+            <code id="jibber_jabber" class="text-gray dark:text-gray italic"></code>
           </div>
 
           <div class="main-content__footer flex flex-wrap text-sm">
@@ -36,7 +34,7 @@
 
 <script setup lang="ts">
 // TODO: extract three model logic
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, onUnmounted } from 'vue'
 
 type HashTag = {
   name: string
@@ -72,6 +70,7 @@ const hashtags: HashTag[] = [
   }
 ]
 
+let typingInstance: any
 onMounted(async () => {
   const THREE = await import('three')
   const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls')
@@ -83,7 +82,7 @@ onMounted(async () => {
 
   const sizes = {
     width: canvas.clientWidth,
-    height: canvas.clientWidth / 1.5
+    height: canvas.clientHeight
   }
 
   const scene = new THREE.Scene()
@@ -94,7 +93,7 @@ onMounted(async () => {
   scene.add(lightHolder)
 
   const camera = new THREE.PerspectiveCamera(
-    75,
+    67,
     sizes.width / sizes.height,
     0.1,
     1000
@@ -140,9 +139,9 @@ onMounted(async () => {
 
   window.addEventListener('resize', onWindowResize, false)
   function onWindowResize() {
-    camera.aspect = canvas.clientWidth / (canvas.clientWidth / 1.5)
+    camera.aspect = canvas.clientWidth / canvas.clientHeight
     camera.updateProjectionMatrix()
-    renderer.setSize(canvas.clientWidth, (canvas.clientWidth / 1.5))
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight)
     render()
   }
 
@@ -165,28 +164,37 @@ onMounted(async () => {
   }
 
   animate()
+
+  // TODO: turn into ts way
+  const TypeIt = (await import('typeit')).default
+  typingInstance = new TypeIt('#jibber_jabber', {
+    speed: 100,
+  })
+  typingInstance
+    .type('// will launch every soo')
+    .pause(800)
+    .delete(9, { speed: 400 })
+    .type('in couple da', { speed: 150 })
+    .pause(1300)
+    .delete(12)
+    .pause(1500)
+    .delete(7, { speed: 100 })
+    .type('go on when somethi')
+    .move(-8)
+    .delete(4)
+    .type('if')
+    .move(8)
+    .type('ng cross my mind ...')
+    .go()
+})
+
+onUnmounted(() => {
+  typingInstance.destroy()
 })
 </script>
 
 <style scoped>
 .page_root {
   @apply h-screen;
-}
-
-.text-cursor {
-  @apply bg-gray inline-block;
-  opacity: 1;
-  width: 3px;
-  height: 16px;
-  animation: blinking 2s infinite step-end;
-}
-
-@keyframes blinking {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
 }
 </style>

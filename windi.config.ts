@@ -18,5 +18,8 @@ export default defineConfig({
     'font-fira': {
       'font-family': '"Fira Code", "monospace", "Zen Maru Gothic", "sans-serif"'
     }
-  }
+  },
+  plugins: [
+    require('windicss/plugin/aspect-ratio')
+  ]
 })
