@@ -3,7 +3,6 @@
     <div class="container mx-auto">
       <div class="row pt-10 md:pt-[20vh] flex flex-col md:flex-row">
         <div class="p-4 w-full md:w-1/2 mb-12 md:mb-0">
-          <!-- <NeonText class="sticky top-[1rem] left-0" text="<N />"></NeonText> -->
           <div id="logo" class="flex items-center justify-center"></div>
         </div>
         <div class="p-8 w-full md:w-1/2 font-fira main-content dark:text-pale">
@@ -36,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-// import NeonText from '@/components/NeonText.vue'
+// TODO: extract three model logic
 import { onMounted, nextTick } from 'vue'
 
 type HashTag = {
