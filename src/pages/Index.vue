@@ -105,7 +105,7 @@ onMounted(async () => {
   }
 
   const scene = new THREE.Scene()
-  const light = new THREE.PointLight(0xffffff, 73, 73);
+  const light = new THREE.PointLight(0xffffff, 99, 73);
   light.position.set(20, -10, 20)
   const lightHolder = new THREE.Group()
   lightHolder.add(light)
@@ -114,11 +114,11 @@ onMounted(async () => {
   const camera = new THREE.PerspectiveCamera(
     67,
     sizes.width / sizes.height,
-    0.1,
-    1000
+    1,
+    100
   )
   camera.position.x = 10
-  camera.position.y = 5
+  camera.position.y = 0
   camera.position.z = 7
 
   const renderer = new THREE.WebGLRenderer()
@@ -151,7 +151,7 @@ onMounted(async () => {
         }
       })
       model = gltf.scene
-      model.rotation.z = .15
+      model.rotation.y = 5
       scene.add(gltf.scene)
       isGltfLoaded.value = true
     }
@@ -173,7 +173,9 @@ onMounted(async () => {
     controls.update()
     lightHolder.quaternion.copy(camera.quaternion)
     if (model) {
-      model.rotation.y += 0.004
+      model.rotation.y += 0.002
+      // model.rotation.z += 0.001
+      // model.rotation.x += 0.008
     }
     render()
     // stats.update()
@@ -184,6 +186,8 @@ onMounted(async () => {
   }
 
   animate()
+
+  // ============================================================
 
   // TODO: turn into ts way
   const TypeIt = (await import('typeit')).default
@@ -213,8 +217,4 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
-.page_root {
-  @apply h-screen;
-}
-</style>
+<style scoped></style>
