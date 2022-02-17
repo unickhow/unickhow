@@ -1,9 +1,9 @@
 <template>
   <main class="page_root">
     <div class="container mx-auto">
-      <div class="row pt-10 md:pt-[20vh] flex flex-col md:flex-row">
-        <div class="p-4 w-full md:w-1/2 mb-12 md:mb-0">
-          <div id="logo" class="flex items-center justify-center"></div>
+      <div class="row sm:pt-10 md:pt-[20vh] flex flex-col md:flex-row">
+        <div class="p-4 w-full md:w-1/2">
+          <div id="logo" class="flex items-center justify-center aspect-video"></div>
         </div>
         <div class="p-8 w-full md:w-1/2 font-fira main-content dark:text-pale">
           <h1 class="text-xl mb-8">() => 'Hello, world.'</h1>
@@ -82,7 +82,7 @@ onMounted(async () => {
 
   const sizes = {
     width: canvas.clientWidth,
-    height: canvas.clientWidth / 1.5
+    height: canvas.clientHeight
   }
 
   const scene = new THREE.Scene()
@@ -93,7 +93,7 @@ onMounted(async () => {
   scene.add(lightHolder)
 
   const camera = new THREE.PerspectiveCamera(
-    75,
+    67,
     sizes.width / sizes.height,
     0.1,
     1000
@@ -139,9 +139,9 @@ onMounted(async () => {
 
   window.addEventListener('resize', onWindowResize, false)
   function onWindowResize() {
-    camera.aspect = canvas.clientWidth / (canvas.clientWidth / 1.5)
+    camera.aspect = canvas.clientWidth / canvas.clientHeight
     camera.updateProjectionMatrix()
-    renderer.setSize(canvas.clientWidth, (canvas.clientWidth / 1.5))
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight)
     render()
   }
 
