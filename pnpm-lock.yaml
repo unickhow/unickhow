@@ -5,6 +5,7 @@ specifiers:
   '@vitejs/plugin-vue': ^2.2.0
   '@vueuse/head': ^0.7.5
   three: ^0.137.5
+  typeit: ^8.3.1
   typescript: ^4.5.4
   vite: ^2.8.0
   vite-plugin-windicss: ^1.7.0
@@ -17,6 +18,7 @@ specifiers:
 dependencies:
   '@types/three': 0.137.0
   three: 0.137.5
+  typeit: 8.3.1
   vue: 3.2.30
   vue-router: 4.0.12_vue@3.2.30
 
@@ -1459,6 +1461,11 @@ packages:
     dependencies:
       prelude-ls: 1.1.2
     dev: true
+
+  /typeit/8.3.1:
+    resolution: {integrity: sha512-t2gtMScQ+yxIP9FyzvH8oVCXlVYLbmXCdNUN1CPsWFVGDU/zn6aevRarsm1+lT9+ZHfwl026bkk+HMpvytvFUQ==}
+    requiresBuild: true
+    dev: false
 
   /typescript/4.5.5:
     resolution: {integrity: sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==}

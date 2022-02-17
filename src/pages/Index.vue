@@ -11,9 +11,7 @@
             <p class="mb-4">
               this is my personal website, I'm still planning what and how to present.
             </p>
-            <code class="text-gray dark:text-gray italic">
-              // will go on if something cross my mind ...<small class="text-cursor"></small>
-            </code>
+            <code id="jibber_jabber" class="text-gray dark:text-gray italic"></code>
           </div>
 
           <div class="main-content__footer flex flex-wrap text-sm">
@@ -36,7 +34,7 @@
 
 <script setup lang="ts">
 // TODO: extract three model logic
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, onUnmounted } from 'vue'
 
 type HashTag = {
   name: string
@@ -72,6 +70,7 @@ const hashtags: HashTag[] = [
   }
 ]
 
+let typingInstance: any
 onMounted(async () => {
   const THREE = await import('three')
   const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls')
@@ -165,6 +164,32 @@ onMounted(async () => {
   }
 
   animate()
+
+  // TODO: turn into ts way
+  const TypeIt = (await import('typeit')).default
+  typingInstance = new TypeIt('#jibber_jabber', {
+    speed: 100,
+  })
+  typingInstance
+    .type('// will launch every soo')
+    .pause(800)
+    .delete(9, { speed: 400 })
+    .type('in couple da', { speed: 150 })
+    .pause(1300)
+    .delete(12)
+    .pause(1500)
+    .delete(7, { speed: 100 })
+    .type('go on when somethi')
+    .move(-8)
+    .delete(4)
+    .type('if')
+    .move(8)
+    .type('ng cross my mind ...')
+    .go()
+})
+
+onUnmounted(() => {
+  typingInstance.destroy()
 })
 </script>
 
