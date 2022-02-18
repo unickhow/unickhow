@@ -21,7 +21,17 @@
             <p class="mb-4">
               this is my personal website, I'm still planning what and how to present.
             </p>
-            <code id="jibber_jabber" class="text-gray dark:text-gray italic"></code>
+            <code id="jibber_jabber" class="block text-gray dark:text-gray italic"></code>
+
+            <Transition name="share-fade">
+              <a
+                v-show="hasTypingDone"
+                class="gh-link-share text-3xl inline-flex mt-10 bg-white text-black items-center text-center px-10 rounded"
+                href="https://github.com/unickhow"
+                target="_blank">
+                <OcticonLogoGithub16 />
+              </a>
+            </Transition>
           </div>
 
           <div class="main-content__hashtags flex flex-wrap text-sm mb-10">
@@ -51,8 +61,9 @@
 <script setup lang="ts">
 import EosIconsThreeDotsLoading from '~icons/eos-icons/three-dots-loading'
 import zmdiGithubBox from '~icons/zmdi/github-box'
-// TODO: extract three model logic
-import { onMounted, nextTick, onUnmounted, ref } from 'vue'
+import OcticonLogoGithub16 from '~icons/octicon/logo-github-16'
+import { useBrandModel } from '../plugins/threejs/brand'
+import { useTypeIt } from '../plugins/typeit'
 
 type HashTag = {
   name: string
@@ -88,133 +99,28 @@ const hashtags: HashTag[] = [
   }
 ]
 
-const isGltfLoaded = ref(false)
-let typingInstance: any
-onMounted(async () => {
-  const THREE = await import('three')
-  const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls')
-  const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader')
-
-  await nextTick()
-
-  const canvas = document.getElementById('logo') as HTMLCanvasElement
-
-  const sizes = {
-    width: canvas.clientWidth,
-    height: canvas.clientHeight
-  }
-
-  const scene = new THREE.Scene()
-  const light = new THREE.PointLight(0xffffff, 99, 73);
-  light.position.set(20, -10, 20)
-  const lightHolder = new THREE.Group()
-  lightHolder.add(light)
-  scene.add(lightHolder)
-
-  const camera = new THREE.PerspectiveCamera(
-    67,
-    sizes.width / sizes.height,
-    1,
-    100
-  )
-  camera.position.x = 10
-  camera.position.y = 0
-  camera.position.z = 7
-
-  const renderer = new THREE.WebGLRenderer()
-  renderer.physicallyCorrectLights = true
-  renderer.shadowMap.enabled = true
-  renderer.outputEncoding = THREE.sRGBEncoding
-  renderer.setSize(sizes.width, sizes.height)
-  canvas.appendChild(renderer.domElement)
-
-  const controls = new OrbitControls(camera, renderer.domElement)
-  controls.enableDamping = true
-  controls.enableZoom = false
-
-  let model: THREE.Object3D
-  const loader = new GLTFLoader()
-  loader.load('/gltf/unickhow_logo.glb',
-    gltf => {
-      gltf.scene.traverse(child => {
-        if ((child as THREE.Mesh).isMesh) {
-            const m = child as THREE.Mesh
-            m.receiveShadow = true
-            m.castShadow = true
-        }
-        if ((child as THREE.Light).isLight) {
-          const l = child as THREE.Light
-          l.castShadow = true
-          l.shadow.bias = -0.003
-          l.shadow.mapSize.width = 500
-          l.shadow.mapSize.height = 500
-        }
-      })
-      model = gltf.scene
-      model.rotation.y = 5
-      scene.add(gltf.scene)
-      isGltfLoaded.value = true
-    }
-  )
-
-  window.addEventListener('resize', onWindowResize, false)
-  function onWindowResize() {
-    camera.aspect = canvas.clientWidth / canvas.clientHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight)
-    render()
-  }
-
-  // const stats = Stats()
-  // document.body.appendChild(stats.dom)
-
-  function animate() {
-    requestAnimationFrame(animate)
-    controls.update()
-    lightHolder.quaternion.copy(camera.quaternion)
-    if (model) {
-      model.rotation.y += 0.002
-      // model.rotation.z += 0.001
-      // model.rotation.x += 0.008
-    }
-    render()
-    // stats.update()
-  }
-
-  function render() {
-    renderer.render(scene, camera)
-  }
-
-  animate()
-
-  // ============================================================
-
-  // TODO: turn into ts way
-  const TypeIt = (await import('typeit')).default
-  typingInstance = new TypeIt('#jibber_jabber', {
-    speed: 100,
-  })
-  typingInstance
-    .type('// will launch every soo')
-    .pause(800)
-    .delete(9, { speed: 400 })
-    .type('in couple da', { speed: 150 })
-    .pause(1300)
-    .delete(12)
-    .pause(1500)
-    .delete(7, { speed: 100 })
-    .type('go on when somethi')
-    .move(-8)
-    .delete(4)
-    .type('if')
-    .move(8)
-    .type('ng cross my mind ...')
-    .go()
-})
-
-onUnmounted(() => {
-  typingInstance.destroy()
-})
+const { isGltfLoaded } = useBrandModel('#logo')
+const { hasTypingDone } = useTypeIt('#jibber_jabber')
 </script>
 
-<style scoped></style>
+<style scoped>
+.gh-link-share {
+  animation: glowing 1.5s ease-in-out 1s infinite alternate;
+}
+
+.gh-link-share:hover {
+  animation: none;
+}
+
+@keyframes glowing {
+  0% {
+    @apply opacity-90;
+  }
+  27% {
+    @apply opacity-90;
+  }
+  100% {
+    @apply opacity-60;
+  }
+}
+</style>

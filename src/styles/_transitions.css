@@ -7,3 +7,14 @@
 .neon-fade-leave-to {
   opacity: 0;
 }
+
+.share-fade-enter-active,
+.share-fade-leave-active {
+  opacity: 90%;
+  transition: opacity 1s ease;
+}
+
+.share-fade-enter-from,
+.share-fade-leave-to {
+  opacity: 0;
+}
