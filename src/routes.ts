@@ -5,5 +5,10 @@ export const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'Undefined',
+    redirect: '/'
   }
 ]
