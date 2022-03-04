@@ -13,9 +13,9 @@ export const useTypeIt = (el: string) => {
       startDelay: 2000
     })
     typingInstance
-      .type('// will launch every soo')
+      .type('// will launch very soo')
       .pause(800)
-      .delete(9, { speed: 400 })
+      .delete(8, { speed: 400 })
       .type('in couple da', { speed: 150 })
       .pause(1300)
       .delete(12)
