@@ -55,6 +55,8 @@
         </div>
       </div>
     </div>
+
+    <FileList v-show="isFileListPanelVisible" :isActive="isFileListPanelVisible"></FileList>
   </main>
 </template>
 
@@ -64,6 +66,9 @@ import zmdiGithubBox from '~icons/zmdi/github-box'
 import OcticonLogoGithub16 from '~icons/octicon/logo-github-16'
 import { useBrandModel } from '../plugins/threejs/brand'
 import { useTypeIt } from '../plugins/typeit'
+import FileList from '../components/FileList.vue'
+import { ref, onMounted } from 'vue'
+import { whenever, useMagicKeys } from '@vueuse/core'
 
 type HashTag = {
   name: string
@@ -101,6 +106,30 @@ const hashtags: HashTag[] = [
 
 const { isGltfLoaded } = useBrandModel('#logo')
 const { hasTypingDone } = useTypeIt('#jibber_jabber')
+
+const isFileListPanelVisible = ref(false)
+onMounted(() => {
+  //* Todo: use Rxjs
+  const secretWord = 'ls'
+  const inputKeys = ref('')
+
+  const keydownEvt = (e: KeyboardEvent) => {
+    if (e.key === 'l' || e.key === 's') {
+      inputKeys.value += e.key
+    } else {
+      inputKeys.value = ''
+    }
+  }
+  document.addEventListener('keydown', keydownEvt)
+
+  const isLs = () => {
+    return inputKeys.value === secretWord
+  }
+  whenever(isLs, () => isFileListPanelVisible.value = true)
+
+  const { escape } = useMagicKeys()
+  whenever(escape, () => isFileListPanelVisible.value = false)
+})
 </script>
 
 <style scoped>

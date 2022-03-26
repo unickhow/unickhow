@@ -27,28 +27,22 @@ export const useTypeIt = (el: string) => {
       .type('if')
       .move(8)
       .type('ng cross my mind ...')
-      .pause(20000)
-      .delete(null, { instant: true })
-      .type('you just dont', { speed: 100 })
-      .delete(1, { speed: 400 })
-      .type('\'t')
-      .type(' giveup', { speed: 100 })
-      .move(-2, { speed: 400 })
-      .type(' ')
-      .move(2, { speed: 100 })
-      .type(' huh?')
       .pause(10000)
       .delete(null, { instant: true })
-      .type('share with me if you have any unique idea.')
+      .type('share with me if you have any unique idea.', { speed: 100 })
       .pause(2000)
       .move(-6, { speed: 200 })
       .delete(3)
       .type('ck', {
         speed: 150,
-        afterComplete: async () => {
+        afterString: async () => {
           hasTypingDone.value = true
         }
       })
+      .pause(10000)
+      .move(null, { to: 'End', instant: true })
+      .delete(null, { instant: true })
+      .type('💡 Maybe you wanna type the way you do in terminal to see list ?', { speed: 100 })
       .go()
   })
 

@@ -5,6 +5,7 @@ specifiers:
   '@types/three': ^0.137.0
   '@vitejs/plugin-vue': ^2.2.0
   '@vue/compiler-sfc': ^3.2.31
+  '@vueuse/core': ^8.2.0
   '@vueuse/head': ^0.7.5
   three: ^0.137.5
   typeit: ^8.3.1
@@ -20,6 +21,7 @@ specifiers:
 
 dependencies:
   '@types/three': 0.137.0
+  '@vueuse/core': 8.2.0_vue@3.2.30
   three: 0.137.5
   typeit: 8.3.1
   vue: 3.2.30
@@ -361,6 +363,23 @@ packages:
     resolution: {integrity: sha512-ymN2pj6zEjiKJZbrf98UM2pfDd6F2H7ksKw7NDt/ZZ1fh5Ei39X5tABugtT03ZRlWd9imccoK0hE8hpjpU7irQ==}
     dev: true
 
+  /@vueuse/core/8.2.0_vue@3.2.30:
+    resolution: {integrity: sha512-89ZfKtFHz5ynfpWyFVXtK0yePJ2MZqFaOxnGeZn7cIp8KFbPRlu6Wsxi3gBkJNpjq+q9qbEh6MjV7QBvqCQ5Og==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.0
+      vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      '@vueuse/metadata': 8.2.0
+      '@vueuse/shared': 8.2.0_vue@3.2.30
+      vue: 3.2.30
+      vue-demi: 0.12.4_vue@3.2.30
+    dev: false
+
   /@vueuse/head/0.7.5_vue@3.2.30:
     resolution: {integrity: sha512-L+XQ5Act0nT/ZyO8Qo10J4FyM1qPOyQb6MT4MMn6+AITzrStpmKs/nUDDLJKD/rCcNWl/65XbdQm4T2vKp3VOQ==}
     peerDependencies:
@@ -368,6 +387,25 @@ packages:
     dependencies:
       vue: 3.2.30
     dev: true
+
+  /@vueuse/metadata/8.2.0:
+    resolution: {integrity: sha512-cbaezEccNuxQC+OiudG9VjZNg9/RbAAHkyuhC6+8Gsgsc+MvDhfn1NrV6NNTaldLlZgJFgUiYOkrf3JGTTTGXQ==}
+    dev: false
+
+  /@vueuse/shared/8.2.0_vue@3.2.30:
+    resolution: {integrity: sha512-dTw7EJZgZCgG9DoVAiz4LtmKnIFXuE/idUFzvqRAJLjbPiVJc+qQH5kDUdKHI3W1U9t//1mdasQEKONArburiQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.0
+      vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      vue: 3.2.30
+      vue-demi: 0.12.4_vue@3.2.30
+    dev: false
 
   /@windicss/config/1.7.0:
     resolution: {integrity: sha512-jP+SYEUMTcvEQexYAeaIGKWq3sE+yv0myyOCph7Glm/YZE2ZCK1GukI1oDG6fcVer121EQzCY4Rx11trb3oSZg==}
@@ -1976,6 +2014,21 @@ packages:
       vscode-pug-languageservice: 0.29.8
       vscode-typescript-languageservice: 0.29.8
     dev: true
+
+  /vue-demi/0.12.4_vue@3.2.30:
+    resolution: {integrity: sha512-ztPDkFt0TSUdoq1ZI6oD730vgztBkiByhUW7L1cOTebiSBqSYfSQgnhYakYigBkyAybqCTH7h44yZuDJf2xILQ==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.30
+    dev: false
 
   /vue-router/4.0.12_vue@3.2.30:
     resolution: {integrity: sha512-CPXvfqe+mZLB1kBWssssTiWg4EQERyqJZes7USiqfW9B5N2x+nHlnsM1D3b5CaJ6qgCvMmYJnz+G0iWjNCvXrg==}
