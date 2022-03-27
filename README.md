@@ -2,7 +2,7 @@
 
 trying to participate in open source projects and keep upgrading 🤞<br>
 
-<i><small>[personal website](https://unickhow.netlify.app/) is WIP 🚧</small></i>
+<i><small>[personal website](https://unick.how) is WIP 🚧</small></i>
 
 <br>
 <br>
