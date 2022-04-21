@@ -16,19 +16,26 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
 import { useStorage } from '@vueuse/core'
-import { computed, provide, watch } from 'vue'
+import { ref, provide, watch } from 'vue'
 // import IcSharpLightbulb from '~icons/ic/sharp-lightbulb'
 import zmdiGithubBox from '~icons/zmdi/github-box'
 
-const theme = useStorage('uniqTheme', 'light')
-const isDark = computed({
-  get () {
-    return theme.value === 'dark'
-  },
-  set (val) {
-    theme.value = val ? 'dark' : 'light'
-  }
+const theme = useStorage('unickTheme', 'light')
+const isDark = ref(theme.value === 'dark')
+
+watch(isDark, (value) => {
+  theme.value = value ? 'dark' : 'light'
 })
+
+// ! TODO: WritableComputedRef<unknown> is not assignable to unknown
+// const isDark = computed({
+//   get () {
+//     return theme.value === 'dark'
+//   },
+//   set (val) {
+//     theme.value = val ? 'dark' : 'light'
+//   }
+// })
 
 provide('isDark', isDark)
 
