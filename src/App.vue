@@ -1,7 +1,7 @@
 <template>
   <div class="header flex justify-end p-4">
-    <label for="theme">
-      <div class="theme-icon cursor-pointer" :class="{ 'dark': isDark }"></div>
+    <label for="theme" class="cursor-pointer">
+      <div class="theme-icon" :class="{ 'dark': isDark }"></div>
       <input v-model="isDark" class="hidden" type="checkbox" name="theme" id="theme">
     </label>
   </div>
@@ -73,14 +73,15 @@ html.dark {
 .theme-icon {
   width: 30px;
   height: 30px;
-  background: var(--c__yellow);
+  background: var(--c__theme-icon);
   transition: all 0.3s ease;
   @apply rounded-full;
 }
 
 .theme-icon.dark {
   background: transparent;
-  transform: translate(-15px, -5px);
-  box-shadow: 15px 5px 0 0 var(--c__orange);
+  transform: translate(-12px, -5px);
+  box-shadow: 12px 5px 0 0 var(--c__theme-icon);
+  opacity: .5;
 }
 </style>

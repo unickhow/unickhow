@@ -8,19 +8,14 @@
   --c__red: #A11F22;
   --c__green: #0FAE24;
   --c__yellow: #FFBB00;
-  --c__orange: #ffc857;
+
+  --c__theme-icon: #ffc857;
 
   --text-color: var(--c__dark);
   --note-color: var(--c__grey);
 }
 
 html.dark {
-  /* --c__grey: #8C8C8C;
-  --c__blue: #68A9DA;
-  --c__red: #E33E33;
-  --c__green: #42b883;
-  --c__yellow: #FFD500; */
-
   --text-color: var(--c__white);
   --note-color: var(--c__grey);
 }
