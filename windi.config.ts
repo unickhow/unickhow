@@ -17,6 +17,12 @@ export default defineConfig({
   shortcuts: {
     'font-fira': {
       'font-family': '"Fira Code", "monospace", "Zen Maru Gothic", "sans-serif"'
+    },
+    'theme__text-color': {
+      'color': 'var(--text-color)'
+    },
+    'theme__note-color': {
+      'color': 'var(--note-color)'
     }
   },
   plugins: [
