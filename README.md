@@ -1,5 +1,7 @@
 #### Hello world, 🙈
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f397d099-cca3-485e-8f11-4c068af21b61/deploy-status)](https://app.netlify.com/sites/unickhow/deploys)
+
 trying to participate in open source projects and keep upgrading 🤞<br>
 
 <i><small>[personal website](https://unick.how) is WIP 🚧</small></i>
