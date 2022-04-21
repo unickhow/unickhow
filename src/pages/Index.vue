@@ -1,45 +1,67 @@
 <template>
   <main class="page_root">
-    <div class="container mx-auto">
-      <div class="row sm:pt-10 md:pt-[20vh] flex flex-col md:flex-row">
-        <div class="p-4 w-full md:w-1/2">
-          <div class="kv-container aspect-video relative">
-            <div
-              class="absolute top-0 left-0 flex items-center justify-center w-full h-full transition-opacity duration-2000"
-              :class="isGltfLoaded ? 'opacity-0 -z-100' : 'opacity-100'">
-              <EosIconsThreeDotsLoading class="text-yellow text-6xl opacity-66" />
-            </div>
+    <div class="container mx-auto max-w-[1024px]">
+      <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
+        <div class="p-4 w-full md:w-1/3">
+          <div class="hidden md:block kv-container aspect-video relative">
             <div
               id="logo"
-              class="flex items-center justify-center w-full h-full transition-opacity duration-2000 delay-800"
-              :class="isGltfLoaded ? 'opacity-100' : 'opacity-0'"></div>
+              class="items-center justify-center w-full h-full transition-opacity duration-2000 delay-800"
+              :class="isGltfLoaded ? 'opacity-100' : 'opacity-0'">
+            </div>
+
+            <div class="hashtags font-fira flex flex-col items-center text-sm mt-10 p-2 rounded">
+              <a
+                v-for="item in hashtags"
+                :key="item.name"
+                :href="item.link"
+                class="py-2 mr-4 opacity-40 hover:opacity-100 transition-opacity"
+                :class="{ 'pointer-events-none': !item.link }"
+                :style="item.style"
+                :target="item.link ? '_blank' : ''">
+                {{ item.name }}
+              </a>
+            </div>
           </div>
         </div>
-        <div class="px-8 py-6 w-full md:w-1/2 font-fira main-content dark:text-pale">
-          <h1 class="text-xl mb-8">() => 'Hello, world.'</h1>
-          <div class="main-content__body mb-20">
-            <p class="mb-4">
-              this is my personal website, I'm still planning what and how to present.
-            </p>
-            <code id="jibber_jabber" class="block text-gray dark:text-gray italic"></code>
-
-            <Transition name="share-fade">
-              <a
-                v-show="hasTypingDone"
-                class="gh-link-share text-3xl inline-flex mt-10 bg-white text-black items-center text-center px-10 rounded"
-                href="https://github.com/unickhow"
-                target="_blank">
-                <OcticonLogoGithub16 />
-              </a>
-            </Transition>
+        <div class="px-8 py-6 w-full md:w-2/3 font-fira main-content dark:text-pale">
+          <div class="main-content mb-20">
+            <h1 class="text-xl mb-8 theme__text-color">() => 'Hello, world.'</h1>
+            <div class="main-content__body">
+              <p class="mb-4 font-light leading-loose">
+                This is where I,
+                <a class="uppercase font-bold" href="https://github.com/unickhow" target="_blank">unickhow</a>,
+                present and share something interesting to me.<br>
+                There's no rocket science here 😆, so please don't take it too serious, hope you enjoy it.<br>
+                <br>
+                If you have any suggestion, feel free to contact me.
+              </p>
+            </div>
           </div>
 
-          <div class="main-content__hashtags flex flex-wrap text-sm mb-10">
+          <div class="side-projects flex flex-wrap mb-20">
+            <a
+              v-for="project in sideProjects"
+              :key="project.name"
+              :href="project.link"
+              class="p-4 transition-shadow shadow hover:shadow-md flex items-center mr-4 mb-4 rounded dark:rounded-none dark:border-l-2 dark:border-l-gray"
+              target="_blank">
+              <figure class="w-8 h-8 flex mr-4">
+                <img :src="project.icon" class="object-cover" alt="">
+              </figure>
+              <div class="flex flex-col">
+                <h5 class="text-sm">{{ project.name }}</h5>
+                <p class="text-xs text-gray font-light">{{ project.desc }}</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="hashtags flex md:hidden flex-wrap text-sm mb-10 p-2 rounded">
             <a
               v-for="item in hashtags"
               :key="item.name"
               :href="item.link"
-              class="py-2 mr-4 opacity-80 hover:opacity-100 transition-opacity"
+              class="py-2 mr-4 opacity-40 hover:opacity-100 transition-opacity"
               :class="{ 'pointer-events-none': !item.link }"
               :style="item.style"
               :target="item.link ? '_blank' : ''">
@@ -47,11 +69,11 @@
             </a>
           </div>
 
-          <div class="main-content__footer flex">
+          <!-- <div class="main-content__footer flex">
             <a class="p-1 opacity-50 hover:opacity-90 transition-opacity" href="https://github.com/unickhow" target="_blank">
               <zmdiGithubBox />
             </a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -62,13 +84,12 @@
 
 <script setup lang="ts">
 import EosIconsThreeDotsLoading from '~icons/eos-icons/three-dots-loading'
-import zmdiGithubBox from '~icons/zmdi/github-box'
 import OcticonLogoGithub16 from '~icons/octicon/logo-github-16'
 import { useBrandModel } from '../plugins/threejs/brand'
 import { useTypeIt } from '../plugins/typeit'
 import FileList from '../components/FileList.vue'
-import { ref, onMounted } from 'vue'
-import { whenever, useMagicKeys } from '@vueuse/core'
+import { useCodeType } from '../utils/codeType'
+import { sideProjects } from '../components/sideProjects'
 
 type HashTag = {
   name: string
@@ -79,7 +100,7 @@ type HashTag = {
 const hashtags: HashTag[] = [
   {
     name: '#major_front_end',
-    style: 'color: var(--c__white)',
+    style: 'color: var(--text-color)',
     link: 'https://github.com/unickhow'
   },
   {
@@ -107,29 +128,8 @@ const hashtags: HashTag[] = [
 const { isGltfLoaded } = useBrandModel('#logo')
 const { hasTypingDone } = useTypeIt('#jibber_jabber')
 
-const isFileListPanelVisible = ref(false)
-onMounted(() => {
-  //* Todo: use Rxjs
-  const secretWord = 'ls'
-  const inputKeys = ref('')
+const { isCodeMatched: isFileListPanelVisible } = useCodeType()
 
-  const keydownEvt = (e: KeyboardEvent) => {
-    if (e.key === 'l' || e.key === 's') {
-      inputKeys.value += e.key
-    } else {
-      inputKeys.value = ''
-    }
-  }
-  document.addEventListener('keydown', keydownEvt)
-
-  const isLs = () => {
-    return inputKeys.value === secretWord
-  }
-  whenever(isLs, () => isFileListPanelVisible.value = true)
-
-  const { escape } = useMagicKeys()
-  whenever(escape, () => isFileListPanelVisible.value = false)
-})
 </script>
 
 <style scoped>

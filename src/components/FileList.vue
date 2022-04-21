@@ -6,7 +6,7 @@
       <br />
       <div class="flex flex-col">
         <span
-          v-for="project in projects"
+          v-for="project in sideProjects"
           :key="project.name"
           class="px-4 py-2"
           target="_blank">[{{ project.shortcut }}] - {{ project.name }}</span>
@@ -16,28 +16,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useMagicKeys, whenever } from '@vueuse/core'
+import { sideProjects } from '../components/sideProjects'
 
-const projects = ref([
-  {
-    name: 'knowme',
-    shortcut: 'k',
-    link: 'https://knowme.unick.how'
-  },
-  {
-    name: 'vvalai',
-    shortcut: 'w',
-    link: 'https://vvalai.unick.how'
-  }
-])
-
-const shortcuts = projects.value.map(project => project.shortcut).filter(Boolean)
+const shortcuts = sideProjects.map(project => project.shortcut).filter(Boolean)
 const props = defineProps(['isActive'])
 shortcuts.forEach(shortcut => {
   const keyDown = useMagicKeys()[shortcut]
   whenever(keyDown, () => {
-    if (props.isActive) window.open(projects.value.find(project => project.shortcut === shortcut)?.link, '_blank')
+    if (props.isActive) window.open(sideProjects.find(project => project.shortcut === shortcut)?.link, '_blank')
   })
 })
 </script>
