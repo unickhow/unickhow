@@ -1,10 +1,11 @@
-import { onMounted, ref, nextTick } from "vue"
+import { onMounted, ref, nextTick, watch } from "vue"
 
 export const useBrandModel = (el: string) => {
   const isGltfLoaded = ref(false)
-
+  let scene: any
+  let THREE: any
   onMounted(async () => {
-    const THREE = await import('three')
+    THREE = await import('three')
     const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls')
     const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader')
 
@@ -17,8 +18,8 @@ export const useBrandModel = (el: string) => {
       height: canvas.clientHeight
     }
 
-    const scene = new THREE.Scene()
-    const light = new THREE.PointLight(0xffffff, 99, 73);
+    scene = new THREE.Scene()
+    const light = new THREE.PointLight(0xffffff, 99, 73)
     light.position.set(20, -10, 20)
     const lightHolder = new THREE.Group()
     lightHolder.add(light)
@@ -34,12 +35,13 @@ export const useBrandModel = (el: string) => {
     camera.position.y = 0
     camera.position.z = 7
 
-    const renderer = new THREE.WebGLRenderer()
+    const renderer = new THREE.WebGLRenderer({ alpha: true })
     renderer.physicallyCorrectLights = true
     renderer.shadowMap.enabled = true
     renderer.outputEncoding = THREE.sRGBEncoding
     renderer.setSize(sizes.width, sizes.height)
     canvas.appendChild(renderer.domElement)
+    renderer.setClearColor(0x000000, 0)
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
