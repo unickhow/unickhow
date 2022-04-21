@@ -10,7 +10,7 @@ export const sideProjects: SideProject[] = [
   {
     name: 'MHR tips',
     icon: 'https://github.com/unickhow/MHR-tips/blob/main/public/magnamalo.png?raw=true',
-    link: 'https://unickhow.github.io/mhr-tips',
+    link: 'https://unickhow.github.io/MHR-tips/',
     desc: 'Reproduce Monster Hunter loading animation.',
     shortcut: 'm'
   },
