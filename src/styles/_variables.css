@@ -10,12 +10,16 @@
   --c__yellow: #FFBB00;
 
   --c__theme-icon: #ffc857;
+  --c__theme-day-cloud: #d1ccc7;
+  --c__theme-night-cloud: var(--c__white);
 
   --text-color: var(--c__dark);
   --note-color: var(--c__grey);
+  --cloud-color: var(--c__theme-day-cloud);
 }
 
 html.dark {
   --text-color: var(--c__white);
   --note-color: var(--c__grey);
+  --cloud-color: var(--c__theme-night-cloud);
 }

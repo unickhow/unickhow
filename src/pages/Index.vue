@@ -86,7 +86,7 @@
 import EosIconsThreeDotsLoading from '~icons/eos-icons/three-dots-loading'
 import OcticonLogoGithub16 from '~icons/octicon/logo-github-16'
 import { useBrandModel } from '../plugins/threejs/brand'
-import { useTypeIt } from '../plugins/typeit'
+// import { useTypeIt } from '../plugins/typeit'
 import FileList from '../components/FileList.vue'
 import { useCodeType } from '../utils/codeType'
 import { sideProjects } from '../components/sideProjects'
@@ -126,7 +126,7 @@ const hashtags: HashTag[] = [
 ]
 
 const { isGltfLoaded } = useBrandModel('#logo')
-const { hasTypingDone } = useTypeIt('#jibber_jabber')
+// const { hasTypingDone } = useTypeIt('#jibber_jabber')
 
 const { isCodeMatched: isFileListPanelVisible } = useCodeType()
 

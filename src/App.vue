@@ -1,9 +1,6 @@
 <template>
   <div class="header flex justify-end p-4">
-    <label for="theme" class="cursor-pointer">
-      <div class="theme-icon" :class="{ 'dark': isDark }"></div>
-      <input v-model="isDark" class="hidden" type="checkbox" name="theme" id="theme">
-    </label>
+    <ThemeToggler />
   </div>
   <router-view></router-view>
 
@@ -15,38 +12,8 @@
 </template>
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-import { useStorage } from '@vueuse/core'
-import { ref, provide, watch } from 'vue'
-// import IcSharpLightbulb from '~icons/ic/sharp-lightbulb'
 import zmdiGithubBox from '~icons/zmdi/github-box'
-
-const theme = useStorage('unickTheme', 'light')
-const isDark = ref(theme.value === 'dark')
-
-watch(isDark, (value) => {
-  theme.value = value ? 'dark' : 'light'
-})
-
-// ! TODO: WritableComputedRef<unknown> is not assignable to unknown
-// const isDark = computed({
-//   get () {
-//     return theme.value === 'dark'
-//   },
-//   set (val) {
-//     theme.value = val ? 'dark' : 'light'
-//   }
-// })
-
-provide('isDark', isDark)
-
-watch(isDark, (val) => {
-  const root = document.getElementsByTagName('html')[0]
-  if (val) {
-    root.classList.add('dark')
-  } else {
-    root.classList.remove('dark')
-  }
-}, { immediate: true })
+import ThemeToggler from './components/ThemeToggler.vue'
 
 useHead({
   title: '<unickhow />',
@@ -70,7 +37,7 @@ html.dark {
 </style>
 
 <style scoped>
-.theme-icon {
+/* .theme-icon {
   width: 30px;
   height: 30px;
   background: var(--c__theme-icon);
@@ -82,6 +49,6 @@ html.dark {
   background: transparent;
   transform: translate(-12px, -5px);
   box-shadow: 12px 5px 0 0 var(--c__theme-icon);
-  opacity: .5;
-}
+  opacity: .7;
+} */
 </style>
