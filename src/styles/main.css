@@ -3,4 +3,9 @@
 
 html, body {
   overflow-x: hidden;
+  @apply h-screen;
+}
+
+#app {
+  @apply h-full;
 }

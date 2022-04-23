@@ -1,14 +1,17 @@
 <template>
-  <div class="header flex justify-end p-4">
-    <ThemeToggler />
-  </div>
-  <router-view></router-view>
+  <div class="flex flex-col h-full">
+    <nav class="header flex justify-end p-4">
+      <ThemeToggler />
+    </nav>
 
-  <footer class="flex items-center justify-center py-1">
-    <a class="opacity-50 hover:opacity-90 transition-opacity text-gray dark:text-pale" href="https://github.com/unickhow" target="_blank">
-      <zmdiGithubBox />
-    </a>
-  </footer>
+    <router-view></router-view>
+
+    <footer class="mt-auto flex items-center justify-center py-2">
+      <a class="opacity-50 hover:opacity-90 transition-opacity text-gray dark:text-pale" href="https://github.com/unickhow" target="_blank">
+        <zmdiGithubBox class="align-middle" />
+      </a>
+    </footer>
+  </div>
 </template>
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
