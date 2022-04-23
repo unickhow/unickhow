@@ -1,5 +1,4 @@
 import { whenever, useMagicKeys } from '@vueuse/core'
-import { ref, onMounted, onUnmounted } from 'vue'
 
 export const useCodeType = () => {
   const isCodeMatched = ref(false)

@@ -24,7 +24,6 @@
 
 <script setup lang="ts">
 import MdiAppleIcloud from '~icons/mdi/apple-icloud'
-import { watch, ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 
 const theme = useStorage('unickTheme', 'light')

@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { toRef, nextTick, onMounted, ref } from 'vue'
-
 const props = defineProps({
   text: {
     type: String,
