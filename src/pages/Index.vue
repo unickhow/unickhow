@@ -30,7 +30,7 @@
             <div class="main-content__body">
               <p class="mb-4 font-light leading-loose">
                 This is where I,
-                <a class="uppercase font-bold" href="https://github.com/unickhow" target="_blank">unickhow</a>,
+                <a class="font-bold text-orange" href="https://github.com/unickhow" target="_blank">unickhow</a>,
                 present and share something interesting to me.<br>
                 There's no rocket science here 😆, so please don't take it seriously, hope you enjoy it.<br>
                 <br>
@@ -39,14 +39,14 @@
             </div>
           </div>
 
-          <div class="side-projects flex flex-wrap mb-20 max-w-400px">
+          <div class="side-projects flex flex-wrap mb-20 max-w-450px">
             <a
               v-for="project in sideProjects"
               :key="project.name"
               :href="project.link"
-              class="w-full p-2 transition-shadow shadow hover:shadow-md flex mr-4 mb-4 rounded dark:rounded-none dark:border-l-2 dark:border-l-gray"
+              class="w-full py-2 px-4 transition-shadow shadow hover:shadow-md flex mr-4 mb-4 rounded dark:rounded-none dark:border-l-2 dark:border-l-gray"
               target="_blank">
-              <figure class="w-8 h-8 flex mr-2 flex-shrink-0">
+              <figure class="w-8 h-8 flex mr-4 flex-shrink-0">
                 <img :src="project.icon" class="object-cover" alt="">
               </figure>
               <div class="flex flex-col">

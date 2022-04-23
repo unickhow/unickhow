@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-col h-full">
-    <nav class="header flex justify-end p-4">
-      <ThemeToggler />
+    <nav class="header p-4">
+      <div class="container mx-auto max-w-[1200px] flex">
+        <ThemeToggler class="ml-auto" />
+      </div>
     </nav>
 
     <router-view></router-view>
@@ -29,29 +31,4 @@ useHead({
 })
 </script>
 
-<style>
-html {
-  transition: background .3s ease-in-out;
-}
-
-html.dark {
-  background: var(--c__dark);
-}
-</style>
-
-<style scoped>
-/* .theme-icon {
-  width: 30px;
-  height: 30px;
-  background: var(--c__theme-icon);
-  transition: all 0.3s ease;
-  @apply rounded-full;
-}
-
-.theme-icon.dark {
-  background: transparent;
-  transform: translate(-12px, -5px);
-  box-shadow: 12px 5px 0 0 var(--c__theme-icon);
-  opacity: .7;
-} */
-</style>
+<style></style>

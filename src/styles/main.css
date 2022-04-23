@@ -4,6 +4,22 @@
 html, body {
   overflow-x: hidden;
   @apply h-screen;
+  ::selection {
+    color: var(--c__white);
+    background: var(--c__orange);
+  }
+}
+
+html {
+  transition: background .3s ease-in-out;
+}
+
+html.dark {
+  background: var(--c__dark);
+  /* ::selection {
+    color: var(--c__orange);
+    background: var(--c__white);
+  } */
 }
 
 #app {
