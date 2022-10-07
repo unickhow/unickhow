@@ -2,11 +2,14 @@ import { useMagicKeys, whenever } from '@vueuse/core'
 import { CONSTANTS } from '../utils/enums'
 
 // === init speech recognition
-;(window as any).SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-const recognition = new (window as any).SpeechRecognition()
-recognition.interimResults = true
-// recognition.continuous = true
-recognition.lang = CONSTANTS.SPEECH_LANG
+let recognition: any
+if (typeof window !== 'undefined') {
+  ;(window as any).SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+  recognition = new (window as any).SpeechRecognition()
+  recognition.interimResults = true
+  // recognition.continuous = true
+  recognition.lang = CONSTANTS.SPEECH_LANG
+}
 // ===
 
 const keys = useMagicKeys()
