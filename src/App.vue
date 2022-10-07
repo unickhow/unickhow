@@ -8,8 +8,9 @@
 
     <router-view></router-view>
 
-    <footer class="mt-auto flex items-center justify-center py-2">
-      <a class="opacity-50 hover:opacity-90 transition-opacity text-gray dark:text-pale" href="https://github.com/unickhow" target="_blank">
+    <footer class="mt-auto text-center py-2">
+      <p class="opacity-50 hover:opacity-100 transition-opacity text-xs text-gray text-center p-1 rounded w-1/2 mx-auto mt-16">Tips: what if Jarvis does exist?</p>
+      <a class="opacity-50 hover:opacity-100 transition-opacity text-gray dark:text-pale" href="https://github.com/unickhow" target="_blank">
         <zmdiGithubBox class="align-middle" />
       </a>
     </footer>
