@@ -20,6 +20,7 @@ import { useMagicKeys, whenever } from '@vueuse/core'
 import { sideProjects } from '../components/sideProjects'
 import { useCodeType } from '../utils/codeType'
 import { useMagicVocal } from '../components/magicVocal';
+import { CONSTANTS } from '../utils/enums'
 
 const isActive = ref(false)
 
@@ -42,9 +43,9 @@ watch(
 
 const { result } = useMagicVocal()
 watch(result, (val) => {
-  if (!isActive.value && val.includes('project')) {
+  if (!isActive.value && val.includes(CONSTANTS.KEYWORD_THEME_PROJECTS_OPEN)) {
     isActive.value = true
-  } else if (!!isActive.value && val.includes('close')) {
+  } else if (!!isActive.value && val.includes(CONSTANTS.KEYWORD_THEME_PROJECTS_CLOSE)) {
     isActive.value = false
   }
 })

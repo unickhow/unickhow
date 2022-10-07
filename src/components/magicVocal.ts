@@ -1,11 +1,12 @@
 import { useMagicKeys, whenever } from '@vueuse/core'
+import { CONSTANTS } from '../utils/enums'
 
 // === init speech recognition
 ;(window as any).SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 const recognition = new (window as any).SpeechRecognition()
 recognition.interimResults = true
 // recognition.continuous = true
-recognition.lang = 'en-US'
+recognition.lang = CONSTANTS.SPEECH_LANG
 // ===
 
 const keys = useMagicKeys()
@@ -19,15 +20,23 @@ export const useMagicVocal = () => {
         .map((result: any) => result.transcript)
         .join('')
 
-      console.log('🚀 ~ file: magicVocal.ts ~ line 22 ~ recognition.addEventListener ~ transcript', transcript)
       result.value = transcript
+      console.debug('🗣 ', transcript)
+
+      if (transcript.includes(CONSTANTS.KEYWORD_ABORT)) stopRecording()
     })
     recognition.addEventListener('end', recognition.start)
 
     whenever(keys.Ctrl_meta_v, () => {
-      console.log('ctrl_meta_v')
+      console.debug('🎤 My blade is at your service.')
       recognition.start()
     })
+  }
+
+  function stopRecording () {
+    console.debug('🙊 Have a nice day.')
+    recognition.removeEventListener('end', recognition.start)
+    recognition.stop()
   }
 
   return {

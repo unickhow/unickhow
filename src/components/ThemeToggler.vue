@@ -26,6 +26,7 @@
 import MdiAppleIcloud from '~icons/mdi/apple-icloud'
 import { useStorage } from '@vueuse/core'
 import { useMagicVocal } from '../components/magicVocal';
+import { CONSTANTS } from '../utils/enums'
 
 const theme = useStorage('unickTheme', 'light')
 const isDark = ref(theme.value === 'dark')
@@ -33,9 +34,9 @@ const isDark = ref(theme.value === 'dark')
 const { result } = useMagicVocal()
 
 watch(result, (val) => {
-  if (val === 'dark') {
+  if (val === CONSTANTS.KEYWORD_THEME_DARK) {
     isDark.value = true
-  } else if (val === 'light') {
+  } else if (val === CONSTANTS.KEYWORD_THEME_LIGHT) {
     isDark.value = false
   }
 })
