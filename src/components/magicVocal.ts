@@ -14,9 +14,10 @@ if (typeof window !== 'undefined') {
 
 const keys = useMagicKeys()
 const result = ref('')
+const isRecording = ref(false)
 
 export const useMagicVocal = () => {
-  function recording () {
+  function init () {
     recognition.addEventListener('result', (e: any) => {
       const transcript = Array.from(e.results)
         .map((result: any) => result[0])
@@ -28,22 +29,37 @@ export const useMagicVocal = () => {
 
       if (transcript.includes(CONSTANTS.KEYWORD_ABORT)) stopRecording()
     })
-    recognition.addEventListener('end', recognition.start)
+    recognition.addEventListener('end', continueOnEnd)
 
     whenever(keys.Ctrl_meta_v, () => {
       console.debug('🎤 My blade is at your service.')
-      recognition.start()
+      startRecording()
     })
+  }
+
+  function startRecording () {
+    if (isRecording.value) return false
+
+    isRecording.value = true
+    recognition.start()
+  }
+
+  function continueOnEnd () {
+    isRecording.value = false
+    startRecording()
   }
 
   function stopRecording () {
     console.debug('🙊 Have a nice day.')
-    recognition.removeEventListener('end', recognition.start)
+    isRecording.value = false
+    recognition.removeEventListener('end', continueOnEnd)
     recognition.stop()
   }
 
   return {
     result,
-    recording
+    init,
+    startRecording,
+    stopRecording
   }
 }

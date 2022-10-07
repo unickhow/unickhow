@@ -24,12 +24,21 @@ export const useCodeType = () => {
     whenever(isLs, () => isCodeMatched.value = true)
 
     const { escape } = useMagicKeys()
-    whenever(escape, () => isCodeMatched.value = false)
+    whenever(escape, () => {
+      isCodeMatched.value = false
+    })
   })
+
+  function setIsCodeMatched (value: boolean) {
+    isCodeMatched.value = value
+  }
 
   onUnmounted(() => {
     document.removeEventListener('keydown', keydownEvt)
   })
 
-  return { isCodeMatched }
+  return {
+    isCodeMatched,
+    setIsCodeMatched
+  }
 }

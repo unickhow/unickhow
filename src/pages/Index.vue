@@ -68,12 +68,6 @@
               {{ item.name }}
             </a>
           </div>
-
-          <!-- <div class="main-content__footer flex">
-            <a class="p-1 opacity-50 hover:opacity-90 transition-opacity" href="https://github.com/unickhow" target="_blank">
-              <zmdiGithubBox />
-            </a>
-          </div> -->
         </div>
       </div>
     </div>
