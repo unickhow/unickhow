@@ -1,5 +1,5 @@
 <template>
-  <div class="ls-modal">
+  <div v-show="isActive" class="ls-modal">
     <code>
       > ls
       <br />
@@ -18,14 +18,35 @@
 <script setup lang="ts">
 import { useMagicKeys, whenever } from '@vueuse/core'
 import { sideProjects } from '../components/sideProjects'
+import { useCodeType } from '../utils/codeType'
+import { useMagicVocal } from '../components/magicVocal';
+
+const isActive = ref(false)
 
 const shortcuts = sideProjects.map(project => project.shortcut).filter(Boolean)
-const props = defineProps(['isActive'])
 shortcuts.forEach(shortcut => {
   const keyDown = useMagicKeys()[shortcut]
   whenever(keyDown, () => {
-    if (props.isActive) window.open(sideProjects.find(project => project.shortcut === shortcut)?.link, '_blank')
+    if (isActive.value) window.open(sideProjects.find(project => project.shortcut === shortcut)?.link, '_blank')
   })
+})
+
+const { isCodeMatched } = useCodeType()
+
+watch(
+  isCodeMatched,
+  (val) => {
+    isActive.value = val
+  }
+)
+
+const { result } = useMagicVocal()
+watch(result, (val) => {
+  if (!isActive.value && val.includes('project')) {
+    isActive.value = true
+  } else if (!!isActive.value && val.includes('close')) {
+    isActive.value = false
+  }
 })
 </script>
 
