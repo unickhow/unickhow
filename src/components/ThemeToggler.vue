@@ -25,9 +25,20 @@
 <script setup lang="ts">
 import MdiAppleIcloud from '~icons/mdi/apple-icloud'
 import { useStorage } from '@vueuse/core'
+import { useMagicVocal } from '../components/magicVocal';
 
 const theme = useStorage('unickTheme', 'light')
 const isDark = ref(theme.value === 'dark')
+
+const { result } = useMagicVocal()
+
+watch(result, (val) => {
+  if (val === 'dark') {
+    isDark.value = true
+  } else if (val === 'light') {
+    isDark.value = false
+  }
+})
 
 watch(isDark, (value) => {
   theme.value = value ? 'dark' : 'light'

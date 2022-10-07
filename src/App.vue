@@ -19,6 +19,7 @@
 import { useHead } from '@vueuse/head'
 import zmdiGithubBox from '~icons/zmdi/github-box'
 import ThemeToggler from './components/ThemeToggler.vue'
+import { useMagicVocal } from './components/magicVocal';
 
 useHead({
   title: '<unickhow />',
@@ -29,6 +30,9 @@ useHead({
     }
   ]
 })
+
+const { recording } = useMagicVocal()
+recording()
 </script>
 
 <style></style>
