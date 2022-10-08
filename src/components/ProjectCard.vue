@@ -76,7 +76,6 @@
 
   const cardShinePosition = computed(() => {
     const x = xRatio.value * 1800
-    console.log('🚀 ~ file: ProjectCard.vue ~ line 79 ~ cardShinePosition ~ x', x)
     const r = xRatio.value * -24
     return {
       transform: `translateX(${-x}%) rotate(${r}deg)`,
@@ -98,9 +97,9 @@
   .project-card__content::before {
     content: '';
     @apply absolute select-none;
-    width: 130%;
+    width: 150%;
     height: 500%;
-    left: -25%;
+    left: -30%;
     top: -200%;
     transform: rotate(-10deg);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
