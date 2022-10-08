@@ -39,21 +39,15 @@
             </div>
           </div>
 
-          <div class="side-projects flex flex-wrap mb-20 max-w-450px">
-            <a
+          <div class="side-projects flex flex-wrap mb-4">
+            <div
               v-for="project in sideProjects"
               :key="project.name"
-              :href="project.link"
-              class="w-full py-2 px-4 transition-shadow shadow hover:shadow-md flex mr-4 mb-4 rounded dark:rounded-none dark:border-l-2 dark:border-l-gray"
-              target="_blank">
-              <figure class="w-8 h-8 flex mr-4 flex-shrink-0">
-                <img :src="project.icon" class="object-cover" alt="">
-              </figure>
-              <div class="flex flex-col">
-                <h5 class="text-sm">{{ project.name }}</h5>
-                <p class="text-xs text-gray font-light">{{ project.desc }}</p>
-              </div>
-            </a>
+              class="w-full p-6">
+              <ProjectCard
+                :project="project"
+                class="h-full" />
+            </div>
           </div>
 
           <div class="hashtags flex md:hidden flex-wrap text-sm mb-10 p-2 rounded">
@@ -80,6 +74,7 @@
 import { useBrandModel } from '../plugins/threejs/brand'
 import FileList from '../components/FileList.vue'
 import { sideProjects } from '../components/sideProjects'
+import ProjectCard from '../components/ProjectCard.vue'
 
 type HashTag = {
   name: string
