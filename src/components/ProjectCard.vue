@@ -76,7 +76,7 @@
 
   const cardShinePosition = computed(() => {
     const x = xRatio.value * 1800
-    const r = xRatio.value * -24
+    const r = yRatio.value * 8
     return {
       transform: `translateX(${-x}%) rotate(${r}deg)`,
       opacity: 0 + Math.abs(xRatio.value)
