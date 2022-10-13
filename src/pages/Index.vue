@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-        <div class="px-8 py-6 w-full md:w-2/3 font-fira main-content dark:text-pale">
+        <div class="px-8 py-6 w-full md:w-2/3 font-fira antialiased main-content dark:text-pale">
           <div class="main-content mb-20">
             <h1 class="text-xl mb-8 theme__text-color">() => 'Hello, world.'</h1>
             <div class="main-content__body">

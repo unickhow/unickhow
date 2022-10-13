@@ -1,28 +1,23 @@
 <template>
-  <div
+  <a
     ref="projectCard"
-    class="project-card__container"
-    @mousemove="handleMouseMove"
-    @mouseleave="handleMouseLeave">
-    <a
-      :href="project.link"
-      class="project-card h-50 py-4 px-4 transition-all block rounded-lg overflow-hidden"
-      :style="cardRotation"
-      target="_blank">
-      <div class="project-card__shine" :style="cardShinePosition"></div>
-      <div
-        class="project-card__bg bg-cover bg-center -z-1"
-        :style="{ backgroundImage: `url(${project.cover})`, ...cardBackGroundRotation }" />
-      <div class="project-card__content flex flex-col z-2 text-white">
-        <h5 class="text-md text-shadow-lg">{{ project.name }}</h5>
-        <p class="text-xs font-light text-shadow-lg">{{ project.desc }}</p>
-      </div>
-    </a>
-  </div>
+    class="project-card__container h-50 rounded-lg block py-4 px-4"
+    :href="project.link"
+    target="_blank">
+    <div class="project-card__bg__container absolute w-full h-full left-0 top-0 rounded-lg overflow-hidden -z-1">
+      <div class="project-card__bg bg-cover bg-center" :style="{ backgroundImage: `url(${project.cover})`, ...cardBackGroundRotation }" />
+    </div>
+    <div class="project-card__content px-8 flex flex-col z-2 text-white">
+      <h5 class="text-xl font-bold text-shadow">{{ project.name }}</h5>
+      <p class="text-sm text-shadow">{{ project.desc }}</p>
+    </div>
+  </a>
 </template>
 
 <script setup lang="ts">
   // reference: https://codepen.io/andymerskin/pen/XNMWvQ
+  // replace with tilt.js
+  import VanillaTilt from 'vanilla-tilt';
 
   defineProps<{
     project: {
@@ -36,74 +31,54 @@
 
   const projectCard = ref<HTMLElement>()
   const state = reactive({
-    cardWidth: 0,
-    cardHeight: 0,
     x: 0,
     y: 0
   })
-  const xRatio = computed(() => state.x / state.cardWidth)
-  const yRatio = computed(() => state.y / state.cardHeight)
 
   onMounted(() => {
-    state.cardWidth = projectCard.value!.offsetWidth
-    state.cardHeight = projectCard.value!.offsetHeight
-  })
+    VanillaTilt.init(projectCard.value!, {
+      max: 10,
+      speed: 400,
+      glare: true,
+      'max-glare': 0.37
+    })
 
-  function handleMouseMove(e: MouseEvent) {
-    state.x = e.pageX - projectCard.value!.offsetLeft - state.cardWidth/2;
-    state.y = e.pageY - projectCard.value!.offsetTop - state.cardHeight/2;
-  }
-  function handleMouseLeave() {
-    state.x = 0;
-    state.y = 0;
-  }
-
-  const cardRotation = computed(() => {
-    const x = xRatio.value * 12
-    const y = yRatio.value * -24
-    return {
-      transform: `rotateX(${y}deg) rotateY(${x}deg)`
-    }
+    projectCard.value!.addEventListener('tiltChange', function(evt: any) {
+      state.x = evt.detail.percentageX
+      state.y = evt.detail.percentageY
+    })
   })
 
   const cardBackGroundRotation = computed(() => {
-    const x = xRatio.value * 8
-    const y = yRatio.value * 4
+    const { x, y } = state
     return {
-      transform: `translateX(${-x}px) translateY(${-y}px)`
-    }
-  })
-
-  const cardShinePosition = computed(() => {
-    const x = xRatio.value * 1800
-    const r = yRatio.value * 8
-    return {
-      transform: `translateX(${-x}%) rotate(${r}deg)`,
-      opacity: 0 + Math.abs(xRatio.value)
+      transform: `translateX(${-x / 50}%) translateY(${-y / 50}%)`
     }
   })
 </script>
 
 <style scoped>
   .project-card__container {
-    transform: perspective(1200px);
+    transform: perspective(1000px);
     transform-style: preserve-3d;
+  }
+
+  .project-card__container:hover .project-card__bg::before {
+    @apply opacity-30;
   }
 
   .project-card__content {
     @apply relative;
+    transition: .3s;
+    transform: perspective(4000px) translateZ(40px);
   }
 
-  .project-card__content::before {
-    content: '';
-    @apply absolute select-none;
-    width: 150%;
-    height: 500%;
-    left: -30%;
-    top: -200%;
-    transform: rotate(-10deg);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
-    z-index: -1;
+  .project-card__container:hover .project-card__content {
+    transform: perspective(4000px) translateZ(40px) scale(1.1);
+  }
+
+  h5, p {
+    transform: perspective(4000px) translateZ(40px);
   }
 
   .project-card__bg {
@@ -114,16 +89,9 @@
     top: -5%;
   }
 
-  .project-card__shine {
-    @apply absolute;
-    top: -30%;
-    left: 50%;
-    width: 30px;
-    height: 150%;
-    background: white;
-    z-index: 3;
-    transform: rotate(30deg);
-    filter: blur(15px);
-    opacity: 0;
+  .project-card__bg::before {
+    content: '';
+    transition: opacity .3s ease-in-out;
+    @apply absolute w-full h-full top-0 left-0 bg-black opacity-40;
   }
 </style>

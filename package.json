@@ -12,6 +12,7 @@
     "@vueuse/core": "^8.2.0",
     "three": "^0.137.5",
     "typeit": "^8.3.1",
+    "vanilla-tilt": "^1.7.2",
     "vue": "^3.2.25",
     "vue-router": "4"
   },
