@@ -3,13 +3,8 @@
     <div class="container mx-auto max-w-[1024px]">
       <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
         <div class="p-4 w-full md:w-1/3">
-          <div class="hidden md:block kv-container aspect-video relative">
-            <div
-              id="logo"
-              class="items-center justify-center w-full h-full transition-opacity duration-2000 delay-800"
-              :class="isGltfLoaded ? 'opacity-100' : 'opacity-0'">
-            </div>
-
+          <div class="hidden md:block kv-container aspect-square relative">
+            <BrandExhibition />
             <div class="hashtags font-fira flex flex-col items-center text-sm mt-10 p-2 rounded">
               <a
                 v-for="item in hashtags"
@@ -43,7 +38,7 @@
             <div
               v-for="project in sideProjects"
               :key="project.name"
-              class="w-full p-6">
+              class="w-full mb-8">
               <ProjectCard
                 :project="project"
                 class="h-full" />
@@ -71,10 +66,10 @@
 </template>
 
 <script setup lang="ts">
-import { useBrandModel } from '../plugins/threejs/brand'
 import FileList from '../components/FileList.vue'
 import { sideProjects } from '../components/sideProjects'
 import ProjectCard from '../components/ProjectCard.vue'
+import BrandExhibition from '../components/BrandExhibition.vue'
 
 type HashTag = {
   name: string
@@ -109,28 +104,7 @@ const hashtags: HashTag[] = [
     link: 'https://vitejs.dev/'
   }
 ]
-
-const { isGltfLoaded } = useBrandModel('#logo')
 </script>
 
 <style scoped>
-.gh-link-share {
-  animation: glowing 1.5s ease-in-out 1s infinite alternate;
-}
-
-.gh-link-share:hover {
-  animation: none;
-}
-
-@keyframes glowing {
-  0% {
-    @apply opacity-90;
-  }
-  27% {
-    @apply opacity-90;
-  }
-  100% {
-    @apply opacity-60;
-  }
-}
 </style>

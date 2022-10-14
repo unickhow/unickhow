@@ -17,7 +17,7 @@ export const sideProjects: SideProject[] = [
     shortcut: 'm'
   },
   {
-    name: 'knowme',
+    name: 'know<wbr>me',
     icon: 'https://raw.githubusercontent.com/unickhow/knowme/main/public/favicon.svg',
     link: 'https://knowme.unick.how',
     desc: 'GitHub README card generator.',
@@ -33,7 +33,7 @@ export const sideProjects: SideProject[] = [
     shortcut: 'v'
   },
   {
-    name: 'twinterfell',
+    name: 'tw<wbr>inter<wbr>fell',
     icon: 'https://raw.githubusercontent.com/unickhow/twinterfell/main/public/favicon.svg',
     link: 'https://twinterfell.unick.how',
     desc: 'Taiwan landmarks touring in GOT style.',

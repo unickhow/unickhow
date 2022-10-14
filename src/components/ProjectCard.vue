@@ -1,15 +1,15 @@
 <template>
   <a
     ref="projectCard"
-    class="project-card__container h-50 rounded-lg block py-4 px-4"
+    class="project-card__container h-50 block py-4 px-4"
     :href="project.link"
     target="_blank">
-    <div class="project-card__bg__container absolute w-full h-full left-0 top-0 rounded-lg overflow-hidden -z-1">
+    <div class="project-card__bg__container absolute w-full h-full left-0 top-0 overflow-hidden">
       <div class="project-card__bg bg-cover bg-center" :style="{ backgroundImage: `url(${project.cover})`, ...cardBackGroundRotation }" />
     </div>
-    <div class="project-card__content px-8 flex flex-col z-2 text-white">
-      <h5 class="text-xl font-bold text-shadow">{{ project.name }}</h5>
-      <p class="text-sm text-shadow">{{ project.desc }}</p>
+    <div class="project-card__content px-8 h-full flex flex-col z-2 text-white items-center justify-center">
+      <h5 v-html="project.name" class="text-3xl md:text-5xl mb-4 font-bold text-shadow tracking-widest uppercase"></h5>
+      <p class="text-base text-shadow">{{ project.desc }}</p>
     </div>
   </a>
 </template>
@@ -40,7 +40,8 @@
       max: 10,
       speed: 400,
       glare: true,
-      'max-glare': 0.37
+      'max-glare': 0.37,
+      scale: 1.03
     })
 
     projectCard.value!.addEventListener('tiltChange', function(evt: any) {
@@ -59,7 +60,10 @@
 
 <style scoped>
   .project-card__container {
-    transform: perspective(1000px);
+    --tile-perspective: 2000px;
+    --tile-translate-z: 50px;
+
+    transform: perspective(var(--tile-perspective));
     transform-style: preserve-3d;
   }
 
@@ -70,15 +74,34 @@
   .project-card__content {
     @apply relative;
     transition: .3s;
-    transform: perspective(4000px) translateZ(40px);
+    transform: perspective(var(--tile-perspective)) translateZ(var(--tile-translate-z));
+  }
+
+  h5 {
+    transform: perspective(var(--tile-perspective)) translateZ(50px) translateY(15px) scale(1.2);
+    opacity: .37;
+    transition: .3s;
+  }
+
+  p {
+    transform: perspective(var(--tile-perspective)) translateZ(var(--tile-translate-z)) translateY(15px);
+    opacity: 0;
+    transition: .3s;
+    transition-delay: .1s;
   }
 
   .project-card__container:hover .project-card__content {
-    transform: perspective(4000px) translateZ(40px) scale(1.1);
+    transform: perspective(var(--tile-perspective)) translateZ(var(--tile-translate-z)) scale(1.05);
   }
 
-  h5, p {
-    transform: perspective(4000px) translateZ(40px);
+  .project-card__container:hover h5 {
+    transform: perspective(var(--tile-perspective)) translateZ(50px) translateY(0) scale(1.05);
+    opacity: 1;
+  }
+
+  .project-card__container:hover p {
+    transform: perspective(var(--tile-perspective)) translateZ(var(--tile-translate-z)) translateY(0) scale(1.05);
+    opacity: 1;
   }
 
   .project-card__bg {
