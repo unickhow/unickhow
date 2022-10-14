@@ -9,7 +9,7 @@
           v-for="project in sideProjects"
           :key="project.name"
           class="px-4 py-2"
-          target="_blank">[{{ project.shortcut }}] - {{ project.name }}</span>
+          target="_blank">[{{ project.shortcut }}] - {{ project.name.replace('<wbr>', '') }}</span>
       </div>
     </code>
   </div>
@@ -55,10 +55,9 @@ watch(result, (val) => {
 
 <style>
 .ls-modal {
-  @apply relative p-2rem absolute border border-white rounded-lg left-[50%] top-[50%] overflow-hidden;
-  width: 100%;
+  @apply relative p-2rem fixed border border-white rounded-lg left-[1rem] bottom-[1rem] overflow-hidden;
+  width: calc(100% - 2rem);
   max-width: 400px;
-  transform: translate(-50%, -50%);
   color: white;
 }
 
