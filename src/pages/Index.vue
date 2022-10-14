@@ -38,7 +38,7 @@
             <div
               v-for="project in sideProjects"
               :key="project.name"
-              class="w-full p-6">
+              class="w-full mb-8">
               <ProjectCard
                 :project="project"
                 class="h-full" />
