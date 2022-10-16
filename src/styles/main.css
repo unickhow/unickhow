@@ -20,3 +20,7 @@ html.dark {
 #app {
   @apply h-full;
 }
+
+section {
+  @apply py-24;
+}

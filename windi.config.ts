@@ -19,6 +19,9 @@ export default defineConfig({
     'font-fira': {
       'font-family': '"Fira Code", "monospace", "Zen Maru Gothic", "sans-serif"'
     },
+    'font-mono': {
+      'font-family': '"Share Tech Mono", monospace'
+    },
     'theme__text-color': {
       'color': 'var(--text-color)'
     },
@@ -27,7 +30,8 @@ export default defineConfig({
     },
     'theme__cloud-color': {
       'color': 'var(--cloud-color)'
-    }
+    },
+    'container': 'mx-auto max-w-[1024px]'
   },
   plugins: [
     require('windicss/plugin/aspect-ratio')
