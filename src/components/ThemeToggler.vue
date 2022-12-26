@@ -31,15 +31,16 @@ import { CONSTANTS } from '../utils/enums'
 const theme = useStorage('unickTheme', 'light')
 const isDark = ref(theme.value === 'dark')
 
-const { result } = useMagicVocal()
-
-watch(result, (val) => {
-  if (val === CONSTANTS.KEYWORD_THEME_DARK) {
-    isDark.value = true
-  } else if (val === CONSTANTS.KEYWORD_THEME_LIGHT) {
-    isDark.value = false
-  }
-})
+if (!import.meta.env.SSR) {
+  const { result } = useMagicVocal()
+  watch(result, (val) => {
+    if (val === CONSTANTS.KEYWORD_THEME_DARK) {
+      isDark.value = true
+    } else if (val === CONSTANTS.KEYWORD_THEME_LIGHT) {
+      isDark.value = false
+    }
+  })
+}
 
 watch(isDark, (value) => {
   theme.value = value ? 'dark' : 'light'
@@ -56,11 +57,13 @@ watch(isDark, (value) => {
 // })
 
 watch(isDark, (val) => {
-  const root = document.getElementsByTagName('html')[0]
-  if (val) {
-    root.classList.add('dark')
-  } else {
-    root.classList.remove('dark')
+  if (!import.meta.env.SSR) {
+    const root = document.getElementsByTagName('html')[0]
+    if (val) {
+      root.classList.add('dark')
+    } else {
+      root.classList.remove('dark')
+    }
   }
 }, { immediate: true })
 

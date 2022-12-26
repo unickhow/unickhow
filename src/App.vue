@@ -33,7 +33,6 @@ useHead({
     }
   ]
 })
-
 const { init, startRecording } = useMagicVocal()
 init()
 </script>

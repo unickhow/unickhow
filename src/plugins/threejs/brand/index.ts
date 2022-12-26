@@ -1,4 +1,4 @@
-import { onMounted, ref, nextTick, watch } from "vue"
+import { onMounted, ref, nextTick } from "vue"
 
 export const useBrandModel = (el: string) => {
   const isGltfLoaded = ref(false)
@@ -11,7 +11,10 @@ export const useBrandModel = (el: string) => {
 
     await nextTick()
 
-    const canvas = document.querySelector(el) as HTMLCanvasElement
+    let canvas: any
+    if (!import.meta.env.SSR) {
+      canvas = document.querySelector(el) as HTMLCanvasElement
+    }
 
     const sizes = {
       width: canvas.clientWidth,

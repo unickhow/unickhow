@@ -41,16 +41,18 @@ watch(
   }
 )
 
-const { result } = useMagicVocal()
-watch(result, (val) => {
-  if (!isActive.value && val.includes(CONSTANTS.KEYWORD_THEME_PROJECTS_OPEN)) {
-    isActive.value = true
-    setIsCodeMatched(true)
-  } else if (!!isActive.value && val.includes(CONSTANTS.KEYWORD_THEME_PROJECTS_CLOSE)) {
-    isActive.value = false
-    setIsCodeMatched(false)
-  }
-})
+if (!import.meta.env.SSR) {
+  const { result } = useMagicVocal()
+  watch(result, (val) => {
+    if (!isActive.value && val.includes(CONSTANTS.KEYWORD_THEME_PROJECTS_OPEN)) {
+      isActive.value = true
+      setIsCodeMatched(true)
+    } else if (!!isActive.value && val.includes(CONSTANTS.KEYWORD_THEME_PROJECTS_CLOSE)) {
+      isActive.value = false
+      setIsCodeMatched(false)
+    }
+  })
+}
 </script>
 
 <style>

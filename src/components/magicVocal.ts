@@ -18,18 +18,20 @@ const isRecording = ref(false)
 
 export const useMagicVocal = () => {
   function init () {
-    recognition.addEventListener('result', (e: any) => {
-      const transcript = Array.from(e.results)
-        .map((result: any) => result[0])
-        .map((result: any) => result.transcript)
-        .join('')
+    if (!import.meta.env.SSR) {
+      recognition.addEventListener('result', (e: any) => {
+        const transcript = Array.from(e.results)
+          .map((result: any) => result[0])
+          .map((result: any) => result.transcript)
+          .join('')
 
-      result.value = transcript
-      console.debug('🗣 ', transcript)
+        result.value = transcript
+        console.debug('🗣 ', transcript)
 
-      if (transcript.includes(CONSTANTS.KEYWORD_ABORT)) stopRecording()
-    })
-    recognition.addEventListener('end', continueOnEnd)
+        if (transcript.includes(CONSTANTS.KEYWORD_ABORT)) stopRecording()
+      })
+      recognition.addEventListener('end', continueOnEnd)
+    }
 
     whenever(keys.Ctrl_meta_v, () => {
       console.debug('🎤 My blade is at your service.')
@@ -52,7 +54,9 @@ export const useMagicVocal = () => {
   function stopRecording () {
     console.debug('🙊 Have a nice day.')
     isRecording.value = false
-    recognition.removeEventListener('end', continueOnEnd)
+    if (!import.meta.env.SSR) {
+      recognition.removeEventListener('end', continueOnEnd)
+    }
     recognition.stop()
   }
 

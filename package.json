@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite-ssg build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "unplugin-icons": "^0.13.1",
     "vite": "^4.0.3",
     "vite-plugin-windicss": "^1.7.0",
+    "vite-ssg": "^0.22.1",
     "vue-tsc": "^0.29.8",
     "windicss": "^3.4.3"
   }

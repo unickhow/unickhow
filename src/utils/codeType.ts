@@ -16,7 +16,9 @@ export const useCodeType = () => {
         inputKeys.value = ''
       }
     }
-    document.addEventListener('keydown', keydownEvt)
+    if (!import.meta.env.SSR) {
+      document.addEventListener('keydown', keydownEvt)
+    }
 
     const isLs = () => {
       return inputKeys.value === secretWord
@@ -34,7 +36,9 @@ export const useCodeType = () => {
   }
 
   onUnmounted(() => {
-    document.removeEventListener('keydown', keydownEvt)
+    if (!import.meta.env.SSR) {
+      document.removeEventListener('keydown', keydownEvt)
+    }
   })
 
   return {
