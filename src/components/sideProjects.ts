@@ -9,6 +9,14 @@ type SideProject = {
 
 export const sideProjects: SideProject[] = [
   {
+    name: 'Slope',
+    icon: 'https://www.figma.com/community/plugin/978200655090799378/icon',
+    link: 'https://www.figma.com/community/plugin/978200655090799378/Slope',
+    desc: 'Continuous string generator for Figma.',
+    cover: 'https://hackmd.io/_uploads/rJgcrXB42.png',
+    shortcut: 's'
+  },
+  {
     name: 'MHR tips',
     icon: 'https://github.com/unickhow/MHR-tips/blob/main/public/magnamalo.png?raw=true',
     link: 'https://unickhow.github.io/MHR-tips/',
