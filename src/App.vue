@@ -1,7 +1,11 @@
 <template>
   <div class="flex flex-col h-full">
     <nav class="header p-4">
-      <div class="container mx-auto max-w-[1200px] flex">
+      <div class="container mx-auto max-w-[1024px] flex">
+        <div class="flex gap-4">
+          <router-link :to="{ name: 'Home' }" class="text-gray dark:text-pale">Home</router-link>
+          <router-link :to="{ name: 'Blog' }" class="text-gray dark:text-pale">Blog</router-link>
+        </div>
         <ThemeToggler class="ml-auto" />
       </div>
     </nav>

@@ -1,5 +1,6 @@
 @import './_variables.css';
 @import './_transitions.css';
+@import './_markdown.css';
 
 html, body {
   overflow-x: hidden;
@@ -11,6 +12,7 @@ html, body {
 
 html {
   transition: background .3s ease-in-out;
+  font-family: 'NTR', 'Roboto', 'Noto Sans TC', sans-serif;
 }
 
 html.dark {

@@ -1,0 +1,117 @@
+@import './_variables.css';
+
+.blog-md-container {
+  font-family: 'NTR', 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: .5px;
+  color: var(--c__dark);
+  padding: 1rem;
+}
+
+html.dark .blog-md-container {
+  color: var(--c__white);
+}
+
+.blog-md-container blockquote {
+  border-left: 4px solid var(--note-color);
+  padding: 0 1rem;
+  font-size: .875rem;
+  margin: 2rem 0;
+}
+
+.blog-md-container a[target='_blank'] {
+  position: relative;
+  margin: 0 .25rem;
+}
+
+.blog-md-container a[target='_blank']:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--c__orange);
+  opacity: .5;
+  transition: all .1s ease;
+}
+
+.blog-md-container a[target='_blank']:hover:after {
+  height: 5px;
+}
+
+.blog-md-container p {
+  margin: 1rem 0;
+}
+
+.blog-md-container figure[data-type="image"] {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.blog-md-container img {
+  max-width: 70%;
+  border-radius: .5rem;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, .3);
+}
+
+.blog-md-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.blog-md-container h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.blog-md-container h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.blog-md-container h4 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.blog-md-container h5, .blog-md-container h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.blog-md-container p > code {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  padding: .2rem .25rem;
+  border-radius: .25rem;
+  background: var(--c__skin);
+}
+
+.blog-md-container hr {
+  border: none;
+  border-top: 2px solid var(--note-color);
+  opacity: .5;
+  margin: 3rem 0;
+}
+
+.shiki {
+  font-family: 'Fira Code', monospace;
+  padding: 1rem;
+  font-size: 12px;
+  border-radius: .5rem;
+}
+
+.shiki .highlighted {
+  background: #7f7f7f80;
+  display: block;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}
