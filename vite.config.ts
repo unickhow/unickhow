@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import path from 'path'
+import fs from 'fs-extra'
 import Icons from 'unplugin-icons/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'vite-plugin-vue-markdown'
@@ -11,6 +12,9 @@ import anchor from 'markdown-it-anchor'
 import LinkAttributes from 'markdown-it-link-attributes'
 import TOC from 'markdown-it-table-of-contents'
 import ImplicitFigures from 'markdown-it-image-figures'
+import matter from 'gray-matter'
+
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
   plugins: [
@@ -26,7 +30,7 @@ export default defineConfig({
       ]
     }),
     Markdown({
-      wrapperClasses: 'blog-md-container',
+      wrapperClasses: 'blog-md-container container mx-auto max-w-[666px]',
       headEnabled: true,
       markdownItOptions: {
         quotes: '""\'\'',
@@ -54,6 +58,20 @@ export default defineConfig({
           dataType: true,
           figcaption: 'alt'
         })
+      }
+    }),
+    Pages({
+      extensions: ['vue', 'md'],
+      extendRoute (route) {
+        const filePath = path.resolve(__dirname, route.component.slice(1))
+
+        if (/\/posts\/.*\.md$/.test(filePath)) {
+          const md = fs.readFileSync(filePath, 'utf-8')
+          const { data } = matter(md)
+          route.meta = Object.assign(route.meta || {}, { frontmatter: data })
+        }
+
+        return route
       }
     })
   ],

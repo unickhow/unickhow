@@ -16,8 +16,16 @@ export default defineConfig({
     }
   },
   shortcuts: {
+    'container': {
+      'width': '100%',
+      'padding-left': '2rem',
+      'padding-right': '2rem'
+    },
     'font-fira': {
       'font-family': '"Fira Code", "monospace", "Zen Maru Gothic", "sans-serif"'
+    },
+    'font-ntr': {
+      'font-family': '"NTR", "sans-serif"'
     },
     'theme__text-color': {
       'color': 'var(--text-color)'

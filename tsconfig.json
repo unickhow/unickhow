@@ -12,7 +12,9 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "types": [
+      "vite/client",
       "unplugin-icons/types/vue",
+      "vite-plugin-pages/client"
     ],
     "allowSyntheticDefaultImports": true
   },

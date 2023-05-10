@@ -1,12 +1,23 @@
 ---
-name: My Cool App
-title: Slope
-date: 2021-05-19T16:00:00.000+00:00
+title: Slope - Figma plugin
+description: a very first open source plugin I made.
+date: 2021-05-19T16:00:00.000+08:00
+schedule: null
+hidden: false
+tags:
+  - figma
+  - vite
+  - vue
 ---
 
 # Slope - Figma plugin
 
+{{ description }}
+
 [[toc]]
+
+
+## 始動
 
 在去年 (2021) 五月，台北開始全面居隔前後，未來室友提出了一個有挑戰性的需求
 

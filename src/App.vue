@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col h-full">
-    <nav class="header p-4">
+    <nav class="header py-4">
       <div class="container mx-auto max-w-[1024px] flex">
-        <div class="flex gap-4">
+        <!-- <div class="flex gap-4 items-center">
           <router-link :to="{ name: 'Home' }" class="text-gray dark:text-pale">Home</router-link>
-          <router-link :to="{ name: 'Blog' }" class="text-gray dark:text-pale">Blog</router-link>
-        </div>
+          <router-link :to="{ name: 'Posts' }" class="text-gray dark:text-pale">Posts</router-link>
+        </div> -->
         <ThemeToggler class="ml-auto" />
       </div>
     </nav>
@@ -41,4 +41,5 @@ const { init, startRecording } = useMagicVocal()
 init()
 </script>
 
-<style></style>
+<style scoped>
+</style>

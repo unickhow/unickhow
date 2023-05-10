@@ -1,16 +1,37 @@
 @import './_variables.css';
 
 .blog-md-container {
-  font-family: 'NTR', 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.8;
   letter-spacing: .5px;
   color: var(--c__dark);
   padding: 1rem;
+  @apply leading-relaxed;
 }
 
 html.dark .blog-md-container {
   color: var(--c__white);
+}
+
+.blog-md-container .table-of-contents {
+  @apply my-12 border-b p-6;
+}
+
+.blog-md-container .table-of-contents ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @apply text-sm;
+}
+
+.blog-md-container .table-of-contents ul li {
+  line-height: 1.75;
+}
+
+.blog-md-container .table-of-contents ul li:before {
+  content: '➤';
+  @apply mr-2 text-xs;
 }
 
 .blog-md-container blockquote {
@@ -55,36 +76,6 @@ html.dark .blog-md-container {
   max-width: 70%;
   border-radius: .5rem;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, .3);
-}
-
-.blog-md-container h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 1rem 0;
-}
-
-.blog-md-container h2 {
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin: 1rem 0;
-}
-
-.blog-md-container h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 1rem 0;
-}
-
-.blog-md-container h4 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 1rem 0;
-}
-
-.blog-md-container h5, .blog-md-container h6 {
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 1rem 0;
 }
 
 .blog-md-container p > code {

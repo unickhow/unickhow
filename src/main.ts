@@ -1,6 +1,6 @@
 import App from './App.vue'
 import 'virtual:windi.css'
-import { routes } from './routes'
+import routes from '~pages'
 import '@/styles/main.css'
 import { ViteSSG } from 'vite-ssg'
 import '@fontsource/fira-code'

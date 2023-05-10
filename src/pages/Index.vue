@@ -19,11 +19,11 @@
             </div>
           </div>
         </div>
-        <div class="px-8 py-6 w-full md:w-2/3 font-fira antialiased main-content dark:text-pale">
+        <div class="py-6 w-full md:w-2/3 font-fira antialiased main-content dark:text-pale">
           <div class="main-content mb-20">
             <h1 class="text-xl mb-8 theme__text-color">() => 'Hello, world.'</h1>
             <div class="main-content__body">
-              <p class="mb-4 font-light leading-loose">
+              <p class="mb-4 leading-loose">
                 This is where I,
                 <a class="font-bold text-orange" href="https://github.com/unickhow" target="_blank">unickhow</a>,
                 present and share something interesting to me.<br>
@@ -64,6 +64,10 @@
     <FileList />
   </main>
 </template>
+
+<route lang="yaml">
+name: Home
+</route>
 
 <script setup lang="ts">
 import FileList from '../components/FileList.vue'
