@@ -10,6 +10,11 @@ export const router = createRouter({
       component: Home
     },
     {
+      path: 'blog',
+      name: 'Blog',
+      component: () => import('@/pages/blog/index.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'Undefined',
       redirect: '/'

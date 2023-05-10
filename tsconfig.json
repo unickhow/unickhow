@@ -12,8 +12,11 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "types": [
+      "vite/client",
       "unplugin-icons/types/vue",
-    ]
+      "vite-plugin-pages/client"
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "auto-imports.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

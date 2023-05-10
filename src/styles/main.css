@@ -1,5 +1,6 @@
 @import './_variables.css';
 @import './_transitions.css';
+@import './_markdown.css';
 
 html, body {
   overflow-x: hidden;
@@ -11,6 +12,8 @@ html, body {
 
 html {
   transition: background .3s ease-in-out;
+  font-family: 'NTR', 'Roboto', 'Noto Sans TC', sans-serif;
+  scroll-behavior: smooth;
 }
 
 html.dark {
@@ -19,4 +22,29 @@ html.dark {
 
 #app {
   @apply h-full;
+}
+
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: .875rem;
+}
+
+h6 {
+  font-size: .75rem;
 }

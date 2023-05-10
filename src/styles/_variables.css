@@ -8,6 +8,7 @@
   --c__red: #A11F22;
   --c__green: #0FAE24;
   --c__orange: #FF7A00;
+  --c__skin: #ff780037;
 
   --c__theme-icon: #ffc857;
   --c__theme-day-cloud: #d1ccc7;
@@ -16,6 +17,7 @@
   --text-color: var(--c__dark);
   --note-color: var(--c__grey);
   --cloud-color: var(--c__theme-day-cloud);
+  --code-color: var(--c__skin);
 }
 
 html.dark {
