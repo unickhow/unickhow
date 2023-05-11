@@ -8,10 +8,10 @@
           :to="post.path">
           <div class="flex flex-col sm:flex-row sm:items-end">
             <div class="mr-auto">
-              <h2 class="text-dark dark:text-pale">{{ post.title }}</h2>
+              <h2 class="text-xl text-dark dark:text-pale">{{ post.title }}</h2>
               <p class="text-grey dark:text-pale opacity-70">{{ post.description }}</p>
             </div>
-            <span class="text-dark dark:text-pale">{{ formatDateTime(post.date) }}</span>
+            <span class="text-dark dark:text-pale">{{ formatDate(post.date) }}</span>
           </div>
         </router-link>
         <div class="flex gap-2 mt-2">
@@ -34,19 +34,12 @@
   </route>
 
 <script setup lang="ts">
-import { formatDateTime } from '../../utils/helper'
+import { formatDate } from '../../utils/helper'
 import { useRouter } from 'vue-router'
+import { FrontMatter } from '../../types'
+
 const router = useRouter()
 const routes = router.getRoutes()
-
-interface FrontMatter {
-  title: string
-  description: string
-  date: string
-  tags: string[]
-  schedule: string
-  hidden: boolean
-}
 
 const posts = routes.filter((route) => {
   return /^\/posts\//.test(route.path)
