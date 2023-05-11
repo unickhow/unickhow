@@ -9,6 +9,7 @@ import Markdown from 'vite-plugin-vue-markdown'
 
 import Shiki from 'markdown-it-shiki'
 import anchor from 'markdown-it-anchor'
+import slugify from '@sindresorhus/slugify'
 import LinkAttributes from 'markdown-it-link-attributes'
 import TOC from 'markdown-it-table-of-contents'
 import ImplicitFigures from 'markdown-it-image-figures'
@@ -40,7 +41,10 @@ export default defineConfig({
         typographer: true
       },
       markdownItSetup(md) {
-        md.use(anchor)
+        md.use(anchor, {
+          permalink: anchor.permalink.headerLink(),
+          slugify: (s: string) => slugify(s)
+        })
         md.use(Shiki, {
           highlightLines: true,
           theme: 'one-dark-pro'

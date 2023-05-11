@@ -13,6 +13,7 @@
     "@fontsource/noto-sans-tc": "^4.5.12",
     "@fontsource/ntr": "^4.5.10",
     "@fontsource/roboto": "^4.5.8",
+    "@sindresorhus/slugify": "^2.2.0",
     "@types/three": "^0.137.0",
     "@unhead/vue": "^1.1.26",
     "@vueuse/core": "^8.2.0",
