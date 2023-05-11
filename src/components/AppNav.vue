@@ -24,8 +24,7 @@ import ThemeToggler from './ThemeToggler.vue'
 
 <style scoped>
 .header {
-  background-size: 2px 2px;
   backdrop-filter: blur(5px);
-  background-image: radial-gradient(transparent 1px, #fff 1px);
+  -webkit-backdrop-filter: blur(5px);
 }
 </style>
