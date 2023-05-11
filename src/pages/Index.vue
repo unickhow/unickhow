@@ -1,8 +1,8 @@
 <template>
-  <main class="page_root">
+  <main>
     <div class="container mx-auto max-w-[1024px]">
       <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
-        <div class="p-4 w-full md:w-1/3">
+        <div class="sm:p-4 w-full md:w-1/3">
           <div class="hidden md:block kv-container aspect-square relative">
             <BrandExhibition />
             <div class="hashtags font-fira flex flex-col items-center text-sm mt-10 p-2 rounded">

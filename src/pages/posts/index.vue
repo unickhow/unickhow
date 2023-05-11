@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="container mx-auto max-w-[666px] py-20 flex flex-col gap-12">
+    <div class="container mx-auto max-w-[666px] py-10 flex flex-col gap-12">
       <div
         v-for="post in posts"
         :key="post.path">
