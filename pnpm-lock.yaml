@@ -28,6 +28,9 @@ dependencies:
   '@vueuse/head':
     specifier: ^1.0.22
     version: 1.0.22(vue@3.2.30)
+  lightense-images:
+    specifier: ^1.0.17
+    version: 1.0.17
   three:
     specifier: ^0.137.5
     version: 0.137.5
@@ -2571,6 +2574,10 @@ packages:
       prelude-ls: 1.1.2
       type-check: 0.3.2
     dev: true
+
+  /lightense-images@1.0.17:
+    resolution: {integrity: sha512-onaXGhmKWFxnihtb0XOCIHs7ubyaFerFQ6uBal7BXhvZtLwGa6kClFI0/Kw0puQCZb7SY8gYFh9coYWZ7HhMXQ==}
+    dev: false
 
   /linkify-it@4.0.1:
     resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}

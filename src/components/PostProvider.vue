@@ -10,10 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue'
+import { defineProps, computed, onMounted } from 'vue'
 import { formatDateTime } from '../utils/helper'
 import { FrontMatter } from '../types'
 import { useRouter } from 'vue-router'
+import Lightense from 'lightense-images'
 
 const props = defineProps({
   frontmatter: {
@@ -31,4 +32,17 @@ const router = useRouter()
 if (!isAvailable.value) {
   router.replace({ path: '/' })
 }
+
+onMounted(() => {
+  const images = document.querySelectorAll('img')
+  Lightense(images, {
+    time: 300,
+    padding: 40,
+    offset: 40,
+    keyboard: true,
+    cubicBezier: 'cubic-bezier(.2, 0, .1, 1)',
+    background: 'rgba(255, 255, 255, .1)',
+    zIndex: 2147483647
+  });
+})
 </script>
