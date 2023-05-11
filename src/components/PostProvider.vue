@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { formatDateTime } from '../utils/helper'
 import { FrontMatter } from '../types'
 import { useRouter } from 'vue-router'
