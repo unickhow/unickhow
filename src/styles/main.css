@@ -13,7 +13,7 @@ html, body {
 html {
   transition: background .3s ease-in-out;
   font-family: 'NTR', 'Roboto', 'Noto Sans TC', sans-serif;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 html.dark {

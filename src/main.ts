@@ -12,7 +12,16 @@ import PostProvider from './components/PostProvider.vue'
 
 export const createApp = ViteSSG(
   App,
-  { routes, base: import.meta.env.BASE_URL },
+  {
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition
+      } else {
+        return { top: 0 }
+      }
+    }
+  },
   (ctx) => {
     const { app } = ctx
     app.component('PostProvider', PostProvider)
