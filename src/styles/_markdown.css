@@ -114,7 +114,7 @@ html.dark .blog-md-container {
 
 .shiki {
   font-family: 'Fira Code', monospace;
-  @apply p-4 text-xs rounded leading-relaxed;
+  @apply p-4 text-xs rounded leading-relaxed overflow-x-auto;
 }
 
 .shiki .highlighted {
