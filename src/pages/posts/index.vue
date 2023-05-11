@@ -34,6 +34,7 @@
   </route>
 
 <script setup lang="ts">
+import { formatDateTime } from '../../utils/helper'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const routes = router.getRoutes()
@@ -67,11 +68,4 @@ const posts = routes.filter((route) => {
 }).sort((a, b) => {
   return new Date(b.date).getTime() - new Date(a.date).getTime()
 })
-
-function formatDateTime (dateTime: string) {
-  if (!dateTime) return ''
-  const time = new Date(dateTime).getTime()
-  return new Intl.DateTimeFormat('en-US').format(time)
-}
-
 </script>

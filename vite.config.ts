@@ -30,7 +30,8 @@ export default defineConfig({
       ]
     }),
     Markdown({
-      wrapperClasses: 'blog-md-container container mx-auto max-w-[666px]',
+      wrapperComponent: route => /\/posts\/.*\.md$/.test(route) ? 'PostProvider' : undefined,
+      wrapperClasses: 'blog-md-container',
       headEnabled: true,
       markdownItOptions: {
         quotes: '""\'\'',

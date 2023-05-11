@@ -2,12 +2,9 @@
 
 .blog-md-container {
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
   letter-spacing: .5px;
   color: var(--c__dark);
-  padding: 1rem;
-  @apply leading-relaxed;
+  @apply text-base leading-loose;
 }
 
 html.dark .blog-md-container {
@@ -15,18 +12,15 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container .table-of-contents {
-  @apply my-12 border-b p-6;
+  @apply p-6;
 }
 
 .blog-md-container .table-of-contents ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  @apply text-sm;
+  @apply text-sm m-0 p-0 list-none;
 }
 
 .blog-md-container .table-of-contents ul li {
-  line-height: 1.75;
+  @apply leading-relaxed;
 }
 
 .blog-md-container .table-of-contents ul li:before {
@@ -36,27 +30,18 @@ html.dark .blog-md-container {
 
 .blog-md-container blockquote {
   border-left: 4px solid var(--note-color);
-  padding: 0 1rem;
-  font-size: .875rem;
-  margin: 2rem 0;
+  @apply text-sm my-8 px-4 leading-relaxed;
 }
 
 .blog-md-container a[target='_blank'] {
-  position: relative;
-  margin: 0 .25rem;
+  /* position: relative;
+  margin: 0 .25rem; */
+  @apply relative;
 }
 
 .blog-md-container a[target='_blank']:after {
   content: '';
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--c__orange);
-  opacity: .5;
-  transition: all .1s ease;
+  @apply absolute -z-1 left-0 bottom-0 w-full h-1 bg-orange opacity-50 transition-all duration-100 ease-in-out;
 }
 
 .blog-md-container a[target='_blank']:hover:after {
@@ -64,45 +49,34 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container p {
-  margin: 1rem 0;
+  @apply my-4;
 }
 
 .blog-md-container figure[data-type="image"] {
-  margin: 3rem 0;
-  text-align: center;
+  @apply my-12 text-center;
 }
 
 .blog-md-container img {
-  max-width: 70%;
-  border-radius: .5rem;
-  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, .3);
+  @apply shadow-xl rounded-lg max-w-[70%];
 }
 
 .blog-md-container p > code {
   font-family: 'Fira Code', monospace;
-  font-size: 14px;
-  padding: .2rem .25rem;
-  border-radius: .25rem;
   background: var(--c__skin);
+  @apply rounded text-sm p-1;
 }
 
 .blog-md-container hr {
-  border: none;
-  border-top: 2px solid var(--note-color);
-  opacity: .5;
-  margin: 3rem 0;
+  border-top: 2px dashed var(--note-color);
+  @apply opacity-50 my-10;
 }
 
 .shiki {
   font-family: 'Fira Code', monospace;
-  padding: 1rem;
-  font-size: 12px;
-  border-radius: .5rem;
+  @apply p-4 text-xs rounded leading-relaxed;
 }
 
 .shiki .highlighted {
   background: #7f7f7f80;
-  display: block;
-  margin: 0 -1rem;
-  padding: 0 1rem;
+  @apply block -mx-4 px-4 -mb-5;
 }
