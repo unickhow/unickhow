@@ -7,7 +7,7 @@ hidden: true
 tags:
 ---
 
-# Title
+# {{ title }}
 
 {{ description }}
 

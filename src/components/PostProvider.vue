@@ -2,6 +2,14 @@
   <div class="post-provider pt-16">
     <div class="container mx-auto my-10 max-w-[666px]">
       <span class="text-dark dark:text-pale italic opacity-50">{{ formatDateTime(frontmatter.date) }}</span>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <span
+          v-for="tag in frontmatter.tags"
+          :key="tag"
+          class="bg-orange px-2 rounded-xl text-white opacity-70 text-sm">
+          {{ tag }}
+        </span>
+      </div>
       <article>
         <slot></slot>
       </article>

@@ -14,6 +14,8 @@ tags:
 
 # {{ title }}
 
+{{ description }}
+
 [[toc]]
 
 ---
@@ -129,7 +131,7 @@ voilà
 
 ### 後續追蹤
 
-基於這次上述 format 的考量，我先把 dayjs 現有的 [format](https://day.js.org/docs/en/display/format#localized-formats) 全部丟上去，然後再埋 [mixpanel](https://mixpanel.com/) 來追蹤一下大家使用的習慣，以利後續更新參考 🤫，這邊有個小坑著墨了一段時間，就是官方提供的 https://github.com/mixpanel/mixpanel-js 並不適用於 figma plugin，因為背後會去存取使用者的 cookie/localStorage，而 figma plugin 是以 Data-URI 的方式透過 iframe 嵌入，並不能操作到 cookie (即便用上了 `disable_persistence` 也無效 …)，所以找到了專為 figma plugin 而生的二創套件 https://github.com/okotoki/mixpanel-figma，去掉了 cookie/localStorage 的部分，但這樣的代價是如果設計師同時開了多個項目在使用 plugin，將被視為不同的使用者紀錄，不過對於目前需求已經很夠用了！於是進一步把 mixpanel dashboard 都設置好，便可以準備一窺設計師們的習性了 👀
+基於這次上述 format 的考量，我先把 dayjs 現有的 [format](https://day.js.org/docs/en/display/format#localized-formats) 全部丟上去，然後再埋 [mixpanel](https://mixpanel.com/) 來追蹤一下大家使用的習慣，以利後續更新參考 🤫，這邊有個小坑著墨了一段時間，就是官方提供的 https://github.com/mixpanel/mixpanel-js 並不適用於 figma plugin，因為背後會去存取使用者的 cookie/localStorage，而 figma plugin 是以 Data-URI 的方式透過 iframe 嵌入，並不能操作到 cookie (即便用上了 `disable_persistence` 也無效 …)，所以找到了專為 figma plugin 而生的二創套件 https://github.com/okotoki/mixpanel-figma ，去掉了 cookie/localStorage 的部分，但這樣的代價是如果設計師同時開了多個項目在使用 plugin，將被視為不同的使用者紀錄，不過對於目前需求已經很夠用了！於是進一步把 mixpanel dashboard 都設置好，便可以準備一窺設計師們的習性了 👀
 
 ![mixpanel](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff879f3db-703d-4e78-9293-22ad63266edc%2F%25E6%2588%25AA%25E5%259C%2596_2023-05-07_%25E4%25B8%258B%25E5%258D%25881.35.39.png?id=a1d73fb6-fd6d-4742-85cb-40c9aaab17e3&table=block&spaceId=97e46578-ab72-4131-b5e5-cf4f9a6129f1&width=2000&userId=dc5218bd-bd61-4da3-8a7d-f9791b956c76&cache=v2)
 

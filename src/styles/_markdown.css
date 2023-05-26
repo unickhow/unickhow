@@ -80,9 +80,8 @@ html.dark .blog-md-container {
   @apply relative;
 }
 
-.blog-md-container a[target='_blank']:after {
-  content: '';
-  @apply absolute -z-1 left-0 bottom-0 w-full h-1 bg-orange opacity-50 transition-all duration-100 ease-in-out;
+.blog-md-container a[target='_blank'] {
+  @apply underline;
 }
 
 .blog-md-container a[target='_blank']:hover:after {
@@ -94,11 +93,11 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container figure[data-type="image"] {
-  @apply my-12 text-center;
+  @apply my-8 text-center;
 }
 
 .blog-md-container img {
-  @apply shadow-xl rounded-lg max-w-[70%];
+  @apply shadow-xl rounded-lg max-w-[90%];
 }
 
 .blog-md-container p > code {

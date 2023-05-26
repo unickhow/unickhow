@@ -90,3 +90,5 @@ const expressionAdd = (a, b) => {
 > [whats-the-difference-between-function-foo-and-foo-function](https://stackoverflow.com/questions/5403121/whats-the-difference-between-function-foo-and-foo-function)
 > [[JavaScript]function expression(函式陈述式) VS declaration (函式运算式)](https://dotblogs.com.tw/blackie1019/2014/10/25/147085)
 > [When 'not' to use arrow functions](https://dmitripavlutin.com/when-not-to-use-arrow-functions-in-javascript/)
+>
+> This article has been migrated from medium: https://medium.com/@unick.zhow/%E8%81%B2%E6%98%8E%E5%BC%8F-declaration-vs-%E9%99%B3%E8%BF%B0%E5%BC%8F-expression-b9e62e385484
