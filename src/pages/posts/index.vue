@@ -1,26 +1,39 @@
 <template>
   <main>
-    <div class="container mx-auto max-w-[666px] py-10 flex flex-col gap-12">
+    <div class="container mx-auto max-w-[666px] py-10 mt-10 flex flex-col gap-12">
       <div
-        v-for="post in posts"
-        :key="post.path">
-        <router-link
-          :to="post.path">
-          <div class="flex flex-col sm:flex-row sm:items-end">
-            <div class="mr-auto">
-              <h2 class="text-xl text-dark dark:text-pale">{{ post.title }}</h2>
-              <p class="text-grey dark:text-pale opacity-70">{{ post.description }}</p>
+        v-for="group in postsInOrder"
+        :key="group.year"
+        class="posts__year relative ">
+        <p class="text-9xl opacity-5 font-bold absolute sm:-left-10 -top-3 select-none dark:text-pale pointer-events-none">{{ group.year }}</p>
+
+        <div
+          v-for="subGroup in group.months"
+          class="posts__year__month mb-10">
+          <p class="text-right text-2xl dark:text-pale dark:opacity-50">{{ subGroup.month }}</p>
+
+          <div
+            v-for="item in subGroup.dates"
+            :key="item.date"
+            class="posts__year__month__post my-4">
+            <router-link :to="item.post.path" class="border-l-3 border-transparent block py-2 md:hover:border-orange md:hover:pl-2 transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-end">
+                <div class="mr-auto">
+                  <h2 class="text-xl text-dark dark:text-pale">{{ item.post.title }}</h2>
+                  <p class="text-grey dark:text-pale opacity-70">{{ item.post.description }}</p>
+                </div>
+                <span class="text-dark dark:text-pale">{{ formatDate(item.post.date) }}</span>
+              </div>
+            </router-link>
+            <div class="flex gap-2 mt-2">
+              <span
+                v-for="tag in item.post.tags"
+                :key="tag"
+                class="bg-orange px-2 rounded-xl text-white opacity-70">
+                {{ tag }}
+              </span>
             </div>
-            <span class="text-dark dark:text-pale">{{ formatDate(post.date) }}</span>
           </div>
-        </router-link>
-        <div class="flex gap-2 mt-2">
-          <span
-            v-for="tag in post.tags"
-            :key="tag"
-            class="bg-orange px-2 rounded-xl text-white opacity-70 text-sm">
-            {{ tag }}
-          </span>
         </div>
       </div>
     </div>
@@ -36,10 +49,41 @@
 <script setup lang="ts">
 import { formatDate } from '../../utils/helper'
 import { useRouter } from 'vue-router'
-import { FrontMatter } from '../../types'
+import type { FrontMatter, PostsCalendar } from '../../types'
 
 const router = useRouter()
 const routes = router.getRoutes()
+
+function organizingPosts (posts: FrontMatter[]): PostsCalendar[] {
+  const result = [] as any[]
+
+  for (const post of posts) {
+    const year = post.date.split('-')[0]
+    const date = new Date(post.date)
+    const monthName = date.toLocaleString('en-US', { month: 'short' })
+    const dayName = date.toLocaleString('en-US', { weekday: 'long' })
+
+    let yearItem = result.find((item) => item.year === year)
+    if (!yearItem) {
+      yearItem = { year, months: [] }
+      result.push(yearItem)
+    }
+
+    let monthItem = yearItem.months.find((item: any) => item.month === monthName)
+    if (!monthItem) {
+      monthItem = { month: monthName, dates: [] }
+      yearItem.months.push(monthItem)
+    }
+
+    monthItem.dates.push({
+      date: post.date,
+      day: dayName,
+      post
+    })
+  }
+
+  return result
+}
 
 const posts = routes.filter((route) => {
   return /^\/posts\//.test(route.path)
@@ -61,4 +105,6 @@ const posts = routes.filter((route) => {
 }).sort((a, b) => {
   return new Date(b.date).getTime() - new Date(a.date).getTime()
 })
+
+const postsInOrder = organizingPosts(posts)
 </script>

@@ -4,5 +4,22 @@ export interface FrontMatter {
   date: string
   tags: string[]
   schedule: string
-  hidden: boolean
+  hidden: boolean,
+  path: string
+}
+
+export interface PostsCalendar {
+  year: string,
+  months: [
+    {
+      month: string,
+      dates: [
+        {
+          date: string,
+          day: string,
+          post: FrontMatter
+        }
+      ]
+    }
+  ]
 }
