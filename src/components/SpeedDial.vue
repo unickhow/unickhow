@@ -49,7 +49,8 @@ function handleScrollProgress () {
   )
   const scrollTop = window.scrollY || document.documentElement.scrollTop
   const scrollPercent = (scrollTop / (documentHeight - window.innerHeight)) * 100
-  console.log('🚀 ~ file: SpeedDial.vue:48 ~ handleScrollProgress ~ scrollPercent:', scrollPercent)
+  // TODO: back to top button
+  console.debug('🚀scrollPercent:', scrollPercent)
 
   scrollDirection.value = scrollTop > lastYPosition.value
     ? 'down'

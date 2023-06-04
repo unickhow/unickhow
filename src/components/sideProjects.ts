@@ -17,12 +17,12 @@ export const sideProjects: SideProject[] = [
     shortcut: 's'
   },
   {
-    name: 'MHR tips',
-    icon: 'https://github.com/unickhow/MHR-tips/blob/main/public/magnamalo.png?raw=true',
-    link: 'https://unickhow.github.io/MHR-tips/',
-    desc: 'Reproduce Monster Hunter loading animation.',
-    cover: 'https://cdn.akamai.steamstatic.com/steam/apps/1446780/ss_f8249da14987e3c2d10fd4024736f28774c713da.1920x1080.jpg?t=1656320720',
-    shortcut: 'm'
+    name: 'Jirassic',
+    icon: 'https://user-images.githubusercontent.com/22793771/208934842-8201a15a-45a0-4274-bdbf-55a3d4f40eb2.png',
+    link: 'https://github.com/unickhow/jirassic',
+    desc: 'GitHub PR integration for Jira.',
+    cover: 'https://hackmd.io/_uploads/HyoQY8c8h.png',
+    shortcut: 'j'
   },
   {
     name: 'know<wbr>me',
@@ -47,5 +47,13 @@ export const sideProjects: SideProject[] = [
     desc: 'Taiwan landmarks touring in GOT style.',
     cover: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
     shortcut: 't'
+  },
+  {
+    name: 'MHR tips',
+    icon: 'https://github.com/unickhow/MHR-tips/blob/main/public/magnamalo.png?raw=true',
+    link: 'https://unickhow.github.io/MHR-tips/',
+    desc: 'Reproduce Monster Hunter loading animation.',
+    cover: 'https://cdn.akamai.steamstatic.com/steam/apps/1446780/ss_f8249da14987e3c2d10fd4024736f28774c713da.1920x1080.jpg?t=1656320720',
+    shortcut: 'm'
   }
 ]
