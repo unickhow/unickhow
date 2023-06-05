@@ -12,7 +12,7 @@ html, body {
 
 html {
   transition: background .3s ease-in-out;
-  font-family: 'NTR', 'Roboto', 'Noto Sans TC', sans-serif;
+  font-family: 'Roboto', 'Noto Sans TC', sans-serif;
   /* scroll-behavior: smooth; */
 }
 

@@ -11,27 +11,28 @@
           v-for="subGroup in group.months"
           class="posts__year__month mb-10">
           <p class="text-right text-2xl dark:text-pale dark:opacity-50">{{ subGroup.month }}</p>
-
-          <div
-            v-for="item in subGroup.dates"
-            :key="item.date"
-            class="posts__year__month__post my-4">
-            <router-link :to="item.post.path" class="border-l-3 border-transparent block py-2 md:hover:border-orange md:hover:pl-2 transition-all">
-              <div class="flex flex-col sm:flex-row sm:items-end">
-                <div class="mr-auto">
-                  <h2 class="text-xl text-dark dark:text-pale">{{ item.post.title }}</h2>
-                  <p class="text-grey dark:text-pale opacity-70">{{ item.post.description }}</p>
+          <div class="flex flex-col gap-8">
+            <div
+              v-for="item in subGroup.dates"
+              :key="item.date"
+              class="posts__year__month__post">
+              <router-link :to="item.post.path" class="border-l-3 border-transparent block py-2 md:hover:border-orange md:hover:pl-2 transition-all">
+                <div class="flex flex-col sm:flex-row sm:items-end gap-4">
+                  <div class="mr-auto">
+                    <h2 class="text-lg text-dark dark:text-pale">{{ item.post.title }}</h2>
+                    <p class="text-grey dark:text-pale opacity-70">{{ item.post.description }}</p>
+                  </div>
+                  <span class="text-dark dark:text-pale text-sm">{{ formatDate(item.post.date) }}</span>
                 </div>
-                <span class="text-dark dark:text-pale">{{ formatDate(item.post.date) }}</span>
+              </router-link>
+              <div class="flex gap-2 mt-2">
+                <span
+                  v-for="tag in item.post.tags"
+                  :key="tag"
+                  class="bg-orange px-2 rounded-xl text-white opacity-70 text-sm">
+                  {{ tag }}
+                </span>
               </div>
-            </router-link>
-            <div class="flex gap-2 mt-2">
-              <span
-                v-for="tag in item.post.tags"
-                :key="tag"
-                class="bg-orange px-2 rounded-xl text-white opacity-70">
-                {{ tag }}
-              </span>
             </div>
           </div>
         </div>
