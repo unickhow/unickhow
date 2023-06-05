@@ -19,7 +19,7 @@ html.dark .blog-md-container {
 
 .blog-md-container h2 {
   font-size: 1.5rem;
-  @apply leading-10 my-8 relative;
+  @apply leading-10 mb-8 mt-16 relative;
 }
 
 .blog-md-container h2::before {
