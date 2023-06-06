@@ -2,19 +2,19 @@
   <div
     v-if="shouldShowDial"
     id="speed-dial"
-    class="fixed z-50 bottom-5 right-5 rounded-full w-8 h-8 flex items-center justify-center text-white bg-orange cursor-pointer transition-all z-50"
+    class="fixed z-50 bottom-5 right-5 rounded-full w-10 h-10 flex items-center justify-center text-white bg-orange cursor-pointer transition-all z-50"
     :class="[
       scrollDirection === 'down' ? 'opacity-37 right-2' : 'opacity-100',
       {'text-orange bg-white !opacity-100 !right-5 shadow-lg': isDialing}
     ]"
     @click="isDialing = !isDialing">
     <!-- <MdiArrowUpBold /> -->
-    <RiAppsFill />
+    <RiAppsFill class="text-xl transform transition" :class="{ 'rotate-45': isDialing }" />
     <div class="dial-menu">
-      <router-link :to="{ name: 'Home' }" :class="{'!right-12 !opacity-100 !pointer-events-auto': isDialing}">
+      <router-link :to="{ name: 'Home' }" :class="{'!right-14 !opacity-100 !pointer-events-auto': isDialing}">
         <riSeedlingFill />
       </router-link>
-      <router-link :to="{ name: 'Posts' }" :class="{'!right-23 !opacity-100 !pointer-events-auto': isDialing}">
+      <router-link :to="{ name: 'Posts' }" :class="{'!right-26 !opacity-100 !pointer-events-auto': isDialing}">
         <tablerBooks />
       </router-link>
     </div>
@@ -73,7 +73,7 @@ if (!import.meta.env.SSR) {
 
 <style scoped>
 .dial-menu a {
-  @apply rounded-full w-7 h-7 absolute text-white bg-orange flex items-center justify-center text-sm transition-all opacity-0 right-0 pointer-events-none shadow-lg;
-  bottom: .1rem
+  @apply rounded-full w-8 h-8 absolute text-white bg-orange flex items-center justify-center text-sm transition-all opacity-0 right-0 pointer-events-none shadow-lg;
+  bottom: .2rem
 }
 </style>
