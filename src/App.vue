@@ -22,7 +22,6 @@ import AppNav from './components/AppNav.vue'
 import SpeedDial from './components/SpeedDial.vue'
 
 useHead({
-  title: '<unickhow />',
   meta: [
     {
       name: 'description',
