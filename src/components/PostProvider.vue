@@ -23,7 +23,7 @@ import { formatDateTime } from '../utils/helper'
 import { FrontMatter } from '../types'
 import { useRouter } from 'vue-router'
 import Lightense from 'lightense-images'
-import { useHead } from '@unhead/vue'
+// import { useHead } from '@unhead/vue'
 
 const props = defineProps({
   frontmatter: {
@@ -32,14 +32,14 @@ const props = defineProps({
   }
 })
 
-useHead({
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => props.frontmatter.description)
-    }
-  ]
-})
+// useHead({
+//   meta: [
+//     {
+//       name: 'description',
+//       content: computed(() => props.frontmatter.description)
+//     }
+//   ]
+// })
 
 // check is post is available by computed on schedule and hidden
 const isAvailable = computed(() => {

@@ -15,20 +15,20 @@
   <SpeedDial />
 </template>
 <script setup lang="ts">
-import { useHead } from '@vueuse/head'
+// import { useHead } from '@vueuse/head'
 import zmdiGithubBox from '~icons/zmdi/github-box'
 import { useMagicVocal } from './components/magicVocal'
 import AppNav from './components/AppNav.vue'
 import SpeedDial from './components/SpeedDial.vue'
 
-useHead({
-  meta: [
-    {
-      name: 'description',
-      content: 'aka unickhow\'s portfolio.'
-    }
-  ]
-})
+// useHead({
+//   meta: [
+//     {
+//       name: 'description',
+//       content: 'aka unickhow\'s portfolio.'
+//     }
+//   ]
+// })
 const { init, startRecording } = useMagicVocal()
 init()
 </script>
