@@ -10,6 +10,10 @@ html, body {
   }
 }
 
+* {
+  @apply box-border;
+}
+
 html {
   transition: background .3s ease-in-out;
   font-family: 'Roboto', 'Noto Sans TC', sans-serif;
@@ -26,4 +30,16 @@ main {
 
 #app {
   @apply h-full;
+}
+
+a, a:visited, a:hover, a:active {
+  @apply no-underline text-current;
+}
+
+p {
+  @apply m-0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply m-0;
 }

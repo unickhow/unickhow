@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import WindiCSS from 'vite-plugin-windicss'
+import UnoCSS from 'unocss/vite'
 import path from 'path'
 import fs from 'fs-extra'
 import Icons from 'unplugin-icons/vite'
@@ -22,7 +22,7 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    WindiCSS(),
+    UnoCSS(),
     Icons({ compiler: 'vue3' }),
     AutoImport({
       imports: [

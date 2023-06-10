@@ -97,13 +97,13 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container img {
-  @apply shadow-xl rounded-lg max-w-[90%];
+  @apply shadow-xl max-w-[90%];
 }
 
 .blog-md-container p > code {
   font-family: 'Fira Code', monospace;
   background: var(--c__skin);
-  @apply rounded text-sm p-1;
+  @apply text-sm p-1;
 }
 
 .blog-md-container hr {
@@ -113,7 +113,7 @@ html.dark .blog-md-container {
 
 .shiki {
   font-family: 'Fira Code', monospace;
-  @apply p-4 text-xs rounded leading-relaxed overflow-x-auto;
+  @apply p-4 text-xs leading-relaxed overflow-x-auto;
 }
 
 .shiki .highlighted {

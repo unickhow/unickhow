@@ -1,14 +1,12 @@
 <template>
-  <div class="post-provider pt-16">
+  <div class="post-provider pt-16 px-4">
     <div class="container mx-auto my-10 max-w-[666px]">
       <span class="text-dark dark:text-pale italic opacity-50">{{ formatDateTime(frontmatter.date) }}</span>
       <div class="flex flex-wrap gap-2 mt-2">
-        <span
+        <TagLabel
           v-for="tag in frontmatter.tags"
-          :key="tag"
-          class="bg-orange px-2 rounded-xl text-white opacity-70 text-sm">
-          {{ tag }}
-        </span>
+          :key="frontmatter.title + tag"
+          :value="tag" />
       </div>
       <article>
         <slot></slot>
@@ -23,6 +21,7 @@ import { formatDateTime } from '../utils/helper'
 import { FrontMatter } from '../types'
 import { useRouter } from 'vue-router'
 import Lightense from 'lightense-images'
+import TagLabel from './TagLabel.vue'
 // import { useHead } from '@unhead/vue'
 
 const props = defineProps({

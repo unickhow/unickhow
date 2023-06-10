@@ -1,10 +1,10 @@
 <template>
   <main>
-    <div class="container mx-auto max-w-[666px] py-10 mt-10 flex flex-col gap-12">
+    <div class="container mx-auto max-w-[666px] py-10 px-4 mt-10 flex flex-col gap-12">
       <div
         v-for="group in postsInOrder"
         :key="group.year"
-        class="posts__year relative ">
+        class="posts__year relative">
         <p class="text-9xl opacity-5 font-bold absolute sm:-left-10 -top-3 select-none dark:text-pale pointer-events-none">{{ group.year }}</p>
 
         <div
@@ -16,7 +16,7 @@
               v-for="item in subGroup.dates"
               :key="item.date"
               class="posts__year__month__post">
-              <router-link :to="item.post.path" class="border-l-3 border-transparent block py-2 md:hover:border-orange md:hover:pl-2 transition-all">
+              <router-link :to="item.post.path" class="border-l-3 border-transparent block py-2 md:hover:pl-2 transition-all">
                 <div class="flex flex-col sm:flex-row sm:items-end gap-4">
                   <div class="mr-auto">
                     <h2 class="text-lg text-dark dark:text-pale">{{ item.post.title }}</h2>
@@ -26,12 +26,7 @@
                 </div>
               </router-link>
               <div class="flex gap-2 mt-2">
-                <span
-                  v-for="tag in item.post.tags"
-                  :key="tag"
-                  class="bg-orange px-2 rounded-xl text-white opacity-70 text-sm">
-                  {{ tag }}
-                </span>
+                <TagLabel v-for="tag in item.post.tags" :key="item.post.title + tag" :value="tag" />
               </div>
             </div>
           </div>
@@ -45,12 +40,13 @@
   name: Posts
   meta:
     requiresAuth: true
-  </route>
+</route>
 
 <script setup lang="ts">
 import { formatDate } from '../../utils/helper'
 import { useRouter } from 'vue-router'
 import type { FrontMatter, PostsCalendar } from '../../types'
+import TagLabel from '../../components/TagLabel.vue'
 
 const router = useRouter()
 const routes = router.getRoutes()

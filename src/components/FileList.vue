@@ -57,7 +57,7 @@ if (!import.meta.env.SSR) {
 
 <style>
 .ls-modal {
-  @apply relative p-2rem fixed border border-white rounded-lg left-[1rem] bottom-[1rem] overflow-hidden;
+  @apply relative p-2rem fixed border border-[lime] border-solid rounded-lg left-[1rem] bottom-[1rem] overflow-hidden;
   width: calc(100% - 2rem);
   max-width: 400px;
   color: white;

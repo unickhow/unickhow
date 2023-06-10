@@ -1,7 +1,7 @@
 <template>
   <a
     ref="projectCard"
-    class="project-card__container h-50 block py-4 px-4"
+    class="project-card__container h-50 block py-12 px-4"
     :href="project.link"
     target="_blank">
     <div class="project-card__bg__container absolute w-full h-full left-0 top-0 overflow-hidden">

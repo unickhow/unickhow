@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@iconify/json": "^2.1.2",
+    "@unocss/transformer-directives": "^0.53.1",
     "@vitejs/plugin-vue": "^2.2.0",
     "@vue/compiler-sfc": "^3.2.31",
     "fs-extra": "^11.1.1",
@@ -43,9 +44,7 @@
     "vite": "^4.0.3",
     "vite-plugin-pages": "^0.29.0",
     "vite-plugin-vue-markdown": "^0.23.3",
-    "vite-plugin-windicss": "^1.9.0",
     "vite-ssg": "^0.22.1",
-    "vue-tsc": "^0.29.8",
-    "windicss": "^3.5.6"
+    "vue-tsc": "^0.29.8"
   }
 }

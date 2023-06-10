@@ -13,22 +13,15 @@
   </footer>
 
   <SpeedDial />
+  <FileList />
 </template>
 <script setup lang="ts">
-// import { useHead } from '@vueuse/head'
 import zmdiGithubBox from '~icons/zmdi/github-box'
 import { useMagicVocal } from './components/magicVocal'
 import AppNav from './components/AppNav.vue'
 import SpeedDial from './components/SpeedDial.vue'
+import FileList from './components/FileList.vue'
 
-// useHead({
-//   meta: [
-//     {
-//       name: 'description',
-//       content: 'aka unickhow\'s portfolio.'
-//     }
-//   ]
-// })
 const { init, startRecording } = useMagicVocal()
 init()
 </script>

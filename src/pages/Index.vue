@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="container mx-auto max-w-[1024px]">
+    <div class="container mx-auto max-w-[1024px] px-4">
       <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
         <div class="sm:p-4 w-full md:w-1/3">
           <div class="hidden md:block kv-container aspect-square relative">
@@ -25,7 +25,7 @@
             <div class="main-content__body">
               <p class="mb-4 leading-loose">
                 This is where I,
-                <a class="font-bold text-orange" href="https://github.com/unickhow" target="_blank">unickhow</a>,
+                <a class="font-bold !text-orange" href="https://github.com/unickhow" target="_blank">unickhow</a>,
                 present and share something interesting to me.<br>
                 There's no rocket science here 😆, so please don't take it seriously, hope you enjoy it.<br>
                 <br>
@@ -34,11 +34,11 @@
             </div>
           </div>
 
-          <div class="side-projects flex flex-wrap mb-4">
+          <div class="side-projects flex flex-col gap-8 mb-4">
             <div
               v-for="project in sideProjects"
               :key="project.name"
-              class="w-full mb-8">
+              class="w-full">
               <ProjectCard
                 :project="project"
                 class="h-full" />
@@ -60,8 +60,6 @@
         </div>
       </div>
     </div>
-
-    <FileList />
   </main>
 </template>
 
@@ -70,7 +68,6 @@ name: Home
 </route>
 
 <script setup lang="ts">
-import FileList from '../components/FileList.vue'
 import { sideProjects } from '../components/sideProjects'
 import ProjectCard from '../components/ProjectCard.vue'
 import BrandExhibition from '../components/BrandExhibition.vue'
