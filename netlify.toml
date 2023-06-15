@@ -4,7 +4,7 @@
 
 [build]
   publish = "dist"
-  command = "CI='' pnpm build"
+  command = "CI= pnpm build"
 
 [[redirects]]
   from = "/*"
