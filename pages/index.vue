@@ -4,7 +4,7 @@
       <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
         <div class="sm:p-4 w-full md:w-1/3">
           <div class="hidden md:block kv-container aspect-square relative">
-            <!-- <BrandExhibition /> -->
+            <BrandExhibition />
             <div class="hashtags font-fira flex flex-col items-center text-sm mt-10 p-2 rounded">
               <a
                 v-for="item in hashtags"
@@ -35,14 +35,14 @@
           </div>
 
           <div class="side-projects flex flex-col gap-8 mb-4">
-            <!-- <div
+            <div
               v-for="project in sideProjects"
               :key="project.name"
               class="w-full">
               <ProjectCard
                 :project="project"
                 class="h-full" />
-            </div> -->
+            </div>
           </div>
 
           <div class="hashtags flex md:hidden flex-wrap text-sm mb-10 p-2 rounded">
@@ -64,9 +64,8 @@
 </template>
 
 <script setup lang="ts">
-// import { sideProjects } from '../components/sideProjects'
-// import ProjectCard from '../components/ProjectCard.vue'
-// import BrandExhibition from '../components/BrandExhibition.vue'
+import { sideProjects } from '../static/sideProject'
+import BrandExhibition from '../components/BrandExhibition.vue'
 
 type HashTag = {
   name: string
