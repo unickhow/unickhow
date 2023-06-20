@@ -1,29 +1,63 @@
-#### Hello world, 🙈
+# Nuxt 3 Minimal Starter
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f397d099-cca3-485e-8f11-4c068af21b61/deploy-status)](https://app.netlify.com/sites/unickhow/deploys)
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-trying to participate in open source projects and keep upgrading 🤞<br>
+## Setup
 
-<i><small>[personal website](https://unick.how) is WIP 🚧</small></i>
+Make sure to install the dependencies:
 
-<br>
-<br>
+```bash
+# npm
+npm install
 
-<samp>
-<label style="background: linear-gradient(45deg, #E33E33, #FFC831); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">#major_front_end</label>
-<label style="color: #42b883">#Vue_developer</label>
-<br>
-<label style="color: #ea2845">#learning_nestjs</label>
-<label style="color: #3178c6">#working_on_ts</label>
-</samp>
+# pnpm
+pnpm install
 
-<div style="border-bottom: solid 1px #ddd; margin: 2rem 0"></div>
+# yarn
+yarn install
+```
 
-<div style="display: flex; flex-wrap: wrap">
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img width="400" src="https://github-readme-stats.vercel.app/api?username=unickhow&hide=stars,issues&count_private=true&show_icons=true&theme=vue&hide_border=true" />
-  </a>
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img width="300" src="https://github-readme-stats.vercel.app/api/top-langs/?username=unickhow&layout=compact&theme=vue&hide_border=true" />
-  </a>
-</div>
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
