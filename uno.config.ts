@@ -10,6 +10,7 @@ export default defineConfig({
   ],
   theme: {
     colors: {
+      black: 'var(--c__black)',
       pale: 'var(--c__white)',
       dark: 'var(--c__dark)',
       gray: 'var(--c__grey)',
@@ -24,7 +25,7 @@ export default defineConfig({
   },
   shortcuts: {
     'tc-content-text': 'text-dark dark:text-pale',
-    'tc-content-note': 'text-gray dark:text-gray',
+    'tc-content-note': 'text-gray dark:text-gray'
   },
   rules: [
     ['container', {
@@ -37,12 +38,6 @@ export default defineConfig({
     }],
     ['font-ntr', {
       'font-family': '"NTR", "sans-serif"'
-    }],
-    ['theme__text-color', {
-      'color': 'var(--text-color)'
-    }],
-    ['theme__note-color', {
-      'color': 'var(--note-color)'
     }],
     ['theme__cloud-color', {
       'color': 'var(--c__cloud)'

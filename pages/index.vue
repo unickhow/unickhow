@@ -21,7 +21,7 @@
         </div>
         <div class="py-6 w-full md:w-2/3 font-fira antialiased main-content tc-content-text">
           <div class="main-content mb-20">
-            <h1 class="text-xl mb-8 theme__text-color">() => 'Hello, world.'</h1>
+            <h1 class="text-xl mb-8 tc-content-text">() => 'Hello, world.'</h1>
             <div class="main-content__body">
               <p class="mb-4 leading-loose">
                 This is where I,

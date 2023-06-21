@@ -1,11 +1,4 @@
-type SideProject = {
-  name: string;
-  icon: string;
-  link: string;
-  desc: string;
-  cover: string;
-  shortcut: string;
-}
+import type { SideProject } from '~/types'
 
 export const sideProjects: SideProject[] = [
   {

@@ -25,9 +25,28 @@ export default defineNuxtConfig({
   modules: [
     '@unocss/nuxt',
     'nuxt-icon',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@nuxt/content',
+    '@nuxtjs/google-fonts'
   ],
+  googleFonts: {
+    preconnect: true,
+    prefetch: true,
+    families: {
+      Roboto: true,
+      'Fira+Code': {
+        wght: [100, 400, 700]
+      }
+    }
+  },
   css: [
     '@/styles/main.css'
-  ]
+  ],
+  content: {
+    highlight: {
+      theme: {
+        default: 'one-dark-pro'
+      }
+    }
+  }
 })

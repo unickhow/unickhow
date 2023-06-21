@@ -1,0 +1,101 @@
+@import './_variables.css';
+
+.blog-md-container {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: .5px;
+  color: var(--c__dark);
+  @apply text-base leading-loose;
+}
+
+html.dark .blog-md-container {
+  color: var(--c__white);
+}
+
+.blog-md-container h1 {
+  font-size: 2rem;
+  @apply leading-10 my-8;
+}
+
+.blog-md-container h2 {
+  font-size: 1.5rem;
+  @apply leading-10 mb-8 mt-16 relative;
+}
+
+.blog-md-container h2::before {
+  content: '';
+  @apply absolute -left-1 top-0 w-3 h-4 bg-orange block -z-1 opacity-70;
+}
+
+.blog-md-container h3 {
+  font-size: 1.25rem;
+  @apply leading-10 my-8;
+}
+
+.blog-md-container h4 {
+  font-size: 1rem;
+}
+
+.blog-md-container h5 {
+  font-size: .875rem;
+}
+
+.blog-md-container h6 {
+  font-size: .75rem;
+}
+
+.blog-md-container .table-of-contents {
+  @apply p-6;
+}
+
+.blog-md-container .table-of-contents ul {
+  @apply text-sm m-0 p-0 list-none;
+}
+
+.blog-md-container .table-of-contents ul li {
+  @apply leading-7;
+}
+
+.blog-md-container .table-of-contents ul li:before {
+  content: '➤';
+  @apply mr-2 text-xs opacity-30;
+}
+
+.blog-md-container .table-of-contents ul ul {
+  @apply ml-4;
+}
+
+.blog-md-container ul li::marker {
+  @apply text-orange;
+}
+
+.blog-md-container blockquote {
+  border-left: 4px solid var(--c__grey);
+  @apply text-sm my-8 px-4 leading-relaxed;
+}
+
+.blog-md-container a[target='_blank'] {
+  @apply !underline !text-primary;
+}
+
+.blog-md-container p {
+  @apply my-4;
+}
+
+.blog-md-container figure[data-type="image"] {
+  @apply my-8 text-center;
+}
+
+.blog-md-container img {
+  @apply shadow-xl max-w-[90%];
+}
+
+.blog-md-container p > code {
+  font-family: 'Fira Code', monospace;
+  background: var(--c__skin);
+  @apply text-sm p-1;
+}
+
+.blog-md-container hr {
+  border-top: 2px dashed var(--note-color);
+  @apply opacity-50 my-10;
+}
