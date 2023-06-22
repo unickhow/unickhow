@@ -43,6 +43,7 @@ export default defineNuxtConfig({
     '@/styles/main.css'
   ],
   content: {
+    // documentDriven: true,
     highlight: {
       theme: {
         default: 'one-dark-pro'

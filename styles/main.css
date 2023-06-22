@@ -3,10 +3,11 @@
 
 html, body {
   overflow-x: hidden;
-  ::selection {
-    color: var(--c__white);
-    background: var(--c__orange);
-  }
+}
+
+::selection {
+  color: var(--c__white);
+  background: var(--c__orange);
 }
 
 * {

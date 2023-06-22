@@ -2,7 +2,36 @@
 <script setup lang="ts">
 import { formatDate } from '~/utils/helper'
 import type { FrontMatter, PostsCalendar } from '~/types'
-const contentQuery = await queryContent('posts').where({ hidden: { equals: false } }).find()
+
+useHead({
+  title: 'Posts',
+  meta: [
+    {
+      name: 'description',
+      content: 'All posts'
+    },
+    {
+      name: 'og:description',
+      content: 'All posts'
+    },
+    {
+      name: 'og:image',
+      content: 'https://hackmd.io/_uploads/ByO3VfeP3.png'
+    },
+    {
+      name: 'twitter:description',
+      content: 'All posts'
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://hackmd.io/_uploads/ByO3VfeP3.png'
+    }
+  ]
+})
+
+const contentQuery = await queryContent('posts')
+  .where({ hidden: { equals: false } })
+  .find()
 
 function organizingPosts (posts: FrontMatter[]): PostsCalendar[] {
   const result = [] as any[]
