@@ -25,7 +25,7 @@
             <div class="main-content__body">
               <p class="mb-4 leading-loose">
                 This is where I,
-                <a class="font-bold text-primary" href="https://github.com/unickhow" target="_blank">unickhow</a>,
+                <a class="font-bold !text-primary" href="https://github.com/unickhow" target="_blank">unickhow</a>,
                 present and share something interesting to me.<br>
                 There's no rocket science here 😆, so please don't take it seriously, hope you enjoy it.<br>
                 <br>

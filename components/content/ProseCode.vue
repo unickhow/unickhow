@@ -16,10 +16,10 @@ const { copy, copied } = useClipboard({ source, legacy: true })
 <template>
   <div class="relative">
     <button
-      class="absolute right-0 top-0 text-lg text-white w-8 h-8 p-1 flex items-center justify-center"
+      class="copy-btn absolute right-0 top-0 text-lg text-white w-8 h-8 p-1 flex items-center justify-center"
       @click="copy()">
-      <Icon v-show="!copied" name="mdi:content-copy" class="opacity-0 hover:opacity-100 transition-opacity" />
-      <Icon v-show="copied" name="mdi:progress-check" class="text-primary" />
+      <Icon v-show="!copied" name="mdi:content-copy" class="copy-btn__copy opacity-0 transition-opacity" />
+      <Icon v-show="copied" name="mdi:progress-check" class="copy-btn__copied text-primary" />
     </button>
     <slot />
   </div>
@@ -50,5 +50,9 @@ pre code .line::before {
 
 pre code .line.highlight {
   background: #7f7f7f80;
+}
+
+.copy-btn:hover .copy-btn__copy {
+  opacity: 1;
 }
 </style>

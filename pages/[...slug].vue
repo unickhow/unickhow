@@ -27,8 +27,6 @@ const [prev, next] = await queryContent()
   .sort({ date: 1 })
   .where({ hidden: false })
   .findSurround(`/posts/${route.params.slug[1]}`)
-console.log('🚀 ~ file: [...slug].vue:26 ~ prev, next:', prev, next)
-
 
 onMounted(() => {
   const images = document.querySelectorAll('img')
