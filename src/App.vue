@@ -14,6 +14,7 @@
 
   <SpeedDial />
   <FileList />
+  <TokSpinner />
 </template>
 <script setup lang="ts">
 import zmdiGithubBox from '~icons/zmdi/github-box'
@@ -21,6 +22,7 @@ import { useMagicVocal } from './components/magicVocal'
 import AppNav from './components/AppNav.vue'
 import SpeedDial from './components/SpeedDial.vue'
 import FileList from './components/FileList.vue'
+import TokSpinner from './components/TokSpinner.vue'
 
 const { init, startRecording } = useMagicVocal()
 init()
