@@ -71,6 +71,11 @@ name: Home
 import { sideProjects } from '../components/sideProjects'
 import ProjectCard from '../components/ProjectCard.vue'
 import BrandExhibition from '../components/BrandExhibition.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Index'
+})
 
 type HashTag = {
   name: string

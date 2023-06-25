@@ -15,18 +15,17 @@
     "@fontsource/roboto": "^4.5.8",
     "@sindresorhus/slugify": "^2.2.0",
     "@types/three": "^0.137.0",
-    "@unhead/vue": "^1.1.26",
     "@vueuse/core": "^8.2.0",
     "@vueuse/head": "^1.0.22",
     "lightense-images": "^1.0.17",
     "three": "^0.137.5",
     "typeit": "^8.3.1",
     "vanilla-tilt": "^1.7.2",
-    "vue": "^3.2.25",
-    "vue-router": "4"
+    "vue": "^3.2.25"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.2",
+    "@unhead/vue": "^1.1.26",
     "@unocss/transformer-directives": "^0.53.1",
     "@vitejs/plugin-vue": "^2.2.0",
     "@vue/compiler-sfc": "^3.2.31",
@@ -45,6 +44,7 @@
     "vite-plugin-pages": "^0.29.0",
     "vite-plugin-vue-markdown": "^0.23.3",
     "vite-ssg": "^0.22.1",
+    "vue-router": "4",
     "vue-tsc": "^0.29.8"
   }
 }

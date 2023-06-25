@@ -47,9 +47,14 @@ import { formatDate } from '../../utils/helper'
 import { useRouter } from 'vue-router'
 import type { FrontMatter, PostsCalendar } from '../../types'
 import TagLabel from '../../components/TagLabel.vue'
+import { useHead } from '@vueuse/head'
 
 const router = useRouter()
 const routes = router.getRoutes()
+
+useHead({
+  title: 'Posts'
+})
 
 function organizingPosts (posts: FrontMatter[]): PostsCalendar[] {
   const result = [] as any[]

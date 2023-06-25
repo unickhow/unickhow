@@ -22,7 +22,6 @@ import { FrontMatter } from '../types'
 import { useRouter } from 'vue-router'
 import Lightense from 'lightense-images'
 import TagLabel from './TagLabel.vue'
-// import { useHead } from '@unhead/vue'
 
 const props = defineProps({
   frontmatter: {
@@ -30,15 +29,6 @@ const props = defineProps({
     required: true
   }
 })
-
-// useHead({
-//   meta: [
-//     {
-//       name: 'description',
-//       content: computed(() => props.frontmatter.description)
-//     }
-//   ]
-// })
 
 // check is post is available by computed on schedule and hidden
 const isAvailable = computed(() => {
