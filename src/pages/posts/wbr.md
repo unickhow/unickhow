@@ -36,7 +36,7 @@ element {
 }
 ```
 
-如此一來當字串大於寬度時，會需要由 overflow 來決定超出部位的動作，而在這字串當中如果有出現 Soft break `<wbr>` 或 Soft hyphen `&shy;` 就會換行！ 484 很有掌握一切的感覺
+如此一來當字串大於寬度時，會需要由 overflow 來決定超出部位的動作，而在這字串當中如果有出現 Soft break `<wbr>` 或 Soft hyphen `&shy;` 就會換行！
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="Soft break/hyphen" src="https://codepen.io/uNickHow/embed/MWeeoMX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/uNickHow/pen/MWeeoMX">
@@ -44,13 +44,15 @@ element {
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-先前在製作公司官網時就遇到一個需求像是，當畫面夠寬時文字應該要完整呈現
+以我的[半成品專案](https://twinterfell.unick.how/)為例 🙏
+當畫面夠寬時文字應該要完整呈現，來表達這是一個致敬 Game of thrones 中的 **Winterfell**
 
-> OwlNest 奧丁丁區塊鏈旅宿管理系統，世界第一以太坊應用
+![](https://hackmd.io/_uploads/Sypt4kc_h.png)
 
-而在小螢幕時不想讓文字斷在不順暢的地方，所以當時做了幾個 element 去做 RWD 的顯示切換，現在就可以用 `<wbr>` 來完成
+而在小螢幕時，將單字拆分成 TW + INTER + FELL，aka **在台灣之中墜落** ，帶出 loading 後進入地圖起點為台灣的動畫
 
-> OwlNest *`<wbr>`*
-奧丁丁區塊鏈旅宿管理系統，*`<wbr>`*
-世界第一以太坊應用
->
+```html
+TW<wbr />INTER<wbr />FELL
+```
+
+![](https://hackmd.io/_uploads/BkatVy5_3.png)
