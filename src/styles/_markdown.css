@@ -75,13 +75,7 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container a[target='_blank'] {
-  /* position: relative;
-  margin: 0 .25rem; */
-  @apply relative;
-}
-
-.blog-md-container a[target='_blank'] {
-  @apply underline;
+  @apply underline decoration-dotted decoration-orange hover:text-orange;
 }
 
 .blog-md-container a[target='_blank']:hover:after {
@@ -98,6 +92,18 @@ html.dark .blog-md-container {
 
 .blog-md-container img {
   @apply shadow-xl max-w-[90%];
+}
+
+.blog-md-container figcaption {
+  @apply text-sm mt-2 text-gray font-italic;
+}
+
+.blog-md-container table {
+  @apply border border-solid border-gray mx-auto;
+}
+
+.blog-md-container th, .blog-md-container td {
+  @apply p-2 border border-solid border-gray;
 }
 
 .blog-md-container p > code {
