@@ -211,6 +211,39 @@ CI/CD 的時間也從平均 11 分鐘降到約 7 分鐘的時間 🎉
 <br>
 <br>
 
+---
+
+## 後記
+
+善惡終有報，果然暴力是不能解決問題的 🥲 因為 chunk 極其碎片化，雖然大幅降低了打包體積，但也可能因此導致引入順序不如預期，專案中的例子就是 tailwindcss 跟 ant-design-vue 的 css 發生覆蓋衝突，但也只侷限在 tailwindcss preflight 的部分，所以傷害還在可控範圍內，還是乖乖的把 node_modules 做好區別吧 …
+
+```js {4-10}
+config.optimization.splitChunks({
+  ...
+  cacheGroups: {
+    vendors: {
+      test: /[\\/]node_modules[\\/]/,
+      chunks: 'initial',
+      name: 'chunk-vendors',
+      enforce: true,
+      priority: 10
+    }
+  }
+  ...
+})
+```
+
+![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F10c14b15-6a1b-4873-a866-d90f077c4240%2Fnew.png?id=14672f9d-189e-44e4-9799-f5a9af0b5bcc&table=block&spaceId=97e46578-ab72-4131-b5e5-cf4f9a6129f1&width=2000&userId=dc5218bd-bd61-4da3-8a7d-f9791b956c76&cache=v2)
+
+打包後雖然效果有回彈，但還是比升級調教前優化了 50%
+
+| origin   | chunks 'all' | chunks by group 'node_modules'          |
+| -------- | ------------ | --------------------------------------- |
+| ~32.33MB | ~6.72MB      | <span class="text-green">~16.4MB</span> |
+
+這次學到的教訓就是 … unocss 最高 🫡 *~~(他應該不會遇到吧…嗎…?)~~*
+
+
 > references
 > [https://webpack.js.org/configuration/optimization/#optimizationminimizer](https://webpack.js.org/configuration/optimization/#optimizationminimizer)
 >
