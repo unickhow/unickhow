@@ -1,7 +1,6 @@
 @import './_variables.css';
 
 .blog-md-container {
-  font-family: 'Roboto', sans-serif;
   letter-spacing: .5px;
   color: var(--c__dark);
   @apply text-base leading-loose;
@@ -74,7 +73,7 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container a[target='_blank'] {
-  @apply !underline !text-primary;
+  @apply underline decoration-dotted decoration-orange hover:text-orange;
 }
 
 .blog-md-container p {
@@ -83,10 +82,6 @@ html.dark .blog-md-container {
 
 .blog-md-container figure[data-type="image"] {
   @apply my-8 text-center;
-}
-
-.blog-md-container img {
-  @apply shadow-xl max-w-[90%];
 }
 
 .blog-md-container p > code {

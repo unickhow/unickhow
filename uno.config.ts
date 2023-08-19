@@ -36,9 +36,6 @@ export default defineConfig({
     ['font-fira', {
       'font-family': '"Fira Code", "monospace", "Zen Maru Gothic", "sans-serif"'
     }],
-    ['font-ntr', {
-      'font-family': '"NTR", "sans-serif"'
-    }],
     ['theme__cloud-color', {
       'color': 'var(--c__cloud)'
     }]

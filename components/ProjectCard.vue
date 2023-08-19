@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-  // import { useParallax } from '@vueuse/core'
+  // TODO: replace with useParallax
   defineProps<{
     project: {
       name: string
@@ -26,6 +26,7 @@
     }
   }>()
 
+  // const projectCard = ref<HTMLAnchorElement | null>(null)
   // const state = reactive({
   //   x: 0,
   //   y: 0

@@ -78,7 +78,7 @@ onMounted(() => {
           <NuxtLink
             to="/posts"
             class="w-1/3 surround-navigator__back text-dark dark:text-pale text-center">
-            <span class="text-sm font-bold">Back</span>
+            <span class="text-sm font-bold">cd ..</span>
           </NuxtLink>
           <div class="w-1/3">
             <NuxtLink

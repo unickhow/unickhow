@@ -41,6 +41,6 @@ figure {
 }
 
 img {
-  @apply shadow-xl max-w-[90%];
+  @apply shadow-xl max-w-[73%];
 }
 </style>

@@ -2,10 +2,10 @@
   <main>
     <div class="container mx-auto max-w-[1024px] px-4">
       <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
-        <div class="sm:p-4 w-full md:w-1/3">
+        <div class="sticky top-0 sm:p-4 w-full md:w-1/3">
           <div class="hidden md:block kv-container aspect-square relative">
             <BrandExhibition />
-            <div class="hashtags font-fira flex flex-col items-center text-sm mt-10 p-2 rounded">
+            <div class="hashtags flex flex-col items-center text-sm mt-10 p-2 rounded">
               <a
                 v-for="item in hashtags"
                 :key="item.name"
@@ -19,11 +19,11 @@
             </div>
           </div>
         </div>
-        <div class="py-6 w-full md:w-2/3 font-fira antialiased main-content tc-content-text">
+        <div class="py-6 w-full md:w-2/3 antialiased main-content tc-content-text">
           <div class="main-content mb-20">
             <h1 class="text-xl mb-8 tc-content-text">() => 'Hello, world.'</h1>
             <div class="main-content__body">
-              <p class="mb-4 leading-loose">
+              <p class="mb-2 leading-loose">
                 This is where I,
                 <a class="font-bold !text-primary" href="https://github.com/unickhow" target="_blank">unickhow</a>,
                 present and share something interesting to me.<br>

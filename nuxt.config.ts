@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     preconnect: true,
     prefetch: true,
     families: {
-      Roboto: true,
+      'Roboto+Mono': true,
       'Fira+Code': {
         wght: [100, 400, 700]
       }
