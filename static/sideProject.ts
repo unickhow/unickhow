@@ -3,6 +3,7 @@ import type { SideProject } from '~/types'
 export const sideProjects: SideProject[] = [
   {
     name: 'Slope',
+    plainName: 'Slope',
     icon: 'https://www.figma.com/community/plugin/978200655090799378/icon',
     link: 'https://www.figma.com/community/plugin/978200655090799378/Slope',
     desc: 'Continuous string generator for Figma.',
@@ -11,6 +12,7 @@ export const sideProjects: SideProject[] = [
   },
   {
     name: 'Jirassic',
+    plainName: 'Jirassic',
     icon: 'https://user-images.githubusercontent.com/22793771/208934842-8201a15a-45a0-4274-bdbf-55a3d4f40eb2.png',
     link: 'https://github.com/unickhow/jirassic',
     desc: 'GitHub PR integration for Jira.',
@@ -19,6 +21,7 @@ export const sideProjects: SideProject[] = [
   },
   {
     name: 'know<wbr>me',
+    plainName: 'knowme',
     icon: 'https://raw.githubusercontent.com/unickhow/knowme/main/public/favicon.svg',
     link: 'https://knowme.unick.how',
     desc: 'GitHub README card generator.',
@@ -27,6 +30,7 @@ export const sideProjects: SideProject[] = [
   },
   {
     name: 'vvalai',
+    plainName: 'vvalai',
     icon: 'https://raw.githubusercontent.com/unickhow/vvalai/main/public/favicon.ico',
     link: 'https://vvalai.unick.how',
     desc: 'Vue 3 starter template in typescript.',
@@ -35,6 +39,7 @@ export const sideProjects: SideProject[] = [
   },
   {
     name: 'tw<wbr>inter<wbr>fell',
+    plainName: 'twinterfell',
     icon: 'https://raw.githubusercontent.com/unickhow/twinterfell/main/public/favicon.svg',
     link: 'https://twinterfell.unick.how',
     desc: 'Taiwan landmarks touring in GOT style.',
@@ -43,6 +48,7 @@ export const sideProjects: SideProject[] = [
   },
   {
     name: 'MHR tips',
+    plainName: 'MHR tips',
     icon: 'https://github.com/unickhow/MHR-tips/blob/main/public/magnamalo.png?raw=true',
     link: 'https://unickhow.github.io/MHR-tips/',
     desc: 'Reproduce Monster Hunter loading animation.',

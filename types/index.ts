@@ -5,6 +5,7 @@ export type SideProject = {
   desc: string;
   cover: string;
   shortcut: string;
+  plainName: string;
 }
 
 export interface FrontMatter {

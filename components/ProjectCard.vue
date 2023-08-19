@@ -3,56 +3,43 @@
     ref="projectCard"
     class="project-card__container h-50 block py-12 px-4"
     :href="project.link"
-    target="_blank">
+    target="_blank"
+    @mouseenter="handleMouseenter">
     <div class="project-card__bg__container absolute w-full h-full left-0 top-0 overflow-hidden">
       <div class="project-card__bg bg-cover bg-center" :style="{ backgroundImage: `url(${project.cover})` }" />
     </div>
     <div class="project-card__content px-8 h-full flex flex-col z-2 text-white items-center justify-center">
-      <h5 v-html="project.name" class="text-3xl md:text-5xl mb-4 font-bold text-shadow tracking-widest uppercase"></h5>
+      <FlipText
+        ref="flipText"
+        tag="h5"
+        trigger="none"
+        :text="project.plainName"
+        class="hidden sm:block text-3xl md:text-5xl mb-4 font-bold text-shadow tracking-widest uppercase" />
+      <h5 v-html="project.name" class="block sm:hidden text-3xl md:text-5xl mb-4 font-bold text-shadow tracking-widest uppercase"></h5>
       <p class="text-base text-shadow">{{ project.desc }}</p>
     </div>
   </a>
 </template>
 
 <script setup lang="ts">
-  // TODO: replace with useParallax
-  defineProps<{
-    project: {
-      name: string
-      desc: string
-      link: string
-      icon: string
-      cover: string
-    }
-  }>()
+import { useMediaQuery } from '@vueuse/core'
+// TODO: replace with useParallax
+defineProps<{
+  project: {
+    name: string
+    desc: string
+    link: string
+    icon: string
+    cover: string
+    plainName: string
+  }
+}>()
 
-  // const projectCard = ref<HTMLAnchorElement | null>(null)
-  // const state = reactive({
-  //   x: 0,
-  //   y: 0
-  // })
-
-  // onMounted(() => {
-  //   VanillaTilt.init(projectCard.value!, {
-  //     max: 10,
-  //     speed: 400,
-  //     glare: true,
-  //     'max-glare': 0.37,
-  //     scale: 1.03
-  //   })
-
-  //   projectCard.value!.addEventListener('tiltChange', function(evt: any) {
-  //     state.x = evt.detail.percentageX
-  //     state.y = evt.detail.percentageY
-  //   })
-  // })
-
-  // const cardBackGroundRotation = computed(() => {
-  //   const { x, y } = state
-  //   return {
-  //     transform: `translateX(${-x / 50}%) translateY(${-y / 50}%)`
-  //   }
-  // })
+const flipText = ref<any>(null)
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
+const handleMouseenter = () => {
+  isLargeScreen.value && flipText.value?.flip()
+}
 </script>
 
 <style scoped>
