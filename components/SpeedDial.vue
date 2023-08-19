@@ -45,7 +45,7 @@ function handleScrollProgress () {
   const scrollTop = window.scrollY || document.documentElement.scrollTop
   const scrollPercent = (scrollTop / (documentHeight - window.innerHeight)) * 100
   // TODO: back to top button
-  console.debug('🚀scrollPercent:', scrollPercent)
+  // console.debug('🚀scrollPercent:', scrollPercent)
 
   scrollDirection.value = scrollTop > lastYPosition.value
     ? 'down'

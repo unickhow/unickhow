@@ -2,8 +2,8 @@
   <main>
     <div class="container mx-auto max-w-[1024px] px-4">
       <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
-        <div class="sticky top-0 sm:p-4 w-full md:w-1/3">
-          <div class="hidden md:block kv-container aspect-square relative">
+        <div ref="exhibitionContainer" class="hidden md:block sm:p-4 w-full md:w-1/3">
+          <div class="kv-container aspect-square relative">
             <BrandExhibition />
             <div class="hashtags flex flex-col items-center text-sm mt-10 p-2 rounded">
               <a
@@ -21,7 +21,7 @@
         </div>
         <div class="py-6 w-full md:w-2/3 antialiased main-content tc-content-text">
           <div class="main-content mb-20">
-            <h1 class="text-xl mb-8 tc-content-text">() => 'Hello, world.'</h1>
+            <h1 class="text-xl mb-8 tc-content-text font-fira">() => 'Hello, world.'</h1>
             <div class="main-content__body">
               <p class="mb-2 leading-loose">
                 This is where I,
@@ -66,6 +66,7 @@
 <script setup lang="ts">
 import { sideProjects } from '../static/sideProject'
 import BrandExhibition from '../components/BrandExhibition.vue'
+import { useMediaQuery } from '@vueuse/core'
 
 type HashTag = {
   name: string
@@ -100,6 +101,37 @@ const hashtags: HashTag[] = [
     link: 'https://vitejs.dev/'
   }
 ]
+
+const exhibitionContainer = ref<HTMLElement | null>(null)
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
+
+const controller = ref<any>(null)
+const scene = ref<any>(null)
+onMounted(() => {
+  const { $ScrollMagic: ScrollMagic } = useNuxtApp()
+  watch(isLargeScreen, (isLargeScreen) => {
+    if (isLargeScreen) {
+      nextTick(() => {
+        controller.value = new ScrollMagic.Controller()
+        scene.value = new ScrollMagic.Scene({
+          triggerElement: exhibitionContainer.value,
+          offset: -100,
+          triggerHook: 'onLeave',
+          duration: '100%'
+        })
+        .setPin(exhibitionContainer.value)
+        .addTo(controller.value)
+      })
+    } else {
+      scene.value && scene.value.destroy(true)
+      controller.value && controller.value.destroy(true)
+    }
+  }, { immediate: true })
+})
+onUnmounted(() => {
+  scene.value && scene.value.destroy(true)
+  controller.value && controller.value.destroy(true)
+})
 </script>
 
 <style scoped>
