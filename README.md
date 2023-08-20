@@ -1,6 +1,6 @@
 #### Hello world, 🙈
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f397d099-cca3-485e-8f11-4c068af21b61/deploy-status)](https://app.netlify.com/sites/unickhow/deploys)
+![Vercel](https://vercelbadge.vercel.app/api/unickhow/unickhow?style=flat-square)
 
 trying to participate in open source projects and keep upgrading 🤞<br>
 

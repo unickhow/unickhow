@@ -1,0 +1,26 @@
+:root {
+  --c__black: #000;
+  --c__dark: #1D1D1D;
+  --c__white: #F7F7F7;
+
+  --c__grey: #5F5E5D;
+  --c__gray: #5F5E5D;
+  --c__blue: #174578;
+  --c__red: #A11F22;
+  --c__green: #0FAE24;
+  --c__orange: #FF7A00;
+  --c__skin: #ff780037;
+
+  --c__theme-icon: #ffc857;
+  --c__theme-day-cloud: #d1ccc7;
+  --c__theme-night-cloud: var(--c__white);
+
+  --c__primary: var(--c__orange);
+  --c__secondary: var(--c__blue);
+  --c__cloud: var(--c__theme-day-cloud);
+  --c__code: var(--c__skin);
+}
+
+html.dark {
+  --c__cloud: var(--c__theme-night-cloud);
+}

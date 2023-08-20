@@ -10,6 +10,7 @@ export default defineConfig({
   ],
   theme: {
     colors: {
+      black: 'var(--c__black)',
       pale: 'var(--c__white)',
       dark: 'var(--c__dark)',
       gray: 'var(--c__grey)',
@@ -17,8 +18,14 @@ export default defineConfig({
       blue: 'var(--c__blue)',
       red: 'var(--c__red)',
       green: 'var(--c__green)',
-      orange: 'var(--c__orange)'
+      orange: 'var(--c__orange)',
+      primary: 'var(--c__primary)',
+      secondary: 'var(--c__secondary)',
     }
+  },
+  shortcuts: {
+    'tc-content-text': 'text-dark dark:text-pale',
+    'tc-content-note': 'text-gray dark:text-gray'
   },
   rules: [
     ['container', {
@@ -29,17 +36,8 @@ export default defineConfig({
     ['font-fira', {
       'font-family': '"Fira Code", "monospace", "Zen Maru Gothic", "sans-serif"'
     }],
-    ['font-ntr', {
-      'font-family': '"NTR", "sans-serif"'
-    }],
-    ['theme__text-color', {
-      'color': 'var(--text-color)'
-    }],
-    ['theme__note-color', {
-      'color': 'var(--note-color)'
-    }],
     ['theme__cloud-color', {
-      'color': 'var(--cloud-color)'
+      'color': 'var(--c__cloud)'
     }]
   ]
 })

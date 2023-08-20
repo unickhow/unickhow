@@ -1,50 +1,33 @@
 {
   "name": "unickhow.me",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite-ssg build",
-    "preview": "vite preview"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
-  "dependencies": {
-    "@fontsource/fira-code": "^4.5.13",
-    "@fontsource/noto-sans-tc": "^4.5.12",
-    "@fontsource/ntr": "^4.5.10",
-    "@fontsource/roboto": "^4.5.8",
-    "@sindresorhus/slugify": "^2.2.0",
-    "@types/three": "^0.137.0",
-    "@vueuse/core": "^8.2.0",
-    "@vueuse/head": "^1.0.22",
-    "lightense-images": "^1.0.17",
-    "three": "^0.137.5",
-    "typeit": "^8.3.1",
-    "vanilla-tilt": "^1.7.2",
-    "vue": "^3.2.25"
+  "author": {
+    "name": "unickhow",
+    "email": "unick.zhow@gmail.com"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.2",
-    "@unhead/vue": "^1.1.26",
-    "@unocss/transformer-directives": "^0.53.1",
-    "@vitejs/plugin-vue": "^2.2.0",
-    "@vue/compiler-sfc": "^3.2.31",
-    "fs-extra": "^11.1.1",
-    "gray-matter": "^4.0.3",
-    "markdown-it-anchor": "^8.6.7",
-    "markdown-it-image-figures": "^2.1.1",
-    "markdown-it-link-attributes": "^4.0.1",
-    "markdown-it-shiki": "^0.9.0",
-    "markdown-it-table-of-contents": "^0.6.0",
-    "typescript": "^4.5.4",
-    "unocss": "^0.51.12",
-    "unplugin-auto-import": "^0.7.1",
-    "unplugin-icons": "^0.13.1",
-    "vite": "^4.0.3",
-    "vite-plugin-pages": "^0.29.0",
-    "vite-plugin-vue-markdown": "^0.23.3",
-    "vite-ssg": "^0.22.1",
-    "vue-router": "4",
-    "vue-tsc": "^0.29.8"
+    "@nuxt/content": "^2.7.0",
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/google-fonts": "^3.0.1",
+    "@types/node": "^18",
+    "@types/scrollmagic": "^2.0.3",
+    "@unocss/nuxt": "^0.53.1",
+    "@vueuse/core": "^10.2.0",
+    "@vueuse/nuxt": "^10.2.0",
+    "nuxt": "^3.5.2",
+    "nuxt-icon": "^0.4.1"
+  },
+  "dependencies": {
+    "@types/three": "^0.137.0",
+    "lightense-images": "^1.0.17",
+    "scrollmagic": "^2.0.8",
+    "three": "^0.137.5"
   }
 }
