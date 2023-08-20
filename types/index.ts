@@ -1,11 +1,13 @@
 export type SideProject = {
-  name: string;
-  icon: string;
-  link: string;
-  desc: string;
-  cover: string;
-  shortcut: string;
-  plainName: string;
+  name: string
+  icon: string
+  link: string
+  desc: string
+  cover: string
+  shortcut: string
+  plainName: string
+  color: string
+  glitches?: string[]
 }
 
 export interface FrontMatter {
