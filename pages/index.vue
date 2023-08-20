@@ -116,8 +116,7 @@ onMounted(() => {
         scene.value = new ScrollMagic.Scene({
           triggerElement: exhibitionContainer.value,
           offset: -100,
-          triggerHook: 'onLeave',
-          duration: '100%'
+          triggerHook: 'onLeave'
         })
         .setPin(exhibitionContainer.value)
         .addTo(controller.value)
