@@ -108,6 +108,8 @@ const hashtags: HashTag[] = [
 ]
 
 const hoveredProject = ref<any>(null)
+
+// TODO: in array
 const isVisible = ref(false)
 const isVisible2 = ref(false)
 function onProjectCardEnter (project: SideProject) {
@@ -119,6 +121,21 @@ function onProjectCardLeave (project: SideProject) {
   isVisible.value = false
   isVisible2.value = false
 }
+
+// leave a door for touch devices
+onMounted(() => {
+  const fn = () => {
+    isVisible.value = false
+    isVisible2.value = false
+  }
+  // close all monitors on body click
+  document.body.addEventListener('click', fn)
+
+  // remove event listener on unmount
+  onUnmounted(() => {
+    document.body.removeEventListener('click', fn)
+  })
+})
 </script>
 
 <style scoped>
