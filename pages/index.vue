@@ -51,7 +51,7 @@
 
     <MonitorExhibition
       :isVisible="isVisible"
-      class="monitor-1"
+      class="monitor-1 aspect-square! top-[30%]! w-[17%]!"
       rotateX="-10deg"
       rotateY="25deg"
       rotateZ="10deg"
@@ -60,7 +60,7 @@
 
     <MonitorExhibition
       :isVisible="isVisible2"
-      class="monitor-2 aspect-[4/3]! w-[250px]! bottom-[30%]! right-[5%]! top-auto! left-auto! transition-delay-[0.2s]!"
+      class="monitor-2 aspect-[5/9]! bottom-[30%]! right-[5%]! top-auto! left-auto! transition-delay-[0.2s]!"
       rotateX="-20deg"
       rotateY="-37deg"
       rotateZ="-15deg"

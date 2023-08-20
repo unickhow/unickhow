@@ -41,7 +41,7 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
     <div class="screen-overlay p-2" :style="{
           color: mainColor
         }">
-      <div class="flex items-center text-sm mark-recording">
+      <div class="flex items-center text-xs mark-recording">
         <Icon name="mdi:record" />
         <span>REC</span>
       </div>
@@ -49,7 +49,9 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
         <span>{{ timestamp }}</span>
       </div>
     </div>
-    <div class="screen absolute z-1 opacity-50 w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat" :style="{ backgroundImage: `url(${props.screen})` }"></div>
+    <div
+      class="screen absolute z-1 opacity-50 w-full h-full top-0 left-0 bg-center bg-no-repeat"
+      :style="{ backgroundImage: `url(${props.screen})` }"></div>
   </div>
 </template>
 
@@ -64,7 +66,8 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
   left: 4%;
   right: auto;
   bottom: auto;
-  width: 200px;
+  width: 14%;
+  min-width: 170px;
   background: v-bind('bgColor');
   transition: transform 0.07s linear;
   transform:
@@ -77,8 +80,9 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
 }
 
 .monitor.halo {
-  background: white;
-  box-shadow: 0 0 120px 30px v-bind('mainColor'), 0 0 25px 1px v-bind('mainColor');
+  background: #fffffff0;
+  box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
+  animation: halo-breathing 10s infinite ease-in-out;
 }
 
 .monitor.on {
@@ -92,7 +96,7 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
 
 .monitor::before {
   content: '';
-  @apply absolute z-2 inset-0 border-solid border-1 border-primary opacity-40;
+  @apply absolute z-2 inset-0 border-solid border-2 border-primary opacity-30;
   box-sizing: border-box;
   width: calc(100% - 12px);
   height: calc(100% - 12px);
@@ -121,6 +125,11 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
   animation: recording 1s infinite;
 }
 
+.screen {
+  background-size: 110% 100%;
+  animation: camera-moving-x 7s alternate infinite;
+}
+
 @keyframes monitor-stripe {
   from {
     background-position: 0% 0%;
@@ -142,6 +151,33 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes halo-breathing {
+  0% {
+    box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
+  }
+  10% {
+    box-shadow: 0 0 90px 30px #ffffff73, 0 0 17px 1px #fffffff0;
+  }
+  21% {
+    box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
+  }
+  51% {
+    box-shadow: 0 0 90px 30px #ffffff73, 0 0 17px 1px #fffffff0;
+  }
+  100% {
+    box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
+  }
+}
+
+@keyframes camera-moving-x {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
   }
 }
 </style>

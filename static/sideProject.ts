@@ -10,8 +10,8 @@ export const sideProjects: SideProject[] = [
     cover: 'https://hackmd.io/_uploads/rJgcrXB42.png',
     color: '#e6564c',
     glitches: [
-      'https://visme.co/blog/wp-content/uploads/2020/02/header.gif',
-      'https://www.gifgifgifgifgif.com/wp-content/uploads/2023/07/EquatorialBlissfulAmbushbug-size_restricted.gif'
+      '/projectScreens/slope-1.gif',
+      '/projectScreens/slope-2.gif'
     ],
     shortcut: 's'
   },
@@ -24,8 +24,9 @@ export const sideProjects: SideProject[] = [
     cover: 'https://hackmd.io/_uploads/HyoQY8c8h.png',
     color: '#f7b600',
     glitches: [
-      'https://gifdb.com/images/high/computer-system-coding-j3szfjv9fwb5at9x.webp',
-      'https://images-platform.99static.com//mLc9l0q0VgY7wPU3siouHIf_IWw=/fit-in/500x500/projects-files/38/3805/380579/33427002-611c-4898-be73-8e39e30fe889.gif'
+      // no signal, TBD
+      'https://images.squarespace-cdn.com/content/v1/59649517e110eb4540b1dfe6/1579624257635-YPO7RVCDIDYF6GU1LQ53/no+signal.gif?format=2500w',
+      'https://i.pinimg.com/originals/e3/aa/8c/e3aa8ccb65a2aca19df86525fa4dbe4a.gif'
     ],
     shortcut: 'j'
   // },
