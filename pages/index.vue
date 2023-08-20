@@ -1,29 +1,15 @@
 <template>
   <main>
     <div class="container mx-auto max-w-[1024px] px-4">
-      <div class="row sm:pt-10 md:pt-12 flex flex-col md:flex-row">
-        <div ref="exhibitionContainer" class="hidden md:block sm:p-4 w-full md:w-1/3">
-          <div class="kv-container aspect-square relative">
+      <div class="row flex flex-col max-w-[500px] mx-auto">
+        <div class="py-6 main-content tc-content-text">
+          <div class="kv-container aspect-square relative max-w-[200px] mx-auto mb-12">
             <BrandExhibition />
-            <div class="hashtags flex flex-col items-center text-sm mt-10 p-2 rounded">
-              <a
-                v-for="item in hashtags"
-                :key="item.name"
-                :href="item.link"
-                class="py-2 mr-4 opacity-40 hover:opacity-100 transition-opacity"
-                :class="{ 'pointer-events-none': !item.link }"
-                :style="item.style"
-                :target="item.link ? '_blank' : ''">
-                {{ item.name }}
-              </a>
-            </div>
           </div>
-        </div>
-        <div class="py-6 w-full md:w-2/3 antialiased main-content tc-content-text">
           <div class="main-content mb-20">
             <h1 class="text-xl mb-8 tc-content-text font-fira">() => 'Hello, world.'</h1>
             <div class="main-content__body">
-              <p class="mb-2 leading-loose">
+              <p class="leading-loose">
                 This is where I,
                 <a class="font-bold !text-primary" href="https://github.com/unickhow" target="_blank">unickhow</a>,
                 present and share something interesting to me.<br>
@@ -31,6 +17,19 @@
                 <br>
                 If you have any suggestion, feel free to contact me.
               </p>
+            </div>
+
+            <div class="hashtags flex flex-wrap text-sm mt-12 rounded">
+              <a
+                v-for="item in hashtags"
+                :key="item.name"
+                :href="item.link"
+                class="py-2 mr-4 opacity-80 hover:opacity-100 transition-opacity"
+                :class="{ 'pointer-events-none': !item.link }"
+                :style="item.style"
+                :target="item.link ? '_blank' : ''">
+                {{ item.name }}
+              </a>
             </div>
           </div>
 
@@ -41,32 +40,38 @@
               class="w-full">
               <ProjectCard
                 :project="project"
-                class="h-full" />
+                class="h-full"
+                @mouseenter="onProjectCardEnter(project)"
+                @mouseleave="onProjectCardLeave(project)" />
             </div>
-          </div>
-
-          <div class="hashtags flex md:hidden flex-wrap text-sm mb-10 p-2 rounded">
-            <a
-              v-for="item in hashtags"
-              :key="item.name"
-              :href="item.link"
-              class="py-2 mr-4 opacity-40 hover:opacity-100 transition-opacity"
-              :class="{ 'pointer-events-none': !item.link }"
-              :style="item.style"
-              :target="item.link ? '_blank' : ''">
-              {{ item.name }}
-            </a>
           </div>
         </div>
       </div>
     </div>
+
+    <MonitorExhibition
+      :isVisible="isVisible"
+      class="monitor-1"
+      rotateX="-10deg"
+      rotateY="25deg"
+      rotateZ="10deg"
+      :color="hoveredProject?.color"
+      :screen="hoveredProject?.glitches?.[0]" />
+
+    <MonitorExhibition
+      :isVisible="isVisible2"
+      class="monitor-2 aspect-[4/3]! w-[250px]! bottom-[30%]! right-[5%]! top-auto! left-auto! transition-delay-[0.2s]!"
+      rotateX="-20deg"
+      rotateY="-37deg"
+      rotateZ="-15deg"
+      :color="hoveredProject?.color"
+      :screen="hoveredProject?.glitches?.[1]" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { sideProjects } from '../static/sideProject'
-import BrandExhibition from '../components/BrandExhibition.vue'
-import { useMediaQuery } from '@vueuse/core'
+import type { SideProject } from '~/types'
 
 type HashTag = {
   name: string
@@ -102,35 +107,18 @@ const hashtags: HashTag[] = [
   }
 ]
 
-const exhibitionContainer = ref<HTMLElement | null>(null)
-const isLargeScreen = useMediaQuery('(min-width: 768px)')
-
-const controller = ref<any>(null)
-const scene = ref<any>(null)
-onMounted(() => {
-  const { $ScrollMagic: ScrollMagic } = useNuxtApp()
-  watch(isLargeScreen, (isLargeScreen) => {
-    if (isLargeScreen) {
-      nextTick(() => {
-        controller.value = new ScrollMagic.Controller()
-        scene.value = new ScrollMagic.Scene({
-          triggerElement: exhibitionContainer.value,
-          offset: -100,
-          triggerHook: 'onLeave'
-        })
-        .setPin(exhibitionContainer.value)
-        .addTo(controller.value)
-      })
-    } else {
-      scene.value && scene.value.destroy(true)
-      controller.value && controller.value.destroy(true)
-    }
-  }, { immediate: true })
-})
-onUnmounted(() => {
-  scene.value && scene.value.destroy(true)
-  controller.value && controller.value.destroy(true)
-})
+const hoveredProject = ref<any>(null)
+const isVisible = ref(false)
+const isVisible2 = ref(false)
+function onProjectCardEnter (project: SideProject) {
+  isVisible.value = true
+  isVisible2.value = true
+  hoveredProject.value = project
+}
+function onProjectCardLeave (project: SideProject) {
+  isVisible.value = false
+  isVisible2.value = false
+}
 </script>
 
 <style scoped>
