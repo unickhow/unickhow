@@ -55,8 +55,9 @@
       rotateX="-10deg"
       rotateY="25deg"
       rotateZ="10deg"
+      :captions="[1, hoveredProject?.plainName]"
       :color="hoveredProject?.color"
-      :screen="hoveredProject?.glitches?.[0]" />
+      :screen="hoveredProject?.screens?.[0]" />
 
     <MonitorExhibition
       :isVisible="isVisible2"
@@ -64,8 +65,9 @@
       rotateX="-20deg"
       rotateY="-37deg"
       rotateZ="-15deg"
+      :captions="[2, hoveredProject?.plainName?.split('').reverse().join('')]"
       :color="hoveredProject?.color"
-      :screen="hoveredProject?.glitches?.[1]" />
+      :screen="hoveredProject?.screens?.[1]" />
   </main>
 </template>
 
@@ -107,7 +109,7 @@ const hashtags: HashTag[] = [
   }
 ]
 
-const hoveredProject = ref<any>(null)
+const hoveredProject = ref<SideProject | null>(null)
 
 // TODO: in array
 const isVisible = ref(false)

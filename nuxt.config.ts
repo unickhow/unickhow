@@ -36,7 +36,8 @@ export default defineNuxtConfig({
       'Roboto+Mono': true,
       'Fira+Code': {
         wght: [100, 400, 700]
-      }
+      },
+      'Press+Start+2P': true
     }
   },
   css: [

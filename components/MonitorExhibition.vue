@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core'
 import { paletter } from '~/utils/helper'
+import glitch from '/public/projectScreens/glitch.gif'
 
 const props = withDefaults(defineProps<{
   isVisible: boolean,
@@ -8,26 +9,58 @@ const props = withDefaults(defineProps<{
   rotateX: string,
   rotateY: string,
   rotateZ: string,
-  screen: string
+  screen: string,
+  captions: [number, string | undefined]
 }>(), {
   isVisible: false,
   color: '#2effc0',
   rotateX: '0deg',
   rotateY: '0deg',
   rotateZ: '0deg',
-  screen: ''
+  screen: '',
+  captions: [0, '']
 })
+
+const noSignals = [
+  'https://i.pinimg.com/originals/e3/aa/8c/e3aa8ccb65a2aca19df86525fa4dbe4a.gif',
+  'https://images.squarespace-cdn.com/content/v1/59649517e110eb4540b1dfe6/1579624257635-YPO7RVCDIDYF6GU1LQ53/no+signal.gif?format=2500w'
+]
+
+const displayScreen = ref()
+const hasSignal = ref(true)
+watchEffect(() => {
+  displayScreen.value = props.screen || noSignals[Math.floor(Math.random() * noSignals.length)]
+  hasSignal.value = props.screen !== ''
+})
+
+const randomDelay = Math.floor(Math.random() * 5) + 's'
 
 const theme = useStorage('unickTheme', 'light')
 const isDark = computed(() => theme.value === 'dark')
+const matrixGreen = '#00ff41'
 
 const monitor = ref<HTMLElement | null>(null)
 
-const mainColor = computed(() => props.color)
-const stripeColor = computed(() => paletter([mainColor.value], 150, .3)?.[0])
-const bgColor = computed(() => paletter([mainColor.value], 10, 0.2)?.[0])
+const mainColor = computed(() => isDark.value ? matrixGreen : props.color)
+const stripeColor = computed(() => paletter([isDark.value ? matrixGreen : mainColor.value], 150, .3)?.[0])
+const bgColor = computed(() => paletter([isDark.value ? matrixGreen : mainColor.value], 10, 0.2)?.[0])
 
 const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+
+const isOnLeftSide = computed(() => {
+  const { left } = monitor.value?.getBoundingClientRect() || {}
+  return left! < window.innerWidth / 2
+})
+const ouOfBoxTextStyle = computed(() => {
+  return {
+    color: isDark.value ? '#12f35d' : mainColor.value,
+    transform: isOnLeftSide.value
+      ? 'translateX(3rem) translateY(2rem)'
+      : 'translateX(-3rem) translateY(3.7rem',
+    ...isOnLeftSide.value ? { right: 0 } : { left: 0 },
+    textAlign: isOnLeftSide.value ? 'right' : 'left'
+  } as any
+})
 </script>
 
 <template>
@@ -38,20 +71,28 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
       'halo': isDark,
       'on': isVisible
     }">
-    <div class="screen-overlay p-2" :style="{
+    <div class="screen-overlay p-3" :style="{
           color: mainColor
         }">
-      <div class="flex items-center text-xs mark-recording">
-        <Icon name="mdi:record" />
-        <span>REC</span>
-      </div>
-      <div class="absolute right-3 top-2 text-xs mark-timestamp">
-        <span>{{ timestamp }}</span>
+      <div class="flex items-start mark-recording gap-1">
+        <Icon name="mdi:record" class="text-xs flex-shrink-0" />
+        <span class="text-[8px] font-press">REC {{ timestamp }}</span>
       </div>
     </div>
     <div
+      v-if="hasSignal"
+      class="glitch filter-sepia-[50%] absolute z-2 opacity-0 w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat"
+      :style="{ backgroundImage: `url(${glitch})` }"></div>
+    <div
       class="screen absolute z-1 opacity-50 w-full h-full top-0 left-0 bg-center bg-no-repeat"
-      :style="{ backgroundImage: `url(${props.screen})` }"></div>
+      :style="{ backgroundImage: `url(${displayScreen})` }"></div>
+
+    <div
+      class="out-of-box absolute z-2 bottom-0 font-press flex flex-col gap-4"
+      :style="ouOfBoxTextStyle">
+      <span>#{{ captions?.[0] }}</span>
+      <span>{{ captions?.[1] }}</span>
+    </div>
   </div>
 </template>
 
@@ -60,8 +101,9 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
 
 .monitor {
   --perspective: 600px;
+  --opacity_glitch: .7;
 
-  @apply overflow-hidden border-1 fixed right-12 aspect-[9/16];
+  @apply border-1 fixed right-12 aspect-[9/16];
   top: 10%;
   left: 4%;
   right: auto;
@@ -96,8 +138,9 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
 
 .monitor::before {
   content: '';
-  @apply absolute z-2 inset-0 border-solid border-2 border-primary opacity-30;
+  @apply absolute z-2 inset-0 border-solid border-2 opacity-30;
   box-sizing: border-box;
+  border-color: v-bind('mainColor');
   width: calc(100% - 12px);
   height: calc(100% - 12px);
   top: 6px;
@@ -123,6 +166,10 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
 
 .mark-recording, .mark-timestamp {
   animation: recording 1s infinite;
+}
+
+.glitch {
+  animation: glitch-flash 20s infinite v-bind(randomDelay);
 }
 
 .screen {
@@ -178,6 +225,65 @@ const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '
   }
   100% {
     background-position: 100% 0%;
+  }
+}
+
+@keyframes glitch-flash {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  11% {
+    opacity: var(--opacity_glitch);
+  }
+  12% {
+    opacity: 0;
+  }
+  13% {
+    opacity: var(--opacity_glitch);
+  }
+  14% {
+    opacity: 0;
+  }
+  72% {
+    opacity: 0;
+  }
+  73% {
+    opacity: var(--opacity_glitch);
+  }
+  74% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.out-of-box span{
+  transition: none;
+  animation: glitch 5s infinite;
+}
+
+@keyframes glitch{
+  3%, 74%{
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%, 72%{
+    transform: translate(-1px, 0) skew(0deg);
+  }
+  73%{
+    transform: translate(0, 0) skew(73deg);
+  }
+  10%, 90%{
+    opacity: 1;
+  }
+  11%, 91% {
+    opacity: 0;
+  }
+  12%, 92% {
+    opacity: 1;
   }
 }
 </style>

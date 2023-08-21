@@ -9,7 +9,7 @@ export const sideProjects: SideProject[] = [
     desc: 'Continuous string generator for Figma.',
     cover: 'https://hackmd.io/_uploads/rJgcrXB42.png',
     color: '#e6564c',
-    glitches: [
+    screens: [
       '/projectScreens/slope-1.gif',
       '/projectScreens/slope-2.gif'
     ],
@@ -23,10 +23,9 @@ export const sideProjects: SideProject[] = [
     desc: 'GitHub PR integration for Jira.',
     cover: 'https://hackmd.io/_uploads/HyoQY8c8h.png',
     color: '#f7b600',
-    glitches: [
-      // no signal, TBD
-      'https://images.squarespace-cdn.com/content/v1/59649517e110eb4540b1dfe6/1579624257635-YPO7RVCDIDYF6GU1LQ53/no+signal.gif?format=2500w',
-      'https://i.pinimg.com/originals/e3/aa/8c/e3aa8ccb65a2aca19df86525fa4dbe4a.gif'
+    screens: [
+      '',
+      ''
     ],
     shortcut: 'j'
   // },

@@ -1,10 +1,10 @@
-import { defineComponent, h, ref, onMounted, defineExpose } from 'vue'
+import { defineComponent, h } from 'vue'
 
 export default defineComponent({
   props: {
     dictionary: {
       type: String,
-      default: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321'
+      default: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321!@#$%&~*+?'
     },
     text: {
       type: String,
