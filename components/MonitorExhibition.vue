@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core'
 import { paletter } from '~/utils/helper'
-import glitch from '/public/projectScreens/glitch.gif'
+import glitch from '/assets/glitch.gif'
 
 const props = withDefaults(defineProps<{
   isVisible: boolean,
@@ -10,15 +10,14 @@ const props = withDefaults(defineProps<{
   rotateY: string,
   rotateZ: string,
   screen: string,
-  captions: [number, string | undefined]
+  captions: [number, string]
 }>(), {
   isVisible: false,
   color: '#2effc0',
   rotateX: '0deg',
   rotateY: '0deg',
   rotateZ: '0deg',
-  screen: '',
-  captions: [0, '']
+  screen: ''
 })
 
 const noSignals = [
@@ -26,7 +25,7 @@ const noSignals = [
   'https://images.squarespace-cdn.com/content/v1/59649517e110eb4540b1dfe6/1579624257635-YPO7RVCDIDYF6GU1LQ53/no+signal.gif?format=2500w'
 ]
 
-const displayScreen = ref()
+const displayScreen = ref('')
 const hasSignal = ref(true)
 watchEffect(() => {
   displayScreen.value = props.screen || noSignals[Math.floor(Math.random() * noSignals.length)]
@@ -51,6 +50,14 @@ const isOnLeftSide = computed(() => {
   const { left } = monitor.value?.getBoundingClientRect() || {}
   return left! < window.innerWidth / 2
 })
+
+const screenStyle = computed(() => {
+  return {
+    backgroundImage: `url(${displayScreen.value})`,
+    ...hasSignal ? { animation: 'camera-moving-x 7s alternate infinite' } : {}
+  }
+})
+
 const ouOfBoxTextStyle = computed(() => {
   return {
     color: isDark.value ? '#12f35d' : mainColor.value,
@@ -85,7 +92,7 @@ const ouOfBoxTextStyle = computed(() => {
       :style="{ backgroundImage: `url(${glitch})` }"></div>
     <div
       class="screen absolute z-1 opacity-50 w-full h-full top-0 left-0 bg-center bg-no-repeat"
-      :style="{ backgroundImage: `url(${displayScreen})` }"></div>
+      :style="screenStyle"></div>
 
     <div
       class="out-of-box absolute z-2 bottom-0 font-press flex flex-col gap-4"
@@ -103,7 +110,7 @@ const ouOfBoxTextStyle = computed(() => {
   --perspective: 600px;
   --opacity_glitch: .7;
 
-  @apply border-1 fixed right-12 aspect-[9/16];
+  @apply border-1 fixed right-12 aspect-[9/16] user-select-none pointer-events-none;
   top: 10%;
   left: 4%;
   right: auto;
@@ -119,6 +126,7 @@ const ouOfBoxTextStyle = computed(() => {
     rotateZ(v-bind(rotateZ))
     scaleY(0);
   z-index: 10;
+  will-change: transform;
 }
 
 .monitor.halo {
@@ -166,15 +174,16 @@ const ouOfBoxTextStyle = computed(() => {
 
 .mark-recording, .mark-timestamp {
   animation: recording 1s infinite;
+  will-change: opacity;
 }
 
 .glitch {
   animation: glitch-flash 20s infinite v-bind(randomDelay);
+  will-change: opacity;
 }
 
 .screen {
   background-size: 110% 100%;
-  animation: camera-moving-x 7s alternate infinite;
 }
 
 @keyframes monitor-stripe {
@@ -263,7 +272,8 @@ const ouOfBoxTextStyle = computed(() => {
 
 .out-of-box span{
   transition: none;
-  animation: glitch 5s infinite;
+  animation: glitch 5s infinite v-bind(randomDelay);
+  will-change: transform, opacity;
 }
 
 @keyframes glitch{

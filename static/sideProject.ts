@@ -11,7 +11,8 @@ export const sideProjects: SideProject[] = [
     color: '#e6564c',
     screens: [
       '/projectScreens/slope-1.gif',
-      '/projectScreens/slope-2.gif'
+      '/projectScreens/slope-2.gif',
+      ''
     ],
     shortcut: 's'
   },
