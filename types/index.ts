@@ -7,7 +7,7 @@ export type SideProject = {
   shortcut: string
   plainName: string
   color: string
-  glitches?: string[]
+  screens?: string[]
 }
 
 export interface FrontMatter {

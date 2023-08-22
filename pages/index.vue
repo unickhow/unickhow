@@ -38,40 +38,17 @@
               v-for="project in sideProjects"
               :key="project.name"
               class="w-full">
-              <ProjectCard
-                :project="project"
-                class="h-full"
-                @mouseenter="onProjectCardEnter(project)"
-                @mouseleave="onProjectCardLeave(project)" />
+              <ProjectCard :project="project" />
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <MonitorExhibition
-      :isVisible="isVisible"
-      class="monitor-1 aspect-square! top-[30%]! w-[17%]!"
-      rotateX="-10deg"
-      rotateY="25deg"
-      rotateZ="10deg"
-      :color="hoveredProject?.color"
-      :screen="hoveredProject?.glitches?.[0]" />
-
-    <MonitorExhibition
-      :isVisible="isVisible2"
-      class="monitor-2 aspect-[5/9]! bottom-[30%]! right-[5%]! top-auto! left-auto! transition-delay-[0.2s]!"
-      rotateX="-20deg"
-      rotateY="-37deg"
-      rotateZ="-15deg"
-      :color="hoveredProject?.color"
-      :screen="hoveredProject?.glitches?.[1]" />
   </main>
 </template>
 
 <script setup lang="ts">
 import { sideProjects } from '../static/sideProject'
-import type { SideProject } from '~/types'
 
 type HashTag = {
   name: string
@@ -106,36 +83,6 @@ const hashtags: HashTag[] = [
     link: 'https://vitejs.dev/'
   }
 ]
-
-const hoveredProject = ref<any>(null)
-
-// TODO: in array
-const isVisible = ref(false)
-const isVisible2 = ref(false)
-function onProjectCardEnter (project: SideProject) {
-  isVisible.value = true
-  isVisible2.value = true
-  hoveredProject.value = project
-}
-function onProjectCardLeave (project: SideProject) {
-  isVisible.value = false
-  isVisible2.value = false
-}
-
-// leave a door for touch devices
-onMounted(() => {
-  const fn = () => {
-    isVisible.value = false
-    isVisible2.value = false
-  }
-  // close all monitors on body click
-  document.body.addEventListener('click', fn)
-
-  // remove event listener on unmount
-  onUnmounted(() => {
-    document.body.removeEventListener('click', fn)
-  })
-})
 </script>
 
 <style scoped>
