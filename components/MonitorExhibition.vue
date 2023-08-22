@@ -132,7 +132,10 @@ const ouOfBoxTextStyle = computed(() => {
 .monitor.halo {
   background: #fffffff0;
   box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
-  animation: halo-breathing 10s infinite ease-in-out;
+  animation-name: halo-breathing;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
 .monitor.on {
@@ -165,7 +168,10 @@ const ouOfBoxTextStyle = computed(() => {
   background-size: 100% 7px;
   height: 100%;
   width: 100%;
-  animation: monitor-stripe 13s infinite linear;
+  animation-name: monitor-stripe;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
   position: absolute;
   z-index: 2;
   left: 0px;
@@ -173,17 +179,23 @@ const ouOfBoxTextStyle = computed(() => {
 }
 
 .mark-recording, .mark-timestamp {
-  animation: recording 1s infinite;
+  animation-name: recording;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
   will-change: opacity;
 }
 
 .glitch {
-  animation: glitch-flash 20s infinite v-bind(randomDelay);
+  animation-name: glitch-flash;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-delay: v-bind(randomDelay);
   will-change: opacity;
 }
 
 .screen {
   background-size: 110% 100%;
+  backface-visibility: hidden;
 }
 
 @keyframes monitor-stripe {
@@ -238,9 +250,6 @@ const ouOfBoxTextStyle = computed(() => {
 }
 
 @keyframes glitch-flash {
-  0% {
-    opacity: 0;
-  }
   10% {
     opacity: 0;
   }
@@ -265,14 +274,14 @@ const ouOfBoxTextStyle = computed(() => {
   74% {
     opacity: 0;
   }
-  100% {
-    opacity: 0;
-  }
 }
 
 .out-of-box span{
   transition: none;
-  animation: glitch 5s infinite v-bind(randomDelay);
+  animation-name: glitch;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-delay: v-bind(randomDelay);
   will-change: transform, opacity;
 }
 

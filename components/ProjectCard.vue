@@ -89,16 +89,16 @@ const hasLoaded = ref(false)
 // leave a door for touch devices
 onMounted(() => {
   hasLoaded.value = true
-  const fn = () => {
-    visibilities.value = visibilities.value.map(() => false)
-  }
-  // close all monitors on body click
-  document.body.addEventListener('click', fn)
+  // const fn = () => {
+  //   visibilities.value = visibilities.value.map(() => false)
+  // }
+  // // close all monitors on body click
+  // document.body.addEventListener('click', fn)
 
-  // remove event listener on unmount
-  onUnmounted(() => {
-    document.body.removeEventListener('click', fn)
-  })
+  // // remove event listener on unmount
+  // onUnmounted(() => {
+  //   document.body.removeEventListener('click', fn)
+  // })
 })
 </script>
 
