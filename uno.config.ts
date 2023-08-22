@@ -21,11 +21,13 @@ export default defineConfig({
       orange: 'var(--c__orange)',
       primary: 'var(--c__primary)',
       secondary: 'var(--c__secondary)',
+      matrix: '#00ff41'
     }
   },
   shortcuts: {
     'tc-content-text': 'text-dark dark:text-pale',
-    'tc-content-note': 'text-gray dark:text-gray'
+    'tc-content-note': 'text-gray dark:text-gray',
+    'animation-glitch': 'animation-name-[glitch] animation-duration-5s animation-iteration-count-infinite',
   },
   rules: [
     ['container', {
