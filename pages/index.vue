@@ -7,7 +7,7 @@
             <BrandExhibition />
           </div>
           <div class="main-content mb-20">
-            <h1 class="text-xl mb-8 tc-content-text font-fira">() => 'Hello, world.'</h1>
+            <h1 class="hello-world text-xl mb-8 tc-content-text font-fira dark:text-xs dark:font-press dark:text-matrix dark:animation-glitch">() => 'Hello, world.'</h1>
             <div class="main-content__body">
               <p class="leading-loose">
                 This is where I,
@@ -85,5 +85,8 @@ const hashtags: HashTag[] = [
 ]
 </script>
 
-<style scoped>
+<style>
+html.dark .hello-world {
+  animation: glitch 1s linear infinite;
+}
 </style>

@@ -87,7 +87,7 @@ const ouOfBoxTextStyle = computed(() => {
       </div>
     </div>
     <div
-      v-if="hasSignal"
+      v-if="hasSignal && isDark"
       class="glitch filter-sepia-[50%] absolute z-2 opacity-0 w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat"
       :style="{ backgroundImage: `url(${glitch})` }"></div>
     <div
@@ -96,6 +96,7 @@ const ouOfBoxTextStyle = computed(() => {
 
     <div
       class="out-of-box absolute z-2 bottom-0 font-press flex flex-col gap-4"
+      :class="{ 'is-glitching': isDark }"
       :style="ouOfBoxTextStyle">
       <span>#{{ captions?.[0] }}</span>
       <span>{{ captions?.[1] }}</span>
@@ -198,111 +199,12 @@ const ouOfBoxTextStyle = computed(() => {
   backface-visibility: hidden;
 }
 
-@keyframes monitor-stripe {
-  from {
-    background-position: 0% 0%;
-  }
-  to {
-    background-position: 0% -100%;
-  }
-}
-
-@keyframes recording {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 50%;
-  }
-  80% {
-    opacity: 50%;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes halo-breathing {
-  0% {
-    box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
-  }
-  10% {
-    box-shadow: 0 0 90px 30px #ffffff73, 0 0 17px 1px #fffffff0;
-  }
-  21% {
-    box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
-  }
-  51% {
-    box-shadow: 0 0 90px 30px #ffffff73, 0 0 17px 1px #fffffff0;
-  }
-  100% {
-    box-shadow: 0 0 70px 30px #ffffff73, 0 0 25px 1px #fffffff0;
-  }
-}
-
-@keyframes camera-moving-x {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
-}
-
-@keyframes glitch-flash {
-  10% {
-    opacity: 0;
-  }
-  11% {
-    opacity: var(--opacity_glitch);
-  }
-  12% {
-    opacity: 0;
-  }
-  13% {
-    opacity: var(--opacity_glitch);
-  }
-  14% {
-    opacity: 0;
-  }
-  72% {
-    opacity: 0;
-  }
-  73% {
-    opacity: var(--opacity_glitch);
-  }
-  74% {
-    opacity: 0;
-  }
-}
-
-.out-of-box span{
+.out-of-box.is-glitching span{
   transition: none;
   animation-name: glitch;
   animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-delay: v-bind(randomDelay);
   will-change: transform, opacity;
-}
-
-@keyframes glitch{
-  3%, 74%{
-    transform: translate(2px, 0) skew(0deg);
-  }
-  4%, 72%{
-    transform: translate(-1px, 0) skew(0deg);
-  }
-  73%{
-    transform: translate(0, 0) skew(73deg);
-  }
-  10%, 90%{
-    opacity: 1;
-  }
-  11%, 91% {
-    opacity: 0;
-  }
-  12%, 92% {
-    opacity: 1;
-  }
 }
 </style>

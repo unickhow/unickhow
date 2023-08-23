@@ -35,20 +35,22 @@
 </template>
 
 <script setup lang="ts">
-import { useMediaQuery } from '@vueuse/core'
+import { useMediaQuery, useStorage } from '@vueuse/core'
 import type { SideProject } from '~/types'
-// import { MONITOR_POSITIONS } from '~/utils/helper'
 import FlipText from '~/components/FlipText'
 
 const props = defineProps<{
   project: SideProject
 }>()
 
+const theme = useStorage('unickTheme', 'light')
+const isDark = computed(() => theme.value === 'dark')
+
 const flipText = ref<InstanceType<typeof FlipText>>()
 const isLargeScreen = useMediaQuery('(min-width: 768px)')
 const visibilities = ref(props.project.screens?.map(() => false) ?? [])
 const handleMouseEnter = () => {
-  isLargeScreen.value && flipText.value?.flip()
+  isLargeScreen.value && isDark.value && flipText.value?.flip()
   visibilities.value = visibilities.value.map(() => true)
 }
 const handleMouseLeave = () => {
