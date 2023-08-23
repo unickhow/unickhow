@@ -4,9 +4,7 @@
       <div class="row flex flex-col max-w-[500px] mx-auto">
         <div class="py-6 main-content tc-content-text">
           <div class="kv-container aspect-square relative max-w-[200px] mx-auto mb-12">
-            <ClientOnly>
-              <BrandExhibition />
-            </ClientOnly>
+            <BrandExhibition />
           </div>
           <div class="main-content mb-20">
             <h1 class="hello-world text-xl mb-8 tc-content-text font-fira dark:text-xs dark:font-press dark:text-matrix dark:animation-glitch">() => 'Hello, world.'</h1>
@@ -52,6 +50,11 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  // why? pageTransition will cause the BrandExhibition lost dom when switching between pages
+  keepalive: true
+})
+
 import { sideProjects } from '../static/sideProject'
 
 type HashTag = {
