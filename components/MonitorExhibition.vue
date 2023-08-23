@@ -34,8 +34,7 @@ watchEffect(() => {
 
 const randomDelay = Math.floor(Math.random() * 5) + 's'
 
-const theme = useStorage('unickTheme', 'light')
-const isDark = computed(() => theme.value === 'dark')
+const { isDark } = useTheme()
 const matrixGreen = '#00ff41'
 
 const monitor = ref<HTMLElement | null>(null)

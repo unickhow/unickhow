@@ -4,7 +4,9 @@
       <div class="row flex flex-col max-w-[500px] mx-auto">
         <div class="py-6 main-content tc-content-text">
           <div class="kv-container aspect-square relative max-w-[200px] mx-auto mb-12">
-            <BrandExhibition />
+            <ClientOnly>
+              <BrandExhibition />
+            </ClientOnly>
           </div>
           <div class="main-content mb-20">
             <h1 class="hello-world text-xl mb-8 tc-content-text font-fira dark:text-xs dark:font-press dark:text-matrix dark:animation-glitch">() => 'Hello, world.'</h1>
@@ -38,7 +40,9 @@
               v-for="project in sideProjects"
               :key="project.name"
               class="w-full">
-              <ProjectCard :project="project" />
+              <ClientOnly>
+                <ProjectCard :project="project" />
+              </ClientOnly>
             </div>
           </div>
         </div>
