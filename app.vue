@@ -2,5 +2,7 @@
   <AppNav />
   <NuxtPage />
   <SpeedDial />
-  <AppFooter />
+  <ClientOnly>
+    <AppFooter />
+  </ClientOnly>
 </template>
