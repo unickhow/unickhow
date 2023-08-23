@@ -41,6 +41,6 @@ figure {
 }
 
 img {
-  @apply shadow-xl max-w-[73%];
+  @apply shadow-xl max-w-[73%] rounded-md overflow-hidden;
 }
 </style>
