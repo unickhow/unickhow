@@ -1,9 +1,11 @@
 <template>
-  <div
-    id="logo"
-    class="items-center justify-center w-full h-full"
-    :class="{ 'is-ready': isGltfLoaded }">
-  </div>
+  <ClientOnly>
+    <div
+      id="logo"
+      class="items-center justify-center w-full h-full"
+      :class="{ 'is-ready': isGltfLoaded }">
+    </div>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">

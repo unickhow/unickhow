@@ -38,7 +38,9 @@
               v-for="project in sideProjects"
               :key="project.name"
               class="w-full">
-              <ProjectCard :project="project" />
+              <ClientOnly>
+                <ProjectCard :project="project" />
+              </ClientOnly>
             </div>
           </div>
         </div>
@@ -48,6 +50,11 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  // why? pageTransition will cause the BrandExhibition lost dom when switching between pages
+  keepalive: true
+})
+
 import { sideProjects } from '../static/sideProject'
 
 type HashTag = {

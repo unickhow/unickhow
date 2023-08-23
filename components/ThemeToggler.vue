@@ -1,7 +1,8 @@
 <template>
-  <label for="theme" class="cursor-pointer">
+  <div class="relative">
     <ClientOnly>
-      <div class="theme__container relative" :class="{ 'dark': isDark }">
+      <button class="absolute top-0 right-0 w-10 h-10 z-2 opacity-0 cursor-pointer" @click="next()"></button>
+      <div class="theme__container relative z-1" :class="{ 'auto': mode === 'auto' }">
         <div class="theme__icon" />
         <Icon name="mdi:apple-icloud" class="theme__cloud absolute -bottom-3 text-2xl theme__cloud-color"/>
         <div class="theme__stars">
@@ -15,37 +16,29 @@
         </div>
       </div>
     </ClientOnly>
-    <input
-      id="theme"
-      v-model="isDark"
-      class="hidden"
-      type="checkbox"
-      name="theme">
-  </label>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core'
+import { useColorMode, useCycleList } from '@vueuse/core'
 
-const theme = useStorage('unickTheme', 'light')
-const isDark = ref(theme.value === 'dark')
-console.log('🚀 ~ file: ThemeToggler.vue:30 ~ isDark:', isDark)
-
-watch(isDark, (value) => {
-  theme.value = value ? 'dark' : 'light'
+const config = useRuntimeConfig()
+const mode = useColorMode({
+  emitAuto: true,
+  disableTransition: false,
+  storageKey: config.public.NUXT_THEME_STORE
 })
 
-watch(isDark, (val) => {
-  if (!import.meta.env.SSR) {
-    const root = document.getElementsByTagName('html')[0]
-    if (val) {
-      root.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-    }
-  }
-}, { immediate: true })
 
+const { state, next } = useCycleList([
+  'dark', 'light', 'auto'
+], {
+  initialValue: mode
+})
+
+watchEffect(() => {
+  mode.value = state.value as any
+})
 </script>
 
 <style scoped>
@@ -57,7 +50,7 @@ watch(isDark, (val) => {
   @apply rounded-full;
 }
 
-.theme__container.dark .theme__icon {
+html.dark .theme__container .theme__icon {
   background: transparent;
   transform: translate(-12px, -5px);
   box-shadow: 12px 5px 0 0 var(--c__theme-icon);
@@ -69,7 +62,34 @@ watch(isDark, (val) => {
   transition: all .3s ease;
 }
 
-.theme__container.dark .theme__cloud {
+html.dark .theme__container .theme__cloud {
   transform: translateX(10px);
+}
+
+.theme__container.auto .theme__icon {
+  background: var(--c__theme-icon) !important;
+  transform: translate(-5px, 5px) !important;
+  box-shadow: -7px -7px 0px 0px var(--c__grey) inset;
+  animation-name: day-auto-shift;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+.theme__container.auto .theme__cloud {
+  @apply hidden;
+}
+
+.theme__container.auto .theme__stars {
+  @apply hidden;
+}
+
+@keyframes day-auto-shift {
+  from {
+    box-shadow: -7px -7px 0px 0px var(--c__grey) inset;
+  }
+  to {
+    box-shadow: 7px 7px 0px 0px var(--c__grey) inset;
+  }
 }
 </style>

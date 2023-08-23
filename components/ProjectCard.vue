@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { useMediaQuery, useStorage } from '@vueuse/core'
+import { useMediaQuery } from '@vueuse/core'
 import type { SideProject } from '~/types'
 import FlipText from '~/components/FlipText'
 
@@ -43,8 +43,7 @@ const props = defineProps<{
   project: SideProject
 }>()
 
-const theme = useStorage('unickTheme', 'light')
-const isDark = computed(() => theme.value === 'dark')
+const { isDark } = useTheme()
 
 const flipText = ref<InstanceType<typeof FlipText>>()
 const isLargeScreen = useMediaQuery('(min-width: 768px)')
@@ -88,19 +87,8 @@ const captionText = computed(() => {
 })
 
 const hasLoaded = ref(false)
-// leave a door for touch devices
 onMounted(() => {
   hasLoaded.value = true
-  // const fn = () => {
-  //   visibilities.value = visibilities.value.map(() => false)
-  // }
-  // // close all monitors on body click
-  // document.body.addEventListener('click', fn)
-
-  // // remove event listener on unmount
-  // onUnmounted(() => {
-  //   document.body.removeEventListener('click', fn)
-  // })
 })
 </script>
 

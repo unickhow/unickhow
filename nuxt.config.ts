@@ -1,8 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: '<unickhow />',
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://unick.how/'
+        }
+      ],
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' },
@@ -49,6 +56,11 @@ export default defineNuxtConfig({
       theme: {
         default: 'one-dark-pro'
       }
+    }
+  },
+  runtimeConfig: {
+    public: {
+      NUXT_THEME_STORE: process.env.NUXT_THEME_STORE
     }
   }
 })

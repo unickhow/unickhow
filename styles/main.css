@@ -22,6 +22,7 @@ html {
 
 html.dark {
   background: var(--c__dark);
+  color-scheme: dark;
 }
 
 main {
