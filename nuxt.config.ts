@@ -35,7 +35,8 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@vueuse/nuxt',
     '@nuxt/content',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    'nuxt-clarity-analytics'
   ],
   googleFonts: {
     preconnect: true,
