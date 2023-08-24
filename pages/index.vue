@@ -50,12 +50,18 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  // why? pageTransition will cause the BrandExhibition lost dom when switching between pages
-  keepalive: true
-})
-
 import { sideProjects } from '../static/sideProject'
+
+useHead({
+  title: '<unickhow />',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'unickhow\'s personal website'
+    }
+  ]
+})
 
 type HashTag = {
   name: string

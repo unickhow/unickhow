@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
+    // ! there is a bug that will cause the page cache, and all dom manipulations will be lost (e.g. exhibition, image in content)
+    // pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: '<unickhow />',
       link: [
@@ -34,7 +35,8 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@vueuse/nuxt',
     '@nuxt/content',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    'nuxt-clarity-analytics'
   ],
   googleFonts: {
     preconnect: true,

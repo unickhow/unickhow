@@ -42,6 +42,9 @@ devDependencies:
   nuxt:
     specifier: ^3.5.2
     version: 3.5.2(@types/node@18.0.0)
+  nuxt-clarity-analytics:
+    specifier: ^0.0.6
+    version: 0.0.6
   nuxt-icon:
     specifier: ^0.4.1
     version: 0.4.1(vue@3.3.4)
@@ -5942,6 +5945,15 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /nuxt-clarity-analytics@0.0.6:
+    resolution: {integrity: sha512-5Aks0ALsti6jnkaFwvlIlj5wQq6sff5iliX0l8fYgYi9UfRalXvLpX33tbHykuEBbzuBXC34Vypu7BMgvlpCqA==}
+    dependencies:
+      '@nuxt/kit': 3.6.5
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /nuxt-icon@0.4.1(vue@3.3.4):

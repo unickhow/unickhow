@@ -28,7 +28,7 @@ tags:
 
 畢竟終究只是個 html + js 的產物，過程怎麼樣都不打緊吧～先照 vite 的流程起手，之後再新增一個 `figma/code.ts` 放 plugin 與 figma 溝通用的主要邏輯，接著新增 `public/manifest.json`，內容應同 create figma plugin 時提供的檔案 (包含 id 及 name)，這樣打包後就會原封不動的搬進 dist，最終開發完要提供給 figma 的就是這包 dist，所以接下來要從 vite.config.ts 中把打包產物都設定好
 
-```bash
+```
 dist
 |- index.html
 |- code.js

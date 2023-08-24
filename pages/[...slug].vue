@@ -28,7 +28,8 @@ const [prev, next] = await queryContent()
   .where({ hidden: false })
   .findSurround(`/posts/${route.params.slug[1]}`)
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick()
   const images = document.querySelectorAll('img')
   Lightense(images, {
     time: 300,
@@ -38,7 +39,12 @@ onMounted(() => {
     cubicBezier: 'cubic-bezier(.2, 0, .1, 1)',
     background: 'rgba(255, 255, 255, .1)',
     zIndex: 2147483647
-  });
+  })
+})
+onBeforeUnmount(() => {
+  // remove lightense-backdrop
+  const backdrop = document.querySelector('.lightense-backdrop')
+  if (backdrop) backdrop.remove()
 })
 </script>
 
