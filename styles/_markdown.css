@@ -84,9 +84,10 @@ html.dark .blog-md-container {
   @apply my-8 text-center;
 }
 
-.blog-md-container p > code {
+.blog-md-container pre > code {
   font-family: 'Fira Code', monospace;
-  background: var(--c__skin);
+  /* background: var(--c__skin); */
+  color: var(--c__white);
   @apply text-sm p-1;
 }
 

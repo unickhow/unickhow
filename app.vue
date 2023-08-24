@@ -1,4 +1,9 @@
+<script setup lang="ts">
+</script>
+
 <template>
+  <!-- another bug 🙄, indicator always being invisible -->
+  <NuxtLoadingIndicator />
   <AppNav />
   <NuxtPage />
   <SpeedDial />
@@ -8,7 +13,8 @@
 </template>
 
 <style>
-.page-enter-active,
+/* ! for page transition, see nuxt.config.ts */
+/* .page-enter-active,
 .page-leave-active {
   transition: all 0.3s;
 }
@@ -16,5 +22,5 @@
 .page-leave-to {
   opacity: 0;
   filter: blur(.5rem);
-}
+} */
 </style>

@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   code: string
   language: string
   filename?: string
   highlights?: number[]
   meta: string
-}>()
+}>(), {
+  language: '',
+  meta: ''
+})
 
 const source = ref(props.code)
 const { copy: copySource, copied: sourceCopied } = useClipboard({ source, legacy: true })
@@ -37,7 +40,7 @@ const langExt = computed(() => {
 
 <template>
   <div class="code-wrapper my-6 rounded-md overflow-hidden">
-    <div class="code-wrapper__filename relative px-3 py-1 bg-[#e9e9e9] flex items-center justify-between gap-2">
+    <div class="code-wrapper__filename relative px-3 bg-[#e9e9e9] flex items-center justify-between gap-2">
       <div class="window-controls flex items-center gap-2 mr-2">
         <div class="win-btn-close w-3 h-3 rounded-full bg-[#ff605c]"></div>
         <div class="win-btn-min w-3 h-3 rounded-full bg-[#ffbd44]"></div>

@@ -29,7 +29,6 @@ const [prev, next] = await queryContent()
   .findSurround(`/posts/${route.params.slug[1]}`)
 
 onMounted(async () => {
-  // TODO: cannot get imgs between pages, but landing is fine
   await nextTick()
   const images = document.querySelectorAll('img')
   Lightense(images, {
@@ -41,6 +40,11 @@ onMounted(async () => {
     background: 'rgba(255, 255, 255, .1)',
     zIndex: 2147483647
   })
+})
+onBeforeUnmount(() => {
+  // remove lightense-backdrop
+  const backdrop = document.querySelector('.lightense-backdrop')
+  if (backdrop) backdrop.remove()
 })
 </script>
 
