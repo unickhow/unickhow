@@ -51,7 +51,7 @@ onBeforeUnmount(() => {
 <template>
   <main class="blog-md-container">
     <div class="post-provider px-4">
-      <article class="container mx-auto my-10 max-w-[666px]">
+      <article class="container mx-auto my-10 max-w-[666px] relative">
         <ContentDoc #default="{ doc }">
           <span class="text-dark dark:text-pale italic opacity-50">{{ formatDateTime(doc.date) }}</span>
           <div class="flex flex-wrap gap-2 mt-2">
@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
           <h1>{{ doc.title }}</h1>
           <p>{{ doc.description }}</p>
 
-          <TableOfContents />
+          <TableOfContents :doc="doc" />
 
           <ContentRenderer :value="doc" />
         </ContentDoc>

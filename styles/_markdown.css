@@ -95,3 +95,24 @@ html.dark .blog-md-container {
   border-top: 2px dashed var(--note-color);
   @apply opacity-50 my-10;
 }
+
+.blog-md-container table {
+  border-collapse: collapse;
+  @apply my-8 w-full;
+}
+
+.blog-md-container table thead tr {
+  border-bottom: 1px solid var(--c__gray-lighter);
+}
+
+.blog-md-container table tbody tr {
+  border-bottom: 1px dashed var(--c__gray-lighter);
+}
+
+.blog-md-container table th {
+  @apply text-left px-4 py-2;
+}
+
+.blog-md-container table td {
+  @apply px-4 py-2;
+}
