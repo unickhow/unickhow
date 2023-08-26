@@ -93,7 +93,7 @@ export const useBrandModel = (el: string) => {
       controls.update()
       lightHolder.quaternion.copy(camera.quaternion)
       if (model) {
-        model.rotation.y += 0.002
+        model.rotation.y += 0.0037
         // model.rotation.z += 0.001
         // model.rotation.x += 0.008
       }

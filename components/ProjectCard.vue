@@ -1,7 +1,7 @@
 <template>
   <a
     ref="projectCard"
-    class="project-card-container flex justify-between items-start p-6"
+    class="project-card-container flex justify-between items-start p-6 rounded-lg"
     :href="project.link"
     target="_blank"
     @mouseenter="handleMouseEnter"
@@ -100,15 +100,10 @@ onMounted(() => {
 
 .project-card-container::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  @apply rounded-lg absolute top-0 left-0 w-full h-full opacity-0;
   border: solid 2px v-bind('props.project.color');
   z-index: 1;
   transform: scaleX(1.1) scaleY(1.2);
-  opacity: 0;
   pointer-events: none;
 }
 

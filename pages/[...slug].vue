@@ -46,6 +46,14 @@ onBeforeUnmount(() => {
   const backdrop = document.querySelector('.lightense-backdrop')
   if (backdrop) backdrop.remove()
 })
+
+const router = useRouter()
+function handleTagClick (tag: string) {
+  router.push({
+    path: '/posts',
+    query: { tags: tag }
+  })
+}
 </script>
 
 <template>
@@ -54,11 +62,12 @@ onBeforeUnmount(() => {
       <article class="container mx-auto my-10 max-w-[666px] relative">
         <ContentDoc #default="{ doc }">
           <span class="text-dark dark:text-pale italic opacity-50">{{ formatDateTime(doc.date) }}</span>
-          <div class="flex flex-wrap gap-2 mt-2">
+          <div class="flex flex-wrap gap-3 mt-2">
             <TagLabel
               v-for="tag in doc.tags"
               :key="doc.title + tag"
-              :value="tag" />
+              :value="tag"
+              @click="handleTagClick(tag)" />
           </div>
 
           <h1>{{ doc.title }}</h1>

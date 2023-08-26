@@ -2,11 +2,11 @@
   <nav class="header py-4 fixed w-full top-0 left-0 z-50">
     <div class="container mx-auto max-w-[1024px] flex px-4">
       <div v-if="!shouldShowDial" class="flex gap-4 items-center">
-        <NuxtLink to="/" class="tc-content-text flex items-center gap-2">
+        <NuxtLink to="/" class="tc-content-text hover:text-primary transition-color flex items-center gap-2">
           <Icon name="ri:seedling-fill" />
           <span class="hidden sm:block">Index</span>
         </NuxtLink>
-        <NuxtLink to="/posts" class="text-gray dark:text-pale flex items-center gap-1">
+        <NuxtLink to="/posts" class="tc-content-text hover:text-primary transition-color flex items-center gap-1">
           <Icon name="tabler:books" />
           <span class="hidden sm:block">Posts</span>
         </NuxtLink>

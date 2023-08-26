@@ -3,7 +3,7 @@ const props = defineProps<{
   doc: any
 }>()
 
-const router = useRouter()
+// const router = useRouter()
 const tocLinks = computed(() => props.doc.body.toc.links ?? [])
 
 const onClick = (id: string) => {
@@ -18,7 +18,7 @@ const onClick = (id: string) => {
 </script>
 
 <template>
-  <div class="max-h-82 overflow-auto">
+  <div v-if="tocLinks.length" class="max-h-82 overflow-auto">
     <nav class="mt-4 flex toc-nav">
       <ul class="ml-0 pl-4 flex flex-col gap-1">
         <li
