@@ -57,57 +57,55 @@ function handleTagClick (tag: string) {
 </script>
 
 <template>
-  <main class="blog-md-container">
-    <div class="post-provider px-4">
-      <article class="container mx-auto my-10 max-w-[666px] relative">
-        <ContentDoc #default="{ doc }">
-          <span class="text-dark dark:text-pale italic opacity-50">{{ formatDateTime(doc.date) }}</span>
-          <div class="flex flex-wrap gap-3 mt-2">
-            <TagLabel
-              v-for="tag in doc.tags"
-              :key="doc.title + tag"
-              :value="tag"
-              @click="handleTagClick(tag)" />
-          </div>
-
-          <h1>{{ doc.title }}</h1>
-          <p>{{ doc.description }}</p>
-
-          <TableOfContents :doc="doc" />
-
-          <ContentRenderer :value="doc" />
-        </ContentDoc>
-
-        <hr>
-
-        <div class="surround-navigator flex justify-between items-start gap-4 my-12">
-          <div class="w-1/3">
-            <NuxtLink
-              v-if="prev"
-              :to="prev._path"
-              class="surround-navigator__prev text-dark dark:text-pale flex flex-col items-start">
-              <span class="text-sm text-primary font-bold">← Prev</span>
-              <p class="!my-0">{{ prev.title }}</p>
-            </NuxtLink>
-          </div>
-          <NuxtLink
-            to="/posts"
-            class="w-1/3 surround-navigator__back text-dark dark:text-pale text-center">
-            <span class="text-sm font-bold">cd ..</span>
-          </NuxtLink>
-          <div class="w-1/3">
-            <NuxtLink
-              v-if="next"
-              :to="next._path"
-              class="surround-navigator__next text-dark dark:text-pale flex flex-col items-end">
-              <span class="text-sm text-primary font-bold">Next →</span>
-              <p class="!my-0">{{ next.title }}</p>
-            </NuxtLink>
-          </div>
+  <div class="blog-md-container post-provider px-4">
+    <article class="container mx-auto my-10 max-w-[666px] relative">
+      <ContentDoc #default="{ doc }">
+        <span class="text-dark dark:text-pale italic opacity-50">{{ formatDateTime(doc.date) }}</span>
+        <div class="flex flex-wrap gap-3 mt-2">
+          <TagLabel
+            v-for="tag in doc.tags"
+            :key="doc.title + tag"
+            :value="tag"
+            @click="handleTagClick(tag)" />
         </div>
-      </article>
-    </div>
-  </main>
+
+        <h1>{{ doc.title }}</h1>
+        <p>{{ doc.description }}</p>
+
+        <TableOfContents :doc="doc" />
+
+        <ContentRenderer :value="doc" />
+      </ContentDoc>
+
+      <hr>
+
+      <div class="surround-navigator flex justify-between items-start gap-4 my-12">
+        <div class="w-1/3">
+          <NuxtLink
+            v-if="prev"
+            :to="prev._path"
+            class="surround-navigator__prev text-dark dark:text-pale flex flex-col items-start">
+            <span class="text-sm text-primary font-bold">← Prev</span>
+            <p class="!my-0">{{ prev.title }}</p>
+          </NuxtLink>
+        </div>
+        <NuxtLink
+          to="/posts"
+          class="w-1/3 surround-navigator__back text-dark dark:text-pale text-center">
+          <span class="text-sm font-bold">cd ..</span>
+        </NuxtLink>
+        <div class="w-1/3">
+          <NuxtLink
+            v-if="next"
+            :to="next._path"
+            class="surround-navigator__next text-dark dark:text-pale flex flex-col items-end">
+            <span class="text-sm text-primary font-bold">Next →</span>
+            <p class="!my-0">{{ next.title }}</p>
+          </NuxtLink>
+        </div>
+      </div>
+    </article>
+  </div>
 </template>
 
 <style>
