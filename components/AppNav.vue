@@ -27,7 +27,9 @@ import { useBreakpoints } from '@vueuse/core'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+if (!import.meta.env.SSR) {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const breakpoints = useBreakpoints({
   tablet: 640,

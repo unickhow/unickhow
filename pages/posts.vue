@@ -5,7 +5,9 @@ import type { FrontMatter, PostsCalendar } from '~/types'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+if (!import.meta.env.SSR) {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 useHead({
   title: 'Posts',
