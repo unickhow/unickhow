@@ -5,7 +5,9 @@
   <!-- another bug 🙄, indicator always being invisible -->
   <NuxtLoadingIndicator />
   <AppNav />
-  <NuxtPage />
+  <main>
+    <NuxtPage />
+  </main>
   <SpeedDial />
   <ClientOnly>
     <AppFooter />

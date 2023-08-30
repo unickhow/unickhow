@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core'
 import { paletter } from '~/utils/helper'
 import glitch from '/assets/glitch.gif'
 

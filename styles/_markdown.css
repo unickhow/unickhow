@@ -54,6 +54,10 @@ html.dark .blog-md-container {
   @apply text-sm my-8 px-4 leading-relaxed;
 }
 
+.blog-md-container blockquote p {
+  @apply break-words;
+}
+
 .blog-md-container a[target='_blank'] {
   @apply underline decoration-dotted decoration-orange hover:text-orange;
 }
@@ -66,6 +70,15 @@ html.dark .blog-md-container {
   @apply my-8 text-center;
 }
 
+/* prose inline code */
+.blog-md-container p > code {
+  font-family: 'Fira Code', monospace !important;
+  background: var(--c__gray-lighter);
+  color: var(--c__dark);
+  @apply text-sm p-1 px-2 rounded select-all;
+}
+
+/* prose code */
 .blog-md-container pre > code {
   font-family: 'Fira Code', monospace;
   /* background: var(--c__skin); */

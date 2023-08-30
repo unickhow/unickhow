@@ -37,10 +37,10 @@ export default defineConfig({
       'padding-right': '2rem'
     }],
     ['font-fira', {
-      'font-family': '"Fira Code", "monospace", "Zen Maru Gothic", "sans-serif"'
+      'font-family': '"Fira Code", "monospace" !important'
     }],
     ['font-press', {
-      'font-family': '"Press Start 2P", "monospace", "Zen Maru Gothic", "sans-serif"'
+      'font-family': '"Press Start 2P", "monospace" !important'
     }],
     ['theme__cloud-color', {
       'color': 'var(--c__cloud)'

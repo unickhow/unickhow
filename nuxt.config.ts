@@ -42,11 +42,11 @@ export default defineNuxtConfig({
     preconnect: true,
     prefetch: true,
     families: {
-      'Roboto+Mono': true,
-      'Fira+Code': {
+      'Roboto': true,
+      'Fira Code': {
         wght: [100, 400, 700]
       },
-      'Press+Start+2P': true
+      'Press Start 2P': true
     }
   },
   css: [
