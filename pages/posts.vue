@@ -168,8 +168,8 @@ function setupPostTweens () {
       duration: 0.5,
       scrollTrigger: {
         trigger: year,
-        start: 'top 80%',
-        end: 'bottom 80%',
+        start: 'top 90%',
+        end: 'bottom bottom-=20',
         scrub: true
       }
     })
@@ -178,7 +178,7 @@ function setupPostTweens () {
     months.forEach((month: any) => {
       const monthText = month.querySelector('.posts__year__month__text')
       const monthTextTween = gsap.fromTo(monthText, {
-        opacity: 0.1,
+        opacity: 0,
         y: -50
       }, {
         opacity: isDark.value ? 0.5 : 1,
@@ -186,15 +186,15 @@ function setupPostTweens () {
         duration: 0.5,
         scrollTrigger: {
           trigger: month,
-          start: 'top 80%',
-          end: 'bottom 80%',
+          start: 'top 90%',
+          end: 'bottom bottom-=20',
           scrub: true
         }
       })
       tweens.value.push(monthTextTween)
       const posts = gsap.utils.toArray(month.querySelectorAll('.posts__year__month__post'))
       const postsTween = gsap.fromTo(posts, {
-        opacity: 0.1,
+        opacity: 0,
         y: 20
       }, {
         opacity: 1,
@@ -203,8 +203,8 @@ function setupPostTweens () {
         duration: 0.5,
         scrollTrigger: {
           trigger: month,
-          start: 'top 80%',
-          end: 'bottom 80%',
+          start: 'top 90%',
+          end: 'bottom bottom-=20',
           scrub: true
         }
       })

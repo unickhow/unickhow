@@ -100,9 +100,7 @@ onUnmounted(() => {
 
 watch(router.currentRoute, async () => {
   await nextTick()
-  await destroyNavTweens()
   ScrollTrigger.refresh()
-  setupNavTweens()
 })
 </script>
 
