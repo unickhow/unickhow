@@ -5,6 +5,29 @@ export default defineNuxtConfig({
     // pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: '<unickhow />',
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-0ERCV84DE1',
+          async: true
+        },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0ERCV84DE1');
+          `
+        },
+        {
+          innerHTML: `
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "f3zey4tjot");
+          `
+        }
+      ],
       link: [
         {
           rel: 'canonical',
@@ -35,8 +58,7 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@vueuse/nuxt',
     '@nuxt/content',
-    '@nuxtjs/google-fonts',
-    'nuxt-clarity-analytics'
+    '@nuxtjs/google-fonts'
   ],
   googleFonts: {
     preconnect: true,
