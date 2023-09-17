@@ -12,11 +12,11 @@ useHead({
     { hid: 'description', name: 'description', content: currentContent.description },
     { hid: 'og:title', property: 'og:title', content: currentContent.title },
     { hid: 'og:description', property: 'og:description', content: currentContent.description },
-    { hid: 'og:image', property: 'og:image', content: currentContent.image ?? 'https://hackmd.io/_uploads/ByO3VfeP3.png' },
+    { hid: 'og:image', property: 'og:image', content: currentContent.image ?? 'https://hackmd.io/_uploads/SylCzI7Ja.png' },
     { hid: 'og:url', property: 'og:url', content: `https://unick.how/${currentContent._path}` },
     { hid: 'twitter:title', name: 'twitter:title', content: currentContent.title },
     { hid: 'twitter:description', name: 'twitter:description', content: currentContent.description },
-    { hid: 'twitter:image', name: 'twitter:image', content: currentContent.image ?? 'https://hackmd.io/_uploads/ByO3VfeP3.png' },
+    { hid: 'twitter:image', name: 'twitter:image', content: currentContent.image ?? 'https://hackmd.io/_uploads/SylCzI7Ja.png' },
     { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
     { hid: 'twitter:site', name: 'twitter:site', content: 'https://unick.how/' }
   ]

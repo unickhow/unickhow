@@ -32,6 +32,7 @@ const refinedSrc = computed(() => {
 <template>
   <figure>
     <img :src="refinedSrc" :alt="alt" :width="width" :height="height">
+    <figcaption v-if="alt" class="text-gray text-sm mt-4 break-all">{{ alt }}</figcaption>
   </figure>
 </template>
 

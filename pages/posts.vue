@@ -22,7 +22,7 @@ useHead({
     },
     {
       name: 'og:image',
-      content: 'https://hackmd.io/_uploads/ByO3VfeP3.png'
+      content: 'https://hackmd.io/_uploads/SylCzI7Ja.png'
     },
     {
       name: 'twitter:description',
@@ -30,7 +30,7 @@ useHead({
     },
     {
       name: 'twitter:image',
-      content: 'https://hackmd.io/_uploads/ByO3VfeP3.png'
+      content: 'https://hackmd.io/_uploads/SylCzI7Ja.png'
     }
   ]
 })

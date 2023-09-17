@@ -63,7 +63,7 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container p {
-  @apply my-4;
+  @apply my-12;
 }
 
 .blog-md-container figure[data-type="image"] {
