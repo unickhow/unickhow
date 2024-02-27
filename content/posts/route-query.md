@@ -22,7 +22,7 @@ tags:
 
 ## 探討
 
-在 SSR 的時代，網頁都是以目前的 url 重新向 server 取得頁面資訊，包含所有的 hash, query，也就沒有處理不處理的問題，但這樣的缺點就是整個頁面每次都要閃一下 rerender，於是才有了現今的 SPA，藉由虛擬路由改善渲染過程，並適時地加入友善的過場動畫，但相對要處理的事情就更多了，前端常常在面對的是「介面互動」的事件，例如 `onClick` `onScroll` 甚至於 framework 中常見的 lifecycle `onMounted` `onUnmounted` 等等，必要時才會處理到路由事件。做法百百種，也可以選擇把特定頁面 keep-alive，但考慮何時要 kill instace 就是另一到課題了。
+在 SSR 的時代，網頁都是以目前的 url 重新向 server 取得頁面資訊，包含所有的 hash, query，也就沒有處理不處理的問題，但這樣的缺點就是整個頁面每次都要閃一下 rerender，於是才有了現今的 SPA，藉由虛擬路由改善渲染過程，並適時地加入友善的過場動畫，但相對要處理的事情就更多了，前端常常在面對的是「介面互動」的事件，例如 `onClick` `onScroll` 甚至於 framework 中常見的 lifecycle `onMounted` `onUnmounted` 等等，必要時才會處理到路由事件。做法百百種，也可以選擇把特定頁面 keep-alive，但考慮何時要 kill instance 就是另一到課題了。
 
 上 🌰，在一個有 filter query 的 table list 頁面中
 
