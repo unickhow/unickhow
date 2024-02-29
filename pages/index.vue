@@ -11,10 +11,10 @@
             <p class="leading-loose">
               This is where I,
               <a class="font-bold !text-primary" href="https://github.com/unickhow" target="_blank">unickhow</a>,
-              present and share something interesting to me.<br>
-              There's no rocket science here 😆, so please don't take it seriously, hope you enjoy it.<br>
+              share things that catch my interest.<br>
+              There's no need for rocket science here! 😆, so please don't take it seriously, hope you enjoy it.<br>
               <br>
-              If you have any suggestion, feel free to contact me.
+              If you have any suggestion, feel free to reach out to me anytime.
             </p>
           </div>
 

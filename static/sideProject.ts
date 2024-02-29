@@ -30,6 +30,36 @@ export const sideProjects: SideProject[] = [
       '/projectScreens/jirassic-3.gif'
     ],
     shortcut: 'j'
+  },
+  {
+    name: 'Nestination',
+    plainName: 'Nestination',
+    icon: 'https://raw.githubusercontent.com/unickhow/nestination/main/images/icon.png',
+    link: 'https://marketplace.visualstudio.com/items?itemName=unickhow.nestination',
+    desc: 'VSCode extension for finding targets in nested content.',
+    cover: '',
+    color: '#5D5FEF',
+    screens: [
+      '',
+      'https://github.com/unickhow/nestination/assets/22793771/9bf991a6-71d4-47a0-b2aa-1a5c283b2675',
+      ''
+    ],
+    shortcut: 'n'
+  },
+  {
+    name: 'Space guardian',
+    plainName: 'Space guardian',
+    icon: 'https://raw.githubusercontent.com/unickhow/space-guardian/main/images/icon.png',
+    link: 'https://marketplace.visualstudio.com/items?itemName=unickhow.space-guardian',
+    desc: 'VSCode extension for managing spacing between Chinese and English.',
+    cover: '',
+    color: '#FF9E58',
+    screens: [
+      'https://github.com/unickhow/space-guardian/assets/22793771/6781c3c4-dfc0-4728-ac1e-44d29c4b783f',
+      '',
+      ''
+    ],
+    shortcut: 'g'
   // },
   // {
   //   name: 'know<wbr>me',

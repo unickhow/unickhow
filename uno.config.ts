@@ -27,8 +27,7 @@ export default defineConfig({
   },
   shortcuts: {
     'tc-content-text': 'text-dark dark:text-pale',
-    'tc-content-note': 'text-gray dark:text-gray',
-    'animation-glitch': 'animation-name-[glitch] animation-duration-5s animation-iteration-count-infinite',
+    'tc-content-note': 'text-gray dark:text-gray'
   },
   rules: [
     ['container', {
