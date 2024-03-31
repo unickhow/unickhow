@@ -1,7 +1,7 @@
 <template>
   <a
     v-bind="$attrs"
-    class="project-card-container flex justify-between items-start p-6 rounded-lg"
+    class="project-card-container block p-6 rounded-lg"
     :href="project.link"
     target="_blank"
     @mouseenter="handleMouseEnter"
@@ -16,7 +16,7 @@
       <h5 v-html="project.name" class="block sm:hidden text-3xl mb-4 font-bold text-shadow tracking-widest uppercase"></h5>
       <p class="text-base text-shadow">{{ project.desc }}</p>
     </div>
-    <div class="bg-cover bg-center w-10 h-10 flex-shrink-0" :style="{ backgroundImage: `url(${project.icon})` }" />
+    <div class="project-card-container__logo" :style="{ backgroundImage: `url(${project.icon})` }" />
   </a>
 
   <template v-if="isLargeScreen && hasLoaded">
@@ -95,22 +95,35 @@ onMounted(() => {
 <style scoped>
 .project-card-container {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-  @apply relative;
+  @apply relative overflow-hidden;
 }
 
-.project-card-container::before {
+.project-card-container::after {
   content: '';
-  @apply rounded-lg absolute top-0 left-0 w-full h-full opacity-0;
-  border: solid 2px v-bind('props.project.color');
-  z-index: 1;
-  transform: scaleX(1.1) scaleY(1.2);
-  pointer-events: none;
+  @apply absolute -bottom-20 -right-20 w-1/2 h-30 rounded-full opacity-[37%];
+  transition: opacity 0.3s ease-in-out, transform 1s ease-in-out;
+  background: v-bind('props.project.color');
+  filter: blur(70px);
+  z-index: -1;
+  will-change: opacity transform;
 }
 
-.project-card-container:hover::before {
-  opacity: 80%;
-  transform: scaleX(1) scaleY(1);
-  transition: all 0.1s ease-in-out;
-  will-change: transform, opacity;
+.project-card-container:hover::after {
+  transform: scaleX(2) scaleY(1.5);
+  opacity: 60%;
+}
+
+.project-card-container__logo {
+  @apply absolute bg-cover bg-center w-10 h-10 right-6 top-6;
+  transform: scale(3);
+  z-index: 1;
+  opacity: 10%;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  will-change: transform opacity;
+}
+
+.project-card-container:hover .project-card-container__logo {
+  transform: scale(2);
+  opacity: 37%;
 }
 </style>
