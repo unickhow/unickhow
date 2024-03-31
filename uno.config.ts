@@ -19,6 +19,7 @@ export default defineConfig({
       red: 'var(--c__red)',
       green: 'var(--c__green)',
       orange: 'var(--c__orange)',
+      purple: 'var(--c__purple)',
       'orange-lighter': 'var(--c__orange-lighter)',
       primary: 'var(--c__primary)',
       secondary: 'var(--c__secondary)',

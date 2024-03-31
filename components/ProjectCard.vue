@@ -1,7 +1,7 @@
 <template>
   <a
-    class="project-card-container flex justify-between items-start p-6 rounded-lg"
     v-bind="$attrs"
+    class="project-card-container flex justify-between items-start p-6 rounded-lg"
     :href="project.link"
     target="_blank"
     @mouseenter="handleMouseEnter"

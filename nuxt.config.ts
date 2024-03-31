@@ -90,7 +90,7 @@ export default defineNuxtConfig({
     preconnect: true,
     prefetch: true,
     families: {
-      'Roboto': true,
+      Ubuntu: true,
       'Fira Code': {
         wght: [100, 400, 700]
       },

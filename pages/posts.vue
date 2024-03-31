@@ -307,7 +307,7 @@ onUnmounted(() => {
               <div class="flex flex-col sm:flex-row sm:items-end gap-4">
                 <div class="mr-auto">
                   <h2 class="text-lg text-dark dark:text-pale">{{ item.post.title }}</h2>
-                  <p class="text-grey dark:text-pale opacity-70">{{ item.post.description }}</p>
+                  <p class="text-grey dark:text-pale opacity-70 text-sm">{{ item.post.description }}</p>
                 </div>
                 <span class="text-dark dark:text-pale text-sm">{{ formatDate(item.post.date) }}</span>
               </div>

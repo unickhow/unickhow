@@ -76,9 +76,7 @@ const ouOfBoxTextStyle = computed(() => {
       'halo': isDark,
       'on': isVisible
     }">
-    <div class="screen-overlay p-3" :style="{
-          color: mainColor
-        }">
+    <div class="screen-overlay p-3" :style="{ color: mainColor }">
       <div class="flex items-start mark-recording gap-1">
         <Icon name="mdi:record" class="text-xs flex-shrink-0" />
         <span class="text-[8px] font-press">REC {{ timestamp }}</span>
@@ -102,9 +100,7 @@ const ouOfBoxTextStyle = computed(() => {
   </div>
 </template>
 
-
 <style scoped>
-
 .monitor {
   --perspective: 600px;
   --opacity_glitch: .7;

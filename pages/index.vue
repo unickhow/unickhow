@@ -17,19 +17,6 @@
               If you have any suggestion, feel free to reach out to me anytime.
             </p>
           </div>
-
-          <div class="hashtags flex flex-wrap text-sm mt-12 rounded">
-            <a
-              v-for="item in hashtags"
-              :key="item.name"
-              :href="item.link"
-              class="hashtag py-2 mr-4 hover:opacity-100 transition-opacity opacity-0"
-              :class="{ 'pointer-events-none': !item.link }"
-              :style="item.style"
-              :target="item.link ? '_blank' : ''">
-              {{ item.name }}
-            </a>
-          </div>
         </div>
 
         <div class="side-projects flex flex-col gap-8 mb-4">
@@ -64,40 +51,6 @@ useHead({
   ]
 })
 
-type HashTag = {
-  name: string
-  style: string,
-  link: string
-}
-
-const hashtags: HashTag[] = [
-  {
-    name: '#major_front_end',
-    style: 'color: var(--c__grey)',
-    link: 'https://github.com/unickhow'
-  },
-  {
-    name: '#Vue_developer',
-    style: 'background: linear-gradient(45deg, #42b883, #6089f2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;',
-    link: 'https://vuejs.org/'
-  },
-  {
-    name: '#learning_nestjs',
-    style: 'color: #ea2845',
-    link: 'https://nestjs.com/'
-  },
-  {
-    name: '#working_on_ts',
-    style: 'color: #3178c6',
-    link: 'https://www.typescriptlang.org/'
-  },
-  {
-    name: '#vite_is_awesome',
-    style: 'background: linear-gradient(45deg, #4dc2ff, #bd35fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;',
-    link: 'https://vitejs.dev/'
-  }
-]
-
 onMounted(async () => {
   await nextTick()
   const tl = gsap.timeline({
@@ -108,7 +61,7 @@ onMounted(async () => {
       translateY: 0
     }
   })
-  const setValues = gsap.set('.hello-world, .main-content__body, .hashtag, .project-card', {
+  const setValues = gsap.set('.hello-world, .main-content__body, .project-card', {
     opacity: 0,
     translateY: 10
   })
@@ -117,9 +70,6 @@ onMounted(async () => {
     opacity: 1
   }).to('.main-content__body', {
     opacity: 1
-  }).to('.hashtag', {
-    opacity: .8,
-    stagger: .3
   }).to('.project-card', {
     opacity: 1,
     stagger: .3
@@ -132,6 +82,12 @@ onMounted(async () => {
 </script>
 
 <style>
+html:not(.dark) .hello-world {
+  background: -webkit-linear-gradient(right, var(--c__orange), var(--c__purple));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 html.dark .hello-world {
   animation: glitch 1s linear infinite 2s;
 }
