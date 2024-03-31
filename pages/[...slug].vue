@@ -40,6 +40,21 @@ onMounted(async () => {
     background: 'rgba(255, 255, 255, .1)',
     zIndex: 2147483647
   })
+  const script = document.createElement('script')
+  script.src = 'https://giscus.app/client.js'
+  script.setAttribute('data-repo', 'unickhow/unickhow')
+  script.setAttribute('data-repo-id', 'R_kgDOG1Du2A')
+  script.setAttribute('data-category', 'Announcements')
+  script.setAttribute('data-category-id', 'DIC_kwDOG1Du2M4Cdqt1')
+  script.setAttribute('data-mapping', 'pathname')
+  script.setAttribute('data-strict', '1')
+  script.setAttribute('data-reactions-enabled', '1')
+  script.setAttribute('data-emit-metadata', '0')
+  script.setAttribute('data-input-position', 'top')
+  script.setAttribute('data-theme', 'preferred_color_scheme')
+  script.setAttribute('data-lang', 'zh-TW')
+  script.setAttribute('crossorigin', 'anonymous')
+  document.head.appendChild(script)
 })
 onBeforeUnmount(() => {
   // remove lightense-backdrop
@@ -104,6 +119,8 @@ function handleTagClick (tag: string) {
           </NuxtLink>
         </div>
       </div>
+
+      <div class="giscus" />
     </article>
   </div>
 </template>
