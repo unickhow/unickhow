@@ -6,7 +6,7 @@
           <BrandExhibition />
         </div>
         <div class="main-content mb-20">
-          <h1 class="hello-world text-xl mb-8 tc-content-text font-fira dark:text-xs dark:font-press dark:text-matrix dark:animation-glitch opacity-0">() => 'Hello, world.'</h1>
+          <h1 class="hello-world">() => 'Hello, world.'</h1>
           <div class="main-content__body opacity-0">
             <p class="leading-loose">
               This is where I,
@@ -87,8 +87,22 @@ html:not(.dark) .hello-world {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: textShine 5s infinite linear;
 }
 html.dark .hello-world {
   animation: glitch 1s linear infinite 2s;
+}
+
+.hello-world {
+  @apply text-3xl mb-8 tc-content-text font-fira dark:text-xl dark:font-press dark:text-matrix dark:animation-glitch opacity-0;
+}
+
+@keyframes textShine {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
 }
 </style>
