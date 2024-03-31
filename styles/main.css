@@ -17,6 +17,7 @@ html, body {
 }
 
 html {
+  background: var(--c__white);
   transition: background .3s ease-in-out;
 }
 

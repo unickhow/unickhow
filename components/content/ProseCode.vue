@@ -39,7 +39,7 @@ const langExt = computed(() => {
 </script>
 
 <template>
-  <div class="code-wrapper my-6 rounded-md overflow-hidden">
+  <div class="code-wrapper my-6 rounded-md overflow-hidden shadow-lg border-solid border-1 border-grey-light">
     <div class="code-wrapper__filename relative px-3 bg-[#e9e9e9] flex items-center justify-between gap-2">
       <div class="window-controls flex items-center gap-2 mr-2">
         <div class="win-btn-close w-3 h-3 rounded-full bg-[#ff605c]"></div>

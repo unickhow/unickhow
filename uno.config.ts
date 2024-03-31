@@ -15,6 +15,8 @@ export default defineConfig({
       dark: 'var(--c__dark)',
       gray: 'var(--c__grey)',
       grey: 'var(--c__grey)',
+      'gray-light': 'var(--c__grey-lighter)',
+      'grey-light': 'var(--c__grey-lighter)',
       blue: 'var(--c__blue)',
       red: 'var(--c__red)',
       green: 'var(--c__green)',
