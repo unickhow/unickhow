@@ -94,7 +94,7 @@ html.dark .hello-world {
 }
 
 .hello-world {
-  @apply text-3xl mb-8 tc-content-text font-fira dark:text-xl dark:font-press dark:text-matrix dark:animation-glitch opacity-0;
+  @apply text-2xl mb-8 tc-content-text font-fira dark:text-lg dark:font-press dark:text-matrix dark:animation-glitch opacity-0;
 }
 
 @keyframes textShine {

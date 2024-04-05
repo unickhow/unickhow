@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useFavicon } from '@vueuse/core'
-
-const icon = useFavicon()
-icon.value = 'favicon.gif'
 </script>
 
 <template>

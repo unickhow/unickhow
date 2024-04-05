@@ -56,8 +56,8 @@ export default defineNuxtConfig({
         },
         {
           rel: 'icon',
-          type: 'image/webp',
-          href: '/favicon.webp'
+          type: 'image/png',
+          href: '/favicon.png'
         }
       ],
       meta: [
