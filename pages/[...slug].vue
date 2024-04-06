@@ -30,7 +30,7 @@ const [prev, next] = await queryContent()
 
 onMounted(async () => {
   await nextTick()
-  const images = document.querySelectorAll('img')
+  const images = document.querySelectorAll('.blog-md-container img')
   Lightense(images, {
     time: 300,
     padding: 40,
