@@ -26,7 +26,7 @@ tags:
 
 ```css
 element {
-	word-break: keep-all;
+  word-break: keep-all;
 }
 ```
 

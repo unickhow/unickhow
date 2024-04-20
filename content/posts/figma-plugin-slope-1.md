@@ -42,7 +42,7 @@ tags:
 
 最後一步 Figma 會自動產生開發環境所需的檔案，把專案存在本機電腦後，在專案內安裝相應套件後即可開始
 
-```jsx
+```
 npm install --save-dev @figma/plugin-typings
 ```
 
@@ -50,7 +50,7 @@ npm install --save-dev @figma/plugin-typings
 
 `ui.html` 為介面呈現的主要入口，而邏輯部分則是寫在 `code.ts` (記住不是 .js)，開發時記得先在 VS Code 執行 watch server command `⌘` + `⇧` + `B`
 
-```jsx
+```
 tsc: watch - tsconfig.json
 ```
 
@@ -160,7 +160,7 @@ export default defineConfig({
 2. format 不能手動輸入，採限定選項的 select<br>
 → 各家的格式定義不一，光這次採用的 [dayjs](https://day.js.org/) 就跟 [v-calendar](https://vcalendar.io/) 有些微出入了，如果再考慮用戶從其他 library (e.g. momentjs) 習慣格式搬過來的話，要處理太多可能性的轉換
 
-```jsx
+```
 YYYY-MM-DD
 MM-DD-YYYY
 MM/DD/YYYY

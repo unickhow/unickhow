@@ -27,19 +27,15 @@ In the past, web pages would fetch page information, including all the hash and 
 
 Let's take an example of a table list page with filter queries.
 
-```
 1. click page 3 => @click="fetchList({ ..., page: 3 })"
 2. check filter: rate = 4 => @click="fetchList({ ..., rate: 4 })"
 3. click page: 2 => @click="fetchList({ ..., page: 2 })"
-```
 
 Based on the mentioned operations, the expected history should be as follows:
 
-```
-1. https://shop.com/products?page=3
-2. https://shop.com/products?page=3&rate=4
-3. https://shop.com/products?page=2&rate=4
-```
+1. `https://shop.com/products?page=3`
+2. `https://shop.com/products?page=3&rate=4`
+3. `https://shop.com/products?page=2&rate=4`
 
 When I click on the previous page in step three, the page should display the content with `?page=3&rate=4`. However, since this change is initiated through routing, it doesn't trigger the click event. The user sees that the URL has gone back to the previous state, but the page remains the same. Only when the user refreshes the page at this point (assuming the front-end considers landing with query), they will see the content matching the URL. Similarly, if the user goes back to step one using the previous page or proceeds to step three using the next page, they will encounter the same issue.
 
@@ -57,49 +53,48 @@ Since it's a routing change, I redesigned all actions to start with routing. The
 ```vue
 // before
 <template>
-	...
-	<button @click="fetchList({ ..., page: 3 })">3</button>
-	...
+  <!-- ... -->
+  <button @click="fetchList({ ..., page: 3 })">3</button>
+  <!-- ... -->
 </tempalte>
 
 <script setup>
 function fetchList (payload) {
-	return fetch('/list', payload)
+  return fetch('/list', payload)
 }
 </script>
 ```
 
 ```vue {4,17-27}
-// after
 <template>
-	...
-	<button @click="setQuery({ page: 3 })">3</button>
-	...
+  <!-- ... -->
+  <button @click="setQuery({ page: 3 })">3</button>
+  <!-- ... -->
 </tempalte>
 
 <script setup>
 function fetchList (payload) {
-	return fetch('/list', payload)
+  return fetch('/list', payload)
 }
 
 function setQuery (payload) {
-	// update url
+  // update url
 }
 
 const unwatch = watch(
-	() => route.query,
-	(val) => {
-		//  整理 api payload
-		const payload = url.query
-		fetchList(payload)
-	},
-	{
-		immediately: true // landing 時也要觸發
-	}
+  () => route.query,
+  (val) => {
+    //  整理 api payload
+    const payload = url.query
+    fetchList(payload)
+  },
+  {
+    immediately: true // landing 時也要觸發
+  }
 )
 
 onBeforeUnmount(() => {
-	unwatch()
+  unwatch()
 })
 </script>
 ```
@@ -168,7 +163,7 @@ here's how to use it in SFC
 import { useRouteQuery } from '@/composables/routeQuery'
 
 function fetchList (payload) {
-	return fetch('/list', payload)
+  return fetch('/list', payload)
 }
 
 const { setQuery, getQuery } = useRouteQuery(fetchData, { immediate: true })

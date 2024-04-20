@@ -30,23 +30,23 @@ import axios from 'axios'
 
 const cancelToken = ref(null)
 const handleFetch = () => {
-	// 每次請求前，如果有存在 token 就做執行取消，所以第一次不會有影響
-	if (cancelToken) {
-		cancelToken.cancel()
-	}
-	// 將此次的請求標記並存在 cancelToken 中
-	cancelToken.value = axios.CancelToken.source()
-	return http({
-		method: 'get',
-		url: '/admin/orders',
-		params: {
-			limit: 500,
-			page: 1
-		}
-	}, {
-		// 標記丟進 axios，後續在取消時才有對應的請求可以中止
-		cancelToken: cancelToken.value.token
-	})
+  // 每次請求前，如果有存在 token 就做執行取消，所以第一次不會有影響
+  if (cancelToken) {
+    cancelToken.cancel()
+  }
+  // 將此次的請求標記並存在 cancelToken 中
+  cancelToken.value = axios.CancelToken.source()
+  return http({
+    method: 'get',
+    url: '/admin/orders',
+    params: {
+      limit: 500,
+      page: 1
+    }
+  }, {
+    // 標記丟進 axios，後續在取消時才有對應的請求可以中止
+    cancelToken: cancelToken.value.token
+  })
 }
 ```
 
@@ -57,23 +57,23 @@ import axios from 'axios'
 
 const controller = ref(null)
 const handleFetch = () => {
-	// 每次請求前，如果有存在 token 就做執行取消，所以第一次不會有影響
-	if (controller) {
-		controller.abort()
-	}
-	// 將此次的請求標記並存在 cancelToken 中
-	controller.value = new AbortController()
-	return http({
-		method: 'get',
-		url: '/admin/orders',
-		params: {
-			limit: 500,
-			page: 1
-		}
-	}, {
-		// 標記丟進 axios，後續在取消時才有對應的請求可以中止
-		signal: controller.value.signal
-	})
+  // 每次請求前，如果有存在 token 就做執行取消，所以第一次不會有影響
+  if (controller) {
+    controller.abort()  
+  }
+  // 將此次的請求標記並存在 cancelToken 中
+  controller.value = new AbortController()
+  return http({
+    method: 'get',
+    url: '/admin/orders',
+    params: {
+      limit: 500,
+      page: 1
+    }
+  }, {
+    // 標記丟進 axios，後續在取消時才有對應的請求可以中止
+    signal: controller.value.signal
+  })
 }
 ```
 
@@ -94,19 +94,19 @@ const http = axios.create({ ... })
 
 let controller = null
 http.interceptors.request.use(
-	(config) => {
-		if (controller) {
-			controller.abort()
-		}
-		controller = new AbortController()
-		config.signal = controller.signal
+  (config) => {
+    if (controller) {
+      controller.abort()
+    }
+    controller = new AbortController()
+    config.signal = controller.signal
 
-		return config
-	},
-	(error) => {
-		// handle the request error
-		return Promise.reject(error);
-	}
+    return config
+  },
+  (error) => {
+    // handle the request error
+    return Promise.reject(error);
+  }
 )
 ```
 
@@ -157,8 +157,8 @@ http.interceptors.request.use(
 不過後續要考量的東西也不少，目前還不會遇到就先表列記錄一下：
 
 1. Map 記憶體極限？在規模較大的專案中，是否會遇到請求紀錄肥到拖慢效能的程度？
-2. 開放參數調整讓想保持重複請求的特例可以使用
+2. 開放參數調整讓想保持重複請求的特例可以使用, e.g.,
     ```jsx
-    e.g. options: { keepRequest: true }
+    options: { keepRequest: true }
     ```
     例如有些 api 可能會依據 query 來做區別，但在前端是需要把不同 query 都一併呈現在同一個畫面上，可能就會需要保持重複請求，或者也可以把 query params 視情況加入到 map 的辨識名稱上，達到同樣的效果
