@@ -26,19 +26,15 @@ tags:
 
 上 🌰，在一個有 filter query 的 table list 頁面中
 
-```
 1. 點選 page 3 => @click="fetchList({ ..., page: 3 })"           // 請求第 3 頁資訊
 2. 點選 filter: rate = 4 => @click="fetchList({ ..., rate: 4 })" // 請求評價為 4 的資訊
 3. 點選 page: 2 => @click="fetchList({ ..., page: 2 })"          // 請求第 2 頁資訊
-```
 
 經過上述操作，歷史紀錄預期應為：
 
-```
-1. https://shop.com/products?page=3
-2. https://shop.com/products?page=3&rate=4
-3. https://shop.com/products?page=2&rate=4
-```
+1. `https://shop.com/products?page=3`
+2. `https://shop.com/products?page=3&rate=4`
+3. `https://shop.com/products?page=2&rate=4`
 
 當我在第三步點選上一頁時，畫面中應幫我帶回 `?page=3&rate=4` 的內容，卻因為這是以路由發起的變化，完全不會觸發到 click event，也就是使用者會看到 url 已經回到過去了，但畫面卻依舊冷靜，除非使用者在這時重整頁面（假設前端有考慮到 landing with query），才會看到與 url 匹配的內容，但同樣地，繼續使用上一頁回到步驟一，或者下一頁前進到步驟三，也會發生一樣的狀況
 
@@ -54,51 +50,51 @@ tags:
 既然是路由發起的變化，那就把所有行為都以路由為出發點重新設計，亦即所有 `fetch` 都不再直接由 `onClick` 觸發，改由監聽 url 變化做出相對應的回饋，而原本的 `onClick` 則是去驅動 url 變化，以 vue 為例（僅快速帶出理念，細節請忽略）
 
 ```vue
-// before
+<!-- before -->
 <template>
-	...
-	<button @click="fetchList({ ..., page: 3 })">3</button>
-	...
+  <!-- ... -->
+  <button @click="fetchList({ ..., page: 3 })">3</button>
+  <!-- ... -->
 </tempalte>
 
 <script setup>
 function fetchList (payload) {
-	return fetch('/list', payload)
+  return fetch('/list', payload)
 }
 </script>
 ```
 
 ```vue {4,17-27}
-// after
+<!-- after -->
 <template>
-	...
+  <!-- ... -->
 	<button @click="setQuery({ page: 3 })">3</button>
-	...
+  <!-- ... -->
 </tempalte>
 
 <script setup>
 function fetchList (payload) {
-	return fetch('/list', payload)
+  return fetch('/list', payload)
 }
 
 function setQuery (payload) {
-	// update url
+  // update url
 }
 
 const unwatch = watch(
-	() => route.query,
-	(val) => {
-		//  整理 api payload
-		const payload = url.query
-		fetchList(payload)
-	},
-	{
-		immediately: true // landing 時也要觸發
-	}
+  () => route.query,
+  (val) => {
+    //  整理 api payload
+    const payload = url.query
+    fetchList(payload)
+  },
+  {
+    immediately: true // landing 時也要觸發
+  }
 )
 
 onBeforeUnmount(() => {
-	unwatch()
+  unwatch()
 })
 </script>
 ```
@@ -167,7 +163,7 @@ export function useRouteQuery(cb, options = {}) {
 import { useRouteQuery } from '@/composables/routeQuery'
 
 function fetchList (payload) {
-	return fetch('/list', payload)
+  return fetch('/list', payload)
 }
 
 const { setQuery, getQuery } = useRouteQuery(fetchData, { immediate: true })

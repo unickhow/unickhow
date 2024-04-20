@@ -63,13 +63,13 @@ delimiters: ['{%', '%}']
 
 ```html
 <html translate="no" class="notranslate">
-	<head>
-		<meta name="google" content="notranslate">
-		...
-	</head>
-	<body>
-		...
-	</body>
+  <head>
+    <meta name="google" content="notranslate">
+    <!-- ... -->
+  </head>
+  <body>
+  <!-- ... -->
+  </body>
 </html>
 ```
 

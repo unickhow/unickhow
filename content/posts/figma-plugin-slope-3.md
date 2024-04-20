@@ -37,18 +37,18 @@ dist
 
 在改版前可以看到所有的 css 都被寫在 html 中，主要是因為 manifest 中並沒有任何關於 css 的路徑參照，如果用相對路徑在 html 中引入的話，在部署到 figma 上後可能又會不一樣，所以這邊選擇將 css 全部壓進 html，配上前端開發必備良藥 [unocss](https://github.com/unocss/unocss)，而 code.ts 則輸出成 code.js
 
-```tsx {4,11}
+```ts
 // vite.config.ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { viteSingleFile } from 'vite-plugin-singlefile'
+import { viteSingleFile } from 'vite-plugin-singlefile' // [!code focus]
 import UnoCSS from 'unocss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    viteSingleFile(),
+    viteSingleFile(), // [!code focus]
     UnoCSS()
   ],
   build: {
@@ -100,7 +100,7 @@ export default defineConfig({
 1. format 不能手動輸入，採限定選項的 select<br>
 → 各家的格式定義不一，光這次採用的 [dayjs](https://day.js.org/) 就跟 [v-calendar](https://vcalendar.io/) 有些微出入了，如果再考慮用戶從其他 library (e.g. momentjs) 習慣格式搬過來的話，要處理太多可能性的轉換
 
-```jsx
+```
 YYYY-MM-DD
 MM-DD-YYYY
 MM/DD/YYYY

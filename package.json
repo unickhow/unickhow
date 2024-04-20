@@ -13,15 +13,15 @@
     "email": "unick.zhow@gmail.com"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.7.0",
+    "@nuxt/content": "^2.12.1",
     "@nuxt/devtools": "latest",
     "@nuxtjs/google-fonts": "^3.0.1",
     "@types/node": "^18",
     "@types/scrollmagic": "^2.0.3",
-    "@unocss/nuxt": "^0.53.1",
+    "@unocss/nuxt": "^0.53.6",
     "@vueuse/core": "^10.2.0",
     "@vueuse/nuxt": "^10.2.0",
-    "nuxt": "^3.5.2",
+    "nuxt": "^3.11.2",
     "nuxt-icon": "^0.4.1"
   },
   "dependencies": {

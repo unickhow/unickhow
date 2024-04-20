@@ -103,9 +103,8 @@ export default defineNuxtConfig({
   content: {
     // documentDriven: true,
     highlight: {
-      // TODO: fix line highlighting issue
-      theme: 'one-dark-pro'
-    }
+      theme: 'one-dark-pro',
+    },
   },
   runtimeConfig: {
     public: {

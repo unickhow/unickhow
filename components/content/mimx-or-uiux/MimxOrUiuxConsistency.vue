@@ -1,5 +1,5 @@
 <template>
-  <div class="consistency my-12 flex flex-col gap-8 items-center justify-center !text-black md:-mx-16">
+  <div class="consistency my-12 flex flex-col gap-8 items-center justify-center !text-black lg:-mx-16">
     <label class="tc-content-text">example 1: delete button in many ways</label>
     <div class="demo-delete-buttons flex gap-8 items-center justify-center">
       <button><Icon name="iconamoon:sign-times" class="text-[#8c8c8c] hover:text-[#FF0000]" /></button>

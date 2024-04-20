@@ -28,7 +28,6 @@ $0.click()
 
 ```vue
 <template>
-  // some fields …
   <button :disabled=”!isValid” @click=”handleSubmit”>Submit</button>
 </template>
 
@@ -43,19 +42,18 @@ function handleSubmit () {
 
 這種寫法只要稍微懂前端的人，都可以照開頭的方式越過限制，直接觸發 handleSubmit，所以最好是在執行 function 前把 disabled 的條件再驗證一次
 
-```vue {5,12}
+```vue
 <template>
-  // some fields …
   <button :disabled=”!isValid” @click=”handleSubmit”>Submit</button>
-  <!—- or -—>
-  <button :disabled=”!isValid” @click=”isValid && handleSubmit”>Submit</button>
+  <!-- or -->
+  <button :disabled=”!isValid” @click=”isValid && handleSubmit”>Submit</button> // [!code focus]
 </template>
 
 <script setup>
 const isValid = ref(false)
 
 function handleSubmit () {
-  if (!isValid.value) return
+  if (!isValid.value) return // [!code focus]
   // do something like ajax request …
 }
 </script>
@@ -78,11 +76,11 @@ function handleSubmit () {
 
 部分狀況也許會遇到像上圖，Create 與 Update 是復用同一個 component，我的做法就會偏向如下
 
-```vue {4,18}
+```vue
 <template>
   <input :value=”userEmail” @input=”handleEmailUpdate”>
-  <!—- or -—>
-  <input :value=”userEmail” @input=”isAllowUpdate && handleEmailUpdate”>
+  <!-- or -->
+  <input :value=”userEmail” @input=”isAllowUpdate && handleEmailUpdate”> // [!code focus]
 </template>
 
 <script setup>
@@ -96,7 +94,7 @@ function getUserInfo () {
 }
 
 function handleEmailUpdate (evt) {
-  if (!isAllowUpdate.value) return
+  if (!isAllowUpdate.value) return // [!code focus]
   userEmail.value = evt.target.value
 }
 </script>

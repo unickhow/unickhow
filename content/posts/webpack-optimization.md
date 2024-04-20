@@ -26,10 +26,10 @@ tags:
 
 翻了文件發現，原來 vue-cli 已經有內建 build report 分析，也就不用另外安裝 [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
 
-```tsx {3}
+```tsx
 "scripts": {
   "serve": "vue-cli-service serve",
-  "build": "vue-cli-service build --report",
+  "build": "vue-cli-service build --report", // [!code focus]
   "lint": "vue-cli-service lint"
 },
 ```

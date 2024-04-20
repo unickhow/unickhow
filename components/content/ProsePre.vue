@@ -39,7 +39,7 @@ const langExt = computed(() => {
 </script>
 
 <template>
-  <div class="code-wrapper my-6 rounded-md overflow-hidden shadow-lg border-solid border-1 border-grey-light">
+  <div class="code-wrapper my-6 rounded-md overflow-hidden shadow-lg">
     <div class="code-wrapper__filename relative px-3 bg-[#e9e9e9] flex items-center justify-between gap-2">
       <div class="window-controls flex items-center gap-2 mr-2">
         <div class="win-btn-close w-3 h-3 rounded-full bg-[#ff605c]"></div>
@@ -68,47 +68,47 @@ const langExt = computed(() => {
         <Icon v-show="!sourceCopied" name="mdi:content-copy" class="copy-btn__copy opacity-0 transition-opacity" />
         <Icon v-show="sourceCopied" name="mdi:progress-check" class="copy-btn__copied text-primary" />
       </button>
-      <slot />
+      <pre class="code-wrapper__shiki">
+        <slot />
+      </pre>
     </div>
   </div>
 </template>
 
-<style>
-pre {
-  @apply m-0;
+<style scoped>
+pre.code-wrapper__shiki {
+  @apply p-0 m-0 flex;
 }
 
-pre code {
+:deep(code) {
   font-family: 'Fira Code', monospace;
-  counter-reset: step;
-  counter-increment: step 0;
-  @apply py-2 px-1 text-xs leading-relaxed overflow-x-auto block bg-dark dark:bg-black;
+  background-color: #373737;
+  @apply p-2 text-xs leading-relaxed overflow-x-auto block w-full text-white;
 }
 
-pre code .line {
+:deep(code .line) {
   display: block;
-  min-height: 1rem;
 }
 
-pre code .line::before {
-  content: counter(step);
-  counter-increment: step;
-  width: 1rem;
-  margin-right: 1.5rem;
-  display: inline-block;
-  text-align: right;
-  @apply text-gray dark:text-white;
-}
-
-pre code .line.highlight {
+:deep(code .line.highlight) {
   background: #7f7f7f80;
 }
 
-.code-wrapper__filename:hover .copy-btn--filename .copy-btn__copy {
+:deep(.code-wrapper__filename:hover .copy-btn--filename .copy-btn__copy) {
   opacity: 1;
 }
 
-.code-wrapper__snippet:hover .copy-btn--snippet .copy-btn__copy {
+:deep(.code-wrapper__snippet:hover .copy-btn--snippet .copy-btn__copy) {
   opacity: 1;
+}
+</style>
+
+<style>
+.shiki.has-focused .line:not(.focused) {
+  filter: blur(2px);
+  transition: filter 0.2s;
+}
+.shiki.has-focused:hover .line:not(.focused) {
+  filter: blur(0);
 }
 </style>

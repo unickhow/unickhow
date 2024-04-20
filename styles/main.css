@@ -8,8 +8,8 @@ html, body {
 }
 
 ::selection {
-  color: var(--c__white);
-  background: var(--c__orange);
+  /* color: var(--c__white); */
+  /* background: var(--c__orange); */
 }
 
 * {
