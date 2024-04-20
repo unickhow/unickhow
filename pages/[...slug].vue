@@ -3,7 +3,7 @@ import { formatDateTime } from '~/utils/helper'
 import Lightense from 'lightense-images'
 
 const route = useRoute()
-const currentContent = await queryContent('posts', route.params.slug[1]).findOne()
+const currentContent = await queryContent('thoughts', route.params.slug[1]).findOne()
 
 // TODO: override from content frontmatter
 useHead({
@@ -26,7 +26,7 @@ const [prev, next] = await queryContent()
   .only(['_path', 'title'])
   .sort({ date: 1 })
   .where({ hidden: false })
-  .findSurround(`/posts/${route.params.slug[1]}`)
+  .findSurround(`/thoughts/${route.params.slug[1]}`)
 
 onMounted(async () => {
   await nextTick()
@@ -50,7 +50,7 @@ onBeforeUnmount(() => {
 const router = useRouter()
 function handleTagClick (tag: string) {
   router.push({
-    path: '/posts',
+    path: '/thoughts',
     query: { tags: tag }
   })
 }
@@ -90,7 +90,7 @@ function handleTagClick (tag: string) {
           </NuxtLink>
         </div>
         <NuxtLink
-          to="/posts"
+          to="/thoughts"
           class="w-1/3 surround-navigator__back text-dark dark:text-pale text-center">
           <span class="text-sm font-bold">cd ..</span>
         </NuxtLink>

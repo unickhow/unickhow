@@ -9,11 +9,11 @@
           :class="{
             '!text-primary': isActivePath(link),
           }"
-          class="tc-content-text hover:text-primary transition-color flex items-center gap-1">
+          class="tc-content-text hover:text-primary transition-color flex items-center gap-1 p-2">
           <ClientOnly>
             <Icon :name="link.icon" />
           </ClientOnly>
-          <span class="hidden sm:block">{{ link.name }}</span>
+          <span class="hidden sm:block text-sm">{{ link.name }}</span>
         </NuxtLink>
       </div>
       <ThemeToggler class="ml-auto" />
@@ -49,14 +49,20 @@ const navLinks = computed(() => [
     children: []
   },
   {
-    name: 'Posts',
-    path: '/posts',
-    icon: 'tabler:books',
+    name: 'Thoughts',
+    path: '/thoughts',
+    icon: 'mdi:head-lightbulb',
     children: ['slug']
   },
+  {
+    name: 'Attempts',
+    path: '/attempts',
+    icon: 'mdi:nintendo-game-boy',
+    children: []
+  }
 ])
 function isActivePath (link: typeof navLinks.value[0]) {
-  return router.currentRoute.value.path === link.path || link.children.includes(router.currentRoute.value.name as string)
+  return router.currentRoute.value.path === link.path || link.children?.includes(router.currentRoute.value.name as string)
 }
 
 const navContainer = ref<HTMLElement | null>(null)

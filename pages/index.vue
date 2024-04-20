@@ -1,35 +1,20 @@
 <template>
   <div class="container mx-auto max-w-[1024px] px-4">
-    <div class="row flex flex-col max-w-[500px] mx-auto">
-      <div class="py-6 main-content tc-content-text">
-        <div class="kv-container aspect-square relative max-w-[200px] mx-auto mb-12">
-          <BrandExhibition />
-        </div>
-        <div class="main-content mb-20">
-          <h1 class="hello-world">() => 'Hello, world.'</h1>
-          <div class="main-content__body opacity-0">
-            <p class="leading-loose">
-              This is where I,
-              <a class="font-bold !text-primary" href="https://github.com/unickhow" target="_blank">unickhow</a>,
-              share things that catch my interest.<br>
-              There's no need for rocket science here! 😆, so please don't take it seriously, hope you enjoy it.<br>
-              <br>
-              If you have any suggestion, feel free to reach out to me anytime.
-            </p>
-          </div>
-        </div>
-
-        <div class="side-projects flex flex-col gap-8 mb-4">
-          <div
-            v-for="project in sideProjects"
-            :key="project.name"
-            class="w-full">
-            <ClientOnly>
-              <ProjectCard
-                :project="project"
-                class="project-card opacity-0" />
-            </ClientOnly>
-          </div>
+    <div class="max-w-[600px] mx-auto sm:py-20 main-content tc-content-text flex gap-4 items-center flex-col sm:flex-row">
+      <div class="kv-container aspect-square relative w-full max-w-[200px] mx-auto mb-12">
+        <BrandExhibition />
+      </div>
+      <div class="main-content mb-20 px-8 sm:px-4">
+        <h1 class="hello-world">() => 'Hello, world.'</h1>
+        <div class="main-content__body opacity-0">
+          <p class="leading-loose">
+            This is where I,
+            <a class="font-bold !text-primary" href="https://github.com/unickhow" target="_blank">unickhow</a>,
+            share things that catch my interest.<br>
+            There's no need for rocket science here! 😆, so please don't take it seriously, hope you enjoy it.<br>
+            <br>
+            If you have any suggestion, feel free to reach out to me anytime.
+          </p>
         </div>
       </div>
     </div>
@@ -37,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import { sideProjects } from '../static/sideProject'
 import gsap from 'gsap'
 
 useHead({
@@ -61,7 +45,7 @@ onMounted(async () => {
       translateY: 0
     }
   })
-  const setValues = gsap.set('.hello-world, .main-content__body, .project-card', {
+  const setValues = gsap.set('.hello-world, .main-content__body', {
     opacity: 0,
     translateY: 10
   })
@@ -70,9 +54,6 @@ onMounted(async () => {
     opacity: 1
   }).to('.main-content__body', {
     opacity: 1
-  }).to('.project-card', {
-    opacity: 1,
-    stagger: .3
   })
 
   onBeforeUnmount(() => {
