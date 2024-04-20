@@ -21,8 +21,8 @@ export default defineConfig({
       red: 'var(--c__red)',
       green: 'var(--c__green)',
       orange: 'var(--c__orange)',
-      purple: 'var(--c__purple)',
       'orange-lighter': 'var(--c__orange-lighter)',
+      purple: 'var(--c__purple)',
       primary: 'var(--c__primary)',
       secondary: 'var(--c__secondary)',
       matrix: '#00ff41'
