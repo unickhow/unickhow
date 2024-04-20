@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 import { formatDate } from '~/utils/helper'
-import type { FrontMatter, PostsCalendar } from '~/types'
+import type { FrontMatter, ThoughtsCalendar } from '~/types'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -10,15 +10,15 @@ if (!import.meta.env.SSR) {
 }
 
 useHead({
-  title: 'Posts',
+  title: 'Thoughts',
   meta: [
     {
       name: 'description',
-      content: 'All posts'
+      content: 'All thoughts'
     },
     {
       name: 'og:description',
-      content: 'All posts'
+      content: 'All thoughts'
     },
     {
       name: 'og:image',
@@ -26,7 +26,7 @@ useHead({
     },
     {
       name: 'twitter:description',
-      content: 'All posts'
+      content: 'All thoughts'
     },
     {
       name: 'twitter:image',
@@ -35,16 +35,16 @@ useHead({
   ]
 })
 
-const contentQuery = await queryContent('posts')
+const contentQuery = await queryContent('thoughts')
   .where({ hidden: { equals: false } })
   .find()
 
-function organizingPosts (posts: FrontMatter[]): PostsCalendar[] {
+function organizingThoughts (thoughts: FrontMatter[]): ThoughtsCalendar[] {
   const result = [] as any[]
 
-  for (const post of posts) {
-    const year = post.date.split('-')[0]
-    const date = new Date(post.date)
+  for (const thought of thoughts) {
+    const year = thought.date.split('-')[0]
+    const date = new Date(thought.date)
     const monthName = date.toLocaleString('en-US', { month: 'short' })
     const dayName = date.toLocaleString('en-US', { weekday: 'long' })
 
@@ -61,9 +61,9 @@ function organizingPosts (posts: FrontMatter[]): PostsCalendar[] {
     }
 
     monthItem.dates.push({
-      date: post.date,
+      date: thought.date,
       day: dayName,
-      post
+      thought
     })
   }
 
@@ -73,8 +73,8 @@ function organizingPosts (posts: FrontMatter[]): PostsCalendar[] {
 const router = useRouter()
 const allTags = computed(() => {
   const result = {} as any
-  for (const post of posts.value) {
-    for (const tag of post.tags) {
+  for (const thought of thoughts.value) {
+    for (const tag of thought.tags) {
       if (!result[tag]) {
         result[tag] = 0
       }
@@ -116,10 +116,10 @@ watch(() => router.currentRoute.value.query.tags, async (tags) => {
   immediate: true
 })
 
-const posts = computed(() => contentQuery.filter((post: any) => {
-    return /^\/posts\//.test(post._path)
-  }).map((post) => {
-    const { title, description, date, tags, schedule, hidden, _path: path } = post
+const thoughts = computed(() => contentQuery.filter((thought: any) => {
+    return /^\/thoughts\//.test(thought._path)
+  }).map((thought) => {
+    const { title, description, date, tags, schedule, hidden, _path: path } = thought
 
     return {
       path,
@@ -130,35 +130,35 @@ const posts = computed(() => contentQuery.filter((post: any) => {
       schedule,
       hidden
     } as FrontMatter
-  }).filter(post => {
-    return (new Date(post.schedule) < new Date())
+  }).filter(thought => {
+    return (new Date(thought.schedule) < new Date())
   }).sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
 )
 
-const filteredPosts = computed(() => {
+const filteredThoughts = computed(() => {
   if (filteredTags.value.length) {
-    return posts.value.filter((post) => {
-      return filteredTags.value.some((tag) => post.tags.includes(tag))
+    return thoughts.value.filter((thought) => {
+      return filteredTags.value.some((tag) => thought.tags.includes(tag))
     })
   } else {
-    return posts.value
+    return thoughts.value
   }
 })
 
-const postsInOrder = computed(() => organizingPosts(filteredPosts.value))
+const thoughtsInOrder = computed(() => organizingThoughts(filteredThoughts.value))
 
 const isFilterVisible = ref(true)
 const filterPanelHeight = ref('')
 
 const tweens = ref<any[]>([])
 const { isDark } = useTheme()
-function setupPostTweens () {
+function setupThoughtTweens () {
   if (import.meta.env.SSR) return
-  const years = gsap.utils.toArray('.posts__year')
+  const years = gsap.utils.toArray('.thoughts__year')
   years.forEach((year: any) => {
-    const yearText = year.querySelector('.posts__year__text')
+    const yearText = year.querySelector('.thoughts__year__text')
     const yearTextTween = gsap.fromTo(yearText, {
       opacity: 0,
       x: -100
@@ -174,9 +174,9 @@ function setupPostTweens () {
       }
     })
     tweens.value.push(yearTextTween)
-    const months = gsap.utils.toArray(year.querySelectorAll('.posts__year__month'))
+    const months = gsap.utils.toArray(year.querySelectorAll('.thoughts__year__month'))
     months.forEach((month: any) => {
-      const monthText = month.querySelector('.posts__year__month__text')
+      const monthText = month.querySelector('.thoughts__year__month__text')
       const monthTextTween = gsap.fromTo(monthText, {
         opacity: 0,
         y: -50
@@ -192,8 +192,8 @@ function setupPostTweens () {
         }
       })
       tweens.value.push(monthTextTween)
-      const posts = gsap.utils.toArray(month.querySelectorAll('.posts__year__month__post'))
-      const postsTween = gsap.fromTo(posts, {
+      const thoughts = gsap.utils.toArray(month.querySelectorAll('.thoughts__year__month__thought'))
+      const thoughtsTween = gsap.fromTo(thoughts, {
         opacity: 0,
         y: 20
       }, {
@@ -208,11 +208,11 @@ function setupPostTweens () {
           scrub: true
         }
       })
-      tweens.value.push(postsTween)
+      tweens.value.push(thoughtsTween)
     })
   })
 }
-function destroyPostTweens () {
+function destroyThoughtTweens () {
   return new Promise((resolve) => {
     tweens.value.forEach((tween) => {
       tween?.kill()
@@ -223,8 +223,8 @@ function destroyPostTweens () {
 }
 
 function resetTweens () {
-  destroyPostTweens().then(() => {
-    setupPostTweens()
+  destroyThoughtTweens().then(() => {
+    setupThoughtTweens()
     ScrollTrigger.refresh()
   })
 }
@@ -247,7 +247,7 @@ function handleFilterToggle () {
 }
 
 onUnmounted(() => {
-  destroyPostTweens()
+  destroyThoughtTweens()
 })
 </script>
 
@@ -289,33 +289,33 @@ onUnmounted(() => {
     </div>
 
     <div
-      v-for="group in postsInOrder"
+      v-for="group in thoughtsInOrder"
       :key="group.year"
-      class="posts__year relative">
-      <p class="posts__year__text text-9xl opacity-5 font-bold absolute sm:-left-10 -top-3 select-none dark:text-pale pointer-events-none">{{ group.year }}</p>
+      class="thoughts__year relative">
+      <p class="thoughts__year__text text-9xl opacity-5 font-bold absolute sm:-left-10 -top-3 select-none dark:text-pale pointer-events-none">{{ group.year }}</p>
 
       <div
         v-for="subGroup in group.months"
-        class="posts__year__month mb-10">
-        <p class="posts__year__month__text text-right text-2xl dark:text-pale dark:opacity-50">{{ subGroup.month }}</p>
+        class="thoughts__year__month mb-10">
+        <p class="thoughts__year__month__text text-right text-2xl dark:text-pale dark:opacity-50">{{ subGroup.month }}</p>
         <div class="flex flex-col gap-8">
           <div
             v-for="item in subGroup.dates"
-            :key="`${group.year}__${item.date}__${item.post.title}`"
-            class="posts__year__month__post">
-            <router-link :to="item.post.path" class="border-l-3 border-transparent block py-2 md:hover:pl-2 transition-all">
+            :key="`${group.year}__${item.date}__${item.thought.title}`"
+            class="thoughts__year__month__thought">
+            <router-link :to="item.thought.path" class="border-l-3 border-transparent block py-2 md:hover:pl-2 transition-all">
               <div class="flex flex-col sm:flex-row sm:items-end gap-4">
                 <div class="mr-auto">
-                  <h2 class="text-lg text-dark dark:text-pale">{{ item.post.title }}</h2>
-                  <p class="text-grey dark:text-pale opacity-70 text-sm">{{ item.post.description }}</p>
+                  <h2 class="text-lg text-dark dark:text-pale">{{ item.thought.title }}</h2>
+                  <p class="text-grey dark:text-pale opacity-70 text-sm">{{ item.thought.description }}</p>
                 </div>
-                <span class="text-dark dark:text-pale text-sm">{{ formatDate(item.post.date) }}</span>
+                <span class="text-dark dark:text-pale text-sm">{{ formatDate(item.thought.date) }}</span>
               </div>
             </router-link>
             <div class="flex flex-wrap gap-3 mt-2">
               <TagLabel
-                v-for="tag in item.post.tags"
-                :key="item.post.title + tag"
+                v-for="tag in item.thought.tags"
+                :key="item.thought.title + tag"
                 :value="tag"
                 @click="addTagFilter(tag)" />
             </div>

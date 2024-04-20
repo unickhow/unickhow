@@ -2,19 +2,28 @@
   <div
     v-if="shouldShowDial"
     id="speed-dial"
-    class="fixed z-50 bottom-5 right-5 rounded-full w-12 h-12 flex items-center justify-center text-white bg-orange cursor-pointer transition-all z-50"
+    class="fixed z-50 -bottom-3 left-1/2 -translate-x-1/2 rounded-full w-12 h-12 flex items-center justify-center text-white bg-orange cursor-pointer transition-all"
     :class="[
       scrollDirection === 'down' ? 'opacity-37 right-2' : 'opacity-100',
-      {'text-orange bg-white !opacity-100 !right-5 shadow-lg': isDialing}
+      {'text-orange bg-white !opacity-100 !bottom-3 shadow-lg': isDialing}
     ]"
     @click="isDialing = !isDialing">
     <Icon name="ri:apps-fill" class="text-2xl transform transition" :class="{ 'rotate-45 text-orange': isDialing }" />
     <div class="dial-menu">
-      <router-link :to="{ name: 'index' }" :class="{'!right-17 !opacity-100 !pointer-events-auto': isDialing}">
+      <router-link
+        :to="{ name: 'index' }"
+        :class="{'!bottom-16 !-translate-x-20 !opacity-100 !pointer-events-auto': isDialing}">
         <Icon name="ri:seedling-fill" />
       </router-link>
-      <router-link :to="{ name: 'posts' }" :class="{'!right-31 !opacity-100 !pointer-events-auto': isDialing}">
-        <Icon name="tabler:books" />
+      <router-link
+        :to="{ name: 'thoughts' }"
+        :class="{'!bottom-16 !opacity-100 !pointer-events-auto': isDialing}">
+        <Icon name="mdi:head-lightbulb" />
+      </router-link>
+      <router-link
+        :to="{ name: 'attempts' }"
+        :class="{'!bottom-16 !translate-x-11 !opacity-100 !pointer-events-auto': isDialing}">
+        <Icon name="mdi:nintendo-game-boy" />
       </router-link>
     </div>
   </div>
@@ -68,7 +77,6 @@ if (!import.meta.env.SSR) {
 
 <style scoped>
 .dial-menu a {
-  @apply rounded-full w-9 h-9 absolute text-white bg-orange flex items-center justify-center text-sm transition-all opacity-0 right-0 pointer-events-none shadow-lg;
-  bottom: 0rem
+  @apply rounded-full w-9 h-9 absolute text-white bg-orange flex items-center justify-center text-sm transition-all opacity-0 right-0 pointer-events-none shadow-lg left-1/2 -translate-x-1/2 bottom-5;
 }
 </style>

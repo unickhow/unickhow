@@ -20,7 +20,7 @@ export interface FrontMatter {
   path: string
 }
 
-export interface PostsCalendar {
+export interface ThoughtsCalendar {
   year: string,
   months: [
     {
@@ -29,7 +29,7 @@ export interface PostsCalendar {
         {
           date: string,
           day: string,
-          post: FrontMatter
+          thought: FrontMatter
         }
       ]
     }

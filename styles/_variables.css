@@ -11,8 +11,8 @@
   --c__red: #A11F22;
   --c__green: #0FAE24;
   --c__orange: #FF7800;
-  --c__purple: #A48C96;
   --c__orange-lighter: #FF9233;
+  --c__purple: #d0bcdf;
   --c__skin: #ff780037;
 
   --c__theme-icon: #ffc857;
@@ -20,7 +20,7 @@
   --c__theme-night-cloud: var(--c__white);
 
   --c__primary: var(--c__orange);
-  --c__secondary: var(--c__blue);
+  --c__secondary: var(--c__purple);
   --c__cloud: var(--c__theme-day-cloud);
   --c__code: var(--c__skin);
 }
