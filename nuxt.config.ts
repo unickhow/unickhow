@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import  useKuaikuai from './composables/useKuaikuai'
+
+useKuaikuai()
 
 const trackers = process.env.NODE_ENV === 'production'
   ? [
