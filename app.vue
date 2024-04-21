@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useKuaikuai from './composables/useKuaikuai'
-useKuaikuai()
 </script>
 
 <template>
