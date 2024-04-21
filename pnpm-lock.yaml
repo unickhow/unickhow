@@ -37,6 +37,9 @@ devDependencies:
   '@types/scrollmagic':
     specifier: ^2.0.3
     version: 2.0.4
+  '@unickhow/vite-plugin-kuaikuai':
+    specifier: ^1.0.3
+    version: 1.0.3
   '@unocss/nuxt':
     specifier: ^0.53.6
     version: 0.53.6(postcss@8.4.38)(vite@4.5.3)(webpack@5.91.0)
@@ -2727,6 +2730,10 @@ packages:
       hookable: 5.5.3
       unhead: 1.9.7
       vue: 3.4.23
+    dev: true
+
+  /@unickhow/vite-plugin-kuaikuai@1.0.3:
+    resolution: {integrity: sha512-DjIjfNK8+xNXHNVTCfWnwgQ98eQhK8RSrJe97OCnoCcmIW56aMNCPE7x2u0xg0zaDuP7Id5BdwT8YFrCoTz6sw==}
     dev: true
 
   /@unocss/astro@0.53.6(vite@4.5.3):

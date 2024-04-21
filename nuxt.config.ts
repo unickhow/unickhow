@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Kuaikuai from '@unickhow/vite-plugin-kuaikuai'
 
 const trackers = process.env.NODE_ENV === 'production'
   ? [
@@ -110,5 +111,12 @@ export default defineNuxtConfig({
     public: {
       NUXT_THEME_STORE: process.env.NUXT_THEME_STORE
     }
+  },
+  vite: {
+    plugins: [
+      Kuaikuai({
+        onBuild: true,
+      })
+    ],
   }
 })
