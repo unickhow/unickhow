@@ -12,9 +12,9 @@
         tag="h5"
         trigger="none"
         :text="project.plainName"
-        class="hidden sm:block text-3xl mb-4 font-bold text-shadow tracking-widest uppercase" />
+        class="hidden sm:block text-2xl mb-4 font-bold text-shadow tracking-widest uppercase" />
       <h5 v-html="project.name" class="block sm:hidden text-3xl mb-4 font-bold text-shadow tracking-widest uppercase"></h5>
-      <p class="text-base text-shadow">{{ project.desc }}</p>
+      <p class="text-base text-shadow opacity-20">{{ project.desc }}</p>
     </div>
     <div class="project-card-container__logo" :style="{ backgroundImage: `url(${project.icon})` }" />
   </a>
@@ -47,7 +47,7 @@ const { isDark } = useTheme()
 
 const flipText = ref<InstanceType<typeof FlipText>>()
 const isLargeScreen = useMediaQuery('(min-width: 768px)')
-const visibilities = ref(props.project.screens?.map(() => false) ?? [])
+const visibilities = ref(props.project.screens?.map(() => false) ?? [false, false, false])
 const handleMouseEnter = () => {
   isLargeScreen.value && isDark.value && flipText.value?.flip()
   visibilities.value = visibilities.value.map(() => true)
@@ -58,19 +58,19 @@ const handleMouseLeave = () => {
 
 const MONITOR_POSITIONS = [
   {
-    classes: 'monitor-1 aspect-square! top-[30%]! w-[17%]!',
+    classes: 'monitor-1 aspect-square! top-[20%]! w-[17%]!',
     rotateX: '-10deg',
     rotateY: '25deg',
     rotateZ: '10deg'
   },
   {
-    classes: 'monitor-2 aspect-[5/9]! bottom-[30%]! right-[5%]! top-auto! left-auto! transition-delay-[0.2s]!',
+    classes: 'monitor-2 aspect-[5/9]! bottom-[40%]! right-[5%]! top-auto! left-auto! transition-delay-[0.2s]!',
     rotateX: '-20deg',
     rotateY: '-37deg',
     rotateZ: '-15deg'
   },
   {
-    classes: 'monitor-3 aspect-[4/3]! bottom-[10%]! left-[5%]! top-auto! transition-delay-[0.4s]!',
+    classes: 'monitor-3 aspect-[4/3]! bottom-[20%]! left-[5%]! top-auto! transition-delay-[0.4s]!',
     rotateX: '30deg',
     rotateY: '20deg',
     rotateZ: '-25deg'
@@ -125,5 +125,13 @@ onMounted(() => {
 .project-card-container:hover .project-card-container__logo {
   transform: scale(2);
   opacity: 37%;
+}
+
+.project-card-container p {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.project-card-container:hover p {
+  opacity: 100%;
 }
 </style>

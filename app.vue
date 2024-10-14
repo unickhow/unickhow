@@ -8,6 +8,7 @@
   <main>
     <NuxtPage />
   </main>
+  <!-- TODO: remake -->
   <SpeedDial />
   <ClientOnly>
     <AppFooter />
