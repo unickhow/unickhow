@@ -47,7 +47,7 @@ const { isDark } = useTheme()
 
 const flipText = ref<InstanceType<typeof FlipText>>()
 const isLargeScreen = useMediaQuery('(min-width: 768px)')
-const visibilities = ref(props.project.screens?.map(() => false) ?? [])
+const visibilities = ref(props.project.screens?.map(() => false) ?? [false, false, false])
 const handleMouseEnter = () => {
   isLargeScreen.value && isDark.value && flipText.value?.flip()
   visibilities.value = visibilities.value.map(() => true)

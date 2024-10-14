@@ -113,13 +113,14 @@ const ouOfBoxTextStyle = computed(() => {
   width: 14%;
   min-width: 170px;
   background: v-bind('bgColor');
-  transition: transform 0.07s linear;
   transform:
     perspective(var(--perspective))
     rotateX(v-bind(rotateX))
     rotateY(v-bind(rotateY))
     rotateZ(v-bind(rotateZ))
     scaleY(0);
+  transition: transform 0.07s linear, opacity 0.1s linear;
+  opacity: 0;
   z-index: 10;
   will-change: transform;
 }
@@ -134,6 +135,7 @@ const ouOfBoxTextStyle = computed(() => {
 }
 
 .monitor.on {
+  opacity: 1;
   transform:
     perspective(var(--perspective))
     rotateX(v-bind(rotateX))

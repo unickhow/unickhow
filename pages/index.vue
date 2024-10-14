@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto max-w-[1024px] px-4">
-    <div class="max-w-[600px] mx-auto sm:py-20 main-content tc-content-text flex gap-4 items-center flex-col sm:flex-row">
+    <div class="max-w-[745px] mx-auto sm:py-20 main-content tc-content-text flex gap-4 items-center flex-col sm:flex-row">
       <div class="kv-container aspect-square relative w-full max-w-[200px] mx-auto mb-12">
         <BrandExhibition />
       </div>
