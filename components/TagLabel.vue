@@ -1,5 +1,5 @@
 <template>
-  <label class="tag-label text-xs cursor-pointer rounded overflow-hidden">
+  <label class="tag-label text-xs cursor-pointer rounded-sm overflow-hidden">
     <span class="bg-orange opacity-70 dark:opacity-100 px-2 sm:py-[2px] text-white">{{ $props.label ?? $props.value }}</span>
   </label>
 </template>
@@ -12,7 +12,7 @@ export default {
 
 <style scoped>
 .tag-label {
-  @apply inline-flex hover:-translate-y-1 transition;
+  @apply inline-flex transform-origin-l hover:-rotate-3 transition;
 }
 .tag-label::before {
   content: '';

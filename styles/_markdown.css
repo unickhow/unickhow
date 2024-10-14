@@ -59,7 +59,8 @@ html.dark .blog-md-container {
 }
 
 .blog-md-container a[target='_blank'] {
-  @apply underline decoration-dotted decoration-orange hover:text-orange;
+  @apply underline decoration-dotted decoration-orange hover:text-orange font-bold;
+  text-decoration-thickness: 2px;
 }
 
 .blog-md-container p {
@@ -73,7 +74,7 @@ html.dark .blog-md-container {
 /* prose inline code */
 .blog-md-container p > code, .blog-md-container li > code {
   font-family: 'Fira Code', monospace !important;
-  background: var(--c__purple);
+  background: var(--c__gray-lighter);
   color: var(--c__dark);
   @apply text-xs p-1 rounded select-all;
 }
