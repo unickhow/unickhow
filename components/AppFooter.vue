@@ -20,10 +20,6 @@ const links = [
 
 <template>
   <footer class="mt-auto py-4 flex items-center justify-center gap-3 relative">
-    <img
-      src="/favicon.png"
-      alt="icon-rhino"
-      class="icon-rhino w-12 h-12 absolute left-2 bottom-2 transition-opacity opacity-20 hover:opacity-60">
     <a
       v-for="link in links"
       :key="link.name"
