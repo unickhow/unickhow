@@ -57,7 +57,7 @@ function handleTagClick (tag: string) {
 </script>
 
 <template>
-  <div class="blog-md-container post-provider px-4">
+  <div class="blog-md-container post-provider px-8">
     <article class="container mx-auto my-10 max-w-[666px] relative">
       <ContentDoc #default="{ doc }">
         <span class="text-dark dark:text-pale italic opacity-50">{{ formatDateTime(doc.date) }}</span>

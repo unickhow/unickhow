@@ -252,7 +252,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="container mx-auto max-w-[666px] py-10 px-4 flex flex-col gap-6 sm:gap-12">
+  <div class="container mx-auto max-w-[666px] py-10 px-8 flex flex-col gap-6 sm:gap-12">
     <div>
       <div class="flex items-center mb-4">
         <button class="py-2 flex items-center justify-center text-primary font-bold w-full" @click="handleFilterToggle">

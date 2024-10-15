@@ -18,7 +18,7 @@ tags:
 
 如果遇到 RWD 的問題，就預設而言都是採用「單字」破壞，如果單字過長就會變成
 
-![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fec1b199f-9477-487d-8114-88c98b6c9e9f%2FUntitled.png?id=bff48205-9b2d-41d1-a52f-2f916d7dbf71&table=block&spaceId=97e46578-ab72-4131-b5e5-cf4f9a6129f1&width=2000&userId=dc5218bd-bd61-4da3-8a7d-f9791b956c76&cache=v2)
+![](https://howtohow.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fec1b199f-9477-487d-8114-88c98b6c9e9f%2FUntitled.png?table=block&id=bff48205-9b2d-41d1-a52f-2f916d7dbf71&spaceId=97e46578-ab72-4131-b5e5-cf4f9a6129f1&width=1420&userId=&cache=v2)
 
 這時候就要對 CSS 特別處理，像是 `word-break: break-word` 或 `word-break: break-all` 來指定文字破壞規則，當然還可以加上 `hyphens: auto` 來讓被破壞的單字以 '-' 做連結，但以上的做法都是讓 CSS 自動換行，如果有特定的句子需要維持在同一行的需求呢？
 
