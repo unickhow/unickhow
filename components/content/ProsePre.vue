@@ -40,25 +40,26 @@ const langExt = computed(() => {
 
 <template>
   <div class="code-wrapper my-6 rounded-md overflow-hidden shadow-lg border border-solid border-gray-light dark:border-gray">
-    <div class="code-wrapper__filename relative px-3 bg-[#e9e9e9] flex items-center justify-between gap-2">
-      <div class="window-controls flex items-center gap-2 mr-2">
+    <div class="code-wrapper__filename relative px-3 py-1 bg-[#e9e9e9] flex items-center justify-between gap-2">
+      <div class="window-controls flex items-center gap-2">
         <div class="win-btn-close w-3 h-3 rounded-full bg-[#ff605c]"></div>
         <div class="win-btn-min w-3 h-3 rounded-full bg-[#ffbd44]"></div>
         <div class="win-btn-max w-3 h-3 rounded-full bg-[#00ca4e]"></div>
       </div>
-      <div class="mr-6 flex items-center gap-1 max-w-[calc(100%-140px)] text-dark">
+      <div class="flex items-center gap-1 max-w-[calc(100%-140px)] text-dark">
         <Icon :name="langExt" class="flex-shrink-0" />
         <span class="leading-normal text-sm font-bold whitespace-nowrap overflow-hidden text-ellipsis">
           {{ props.filename || `${language ? ('demo.' + language) : 'demo'}` }}
         </span>
       </div>
 
-      <button
+      <span class="w-13"></span>
+      <!-- <button
         class="copy-btn copy-btn--filename copy-btn text-lg text-grey w-8 h-8 p-1 flex items-center justify-center"
         @click="copyFilename()">
         <Icon v-show="!filenameCopied" name="mdi:content-copy" class="copy-btn__copy opacity-0 transition-opacity" />
         <Icon v-show="filenameCopied" name="mdi:progress-check" class="copy-btn__copied text-primary" />
-      </button>
+      </button> -->
     </div>
 
     <div class="code-wrapper__snippet relative">

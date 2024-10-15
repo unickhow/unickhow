@@ -18,8 +18,8 @@ const onClick = (id: string) => {
 </script>
 
 <template>
-  <div v-if="tocLinks.length" class="max-h-82 overflow-auto">
-    <nav class="mt-4 flex toc-nav">
+  <div v-if="tocLinks.length" class="max-h-82 overflow-auto toc-nav">
+    <nav class="flex">
       <ul class="ml-0 pl-4 flex flex-col gap-1">
         <li
           v-for="{ id, text, children } in tocLinks"

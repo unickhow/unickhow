@@ -2,6 +2,7 @@
   <div
     v-if="shouldShowDial"
     id="speed-dial"
+    v-on-click-outside="handleClickOutside"
     class="fixed z-50 -bottom-3 left-1/2 -translate-x-1/2 rounded-full w-12 h-12 flex items-center justify-center text-white bg-orange cursor-pointer transition-all"
     :class="[
       scrollDirection === 'down' ? 'opacity-37 right-2' : 'opacity-100',
@@ -31,6 +32,7 @@
 
 <script setup lang="ts">
 import { useBreakpoints } from '@vueuse/core'
+import { vOnClickOutside } from '@vueuse/components'
 
 const breakpoints = useBreakpoints({
   tablet: 640,
@@ -40,6 +42,10 @@ const breakpoints = useBreakpoints({
 
 const shouldShowDial = breakpoints.smaller('tablet')
 const isDialing = ref(false)
+
+function handleClickOutside () {
+  isDialing.value = false
+}
 
 const lastYPosition = ref(0)
 const scrollDirection = ref('down')

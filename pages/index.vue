@@ -4,7 +4,7 @@
       <div class="kv-container aspect-square relative w-full max-w-[200px] mx-auto mb-12">
         <BrandExhibition />
       </div>
-      <div class="main-content mb-20 px-8 sm:px-4">
+      <div class="main-content mb-20 px-6 sm:px-4">
         <h1 class="hello-world">() => 'Hello, world.'</h1>
         <div class="main-content__body opacity-0">
           <p class="leading-loose">
