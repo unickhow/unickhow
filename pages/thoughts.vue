@@ -22,7 +22,7 @@ useHead({
     },
     {
       name: 'og:image',
-      content: 'https://hackmd.io/_uploads/SylCzI7Ja.png'
+      content: 'https://media.licdn.com/dms/image/v2/D4E2DAQH-tfzIZH8qGA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1729177683347?e=1729962000&v=beta&t=QRwkdloPZ0-7ESDomFl2GuWivBBjEGCr8XeYwE-cw38'
     },
     {
       name: 'twitter:description',
@@ -30,7 +30,7 @@ useHead({
     },
     {
       name: 'twitter:image',
-      content: 'https://hackmd.io/_uploads/SylCzI7Ja.png'
+      content: 'https://media.licdn.com/dms/image/v2/D4E2DAQH-tfzIZH8qGA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1729177683347?e=1729962000&v=beta&t=QRwkdloPZ0-7ESDomFl2GuWivBBjEGCr8XeYwE-cw38'
     }
   ]
 })

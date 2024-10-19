@@ -68,14 +68,14 @@ export default defineNuxtConfig({
         { hid: 'og:title', property: 'og:title', content: 'unickhow' },
         { hid: 'og:description', property: 'og:description', content: 'frontend explorer, driven by interest' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
-        { hid: 'og:image', property: 'og:image', content: 'https://hackmd.io/_uploads/SylCzI7Ja.png' },
+        { hid: 'og:image', property: 'og:image', content: 'https://media.licdn.com/dms/image/v2/D4E2DAQH-tfzIZH8qGA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1729177683347?e=1729962000&v=beta&t=QRwkdloPZ0-7ESDomFl2GuWivBBjEGCr8XeYwE-cw38' },
         { hid: 'og:url', property: 'og:url', content: 'https://unick.how/' },
         { hid: 'og:site_name', property: 'og:site_name', content: 'unickhow' },
         { hid: 'og:image:width', property: 'og:image:width', content: '480' },
         { hid: 'og:image:height', property: 'og:image:height', content: '272' },
         { hid: 'twitter:site', name: 'twitter:site', content: 'https://unick.how/' },
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
-        { hid: 'twitter:image', name: 'twitter:image', content: 'https://hackmd.io/_uploads/SylCzI7Ja.png' }
+        { hid: 'twitter:image', name: 'twitter:image', content: 'https://media.licdn.com/dms/image/v2/D4E2DAQH-tfzIZH8qGA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1729177683347?e=1729962000&v=beta&t=QRwkdloPZ0-7ESDomFl2GuWivBBjEGCr8XeYwE-cw38' }
       ]
     }
   },

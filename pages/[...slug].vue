@@ -12,11 +12,11 @@ useHead({
     { hid: 'description', name: 'description', content: currentContent.description },
     { hid: 'og:title', property: 'og:title', content: currentContent.title },
     { hid: 'og:description', property: 'og:description', content: currentContent.description },
-    { hid: 'og:image', property: 'og:image', content: currentContent.image ?? 'https://hackmd.io/_uploads/SylCzI7Ja.png' },
+    { hid: 'og:image', property: 'og:image', content: currentContent.image ?? 'https://media.licdn.com/dms/image/v2/D4E2DAQH-tfzIZH8qGA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1729177683347?e=1729962000&v=beta&t=QRwkdloPZ0-7ESDomFl2GuWivBBjEGCr8XeYwE-cw38' },
     { hid: 'og:url', property: 'og:url', content: `https://unick.how/${currentContent._path}` },
     { hid: 'twitter:title', name: 'twitter:title', content: currentContent.title },
     { hid: 'twitter:description', name: 'twitter:description', content: currentContent.description },
-    { hid: 'twitter:image', name: 'twitter:image', content: currentContent.image ?? 'https://hackmd.io/_uploads/SylCzI7Ja.png' },
+    { hid: 'twitter:image', name: 'twitter:image', content: currentContent.image ?? 'https://media.licdn.com/dms/image/v2/D4E2DAQH-tfzIZH8qGA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1729177683347?e=1729962000&v=beta&t=QRwkdloPZ0-7ESDomFl2GuWivBBjEGCr8XeYwE-cw38' },
     { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
     { hid: 'twitter:site', name: 'twitter:site', content: 'https://unick.how/' }
   ]
