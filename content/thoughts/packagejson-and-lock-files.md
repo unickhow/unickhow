@@ -1,7 +1,7 @@
 ---
 title: 基本 package.json 及那些 lock files
 description: 淺談即止 🤏
-date: 2024-10-26T21:00:00.000+08:00
+date: 2024-10-16T21:00:00.000+08:00
 schedule:
 hidden: false
 tags:
