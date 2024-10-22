@@ -2,10 +2,9 @@
 </script>
 
 <template>
-  <NuxtLoadingIndicator />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <main class="blank-layout pt-0">
+    <slot />
+  </main>
 </template>
 
 <style>
