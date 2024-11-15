@@ -10,6 +10,7 @@ tags:
   - vue
   - history
   - url
+  - en-version
 ---
 
 
@@ -187,4 +188,4 @@ Overall, I'm quite satisfied with this feature, but the steps involved are a bit
 
 By the way, I was pleasantly surprised to find that the [Government Open Data Platform](https://data.gov.tw/datasets/search?ct=249) implemented this feature (using Nuxt as their technology stack). Although the state restoration part is not perfect, they have achieved the desired page reproduction. I'm really curious about the approach they used.
 
-> for zhTw version: <a href="/posts/route-query">在 SPA 中不被重視的上/下頁</a>
+> for zhTw version: <a href="/thoughts/route-query">在 SPA 中不被重視的上/下頁</a>

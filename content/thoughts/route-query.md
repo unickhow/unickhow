@@ -188,4 +188,4 @@ const { setQuery, getQuery } = useRouteQuery(fetchData, { immediate: true })
 Btw, 這個 [政府資料開放平臺](https://data.gov.tw/datasets/search?ct=249) 有顧慮到這個功能讓我蠻意外的（技術棧是 Nuxt），雖然狀態回填的部分沒有到很完善，但已經可以重現該有的畫面了，真好奇他們是用什麼做法達成 🤨
 
 
-> for en version: <a href="/posts/route-query-en">Prev/next navigation issue in SPA</a>
+> for en version: <a href="/thoughts/route-query-en">Prev/next navigation issue in SPA</a>
