@@ -1,0 +1,34 @@
+---
+description: Git commit standards and guidelines to ensure consistent and error-free commits
+globs: ["**/.git/**/*"]
+---
+
+# Git Commit Guidelines
+
+## Commit Message Format
+
+Follow the same pattern like [Conventional Commits](mdc:https:/www.conventionalcommits.org)
+
+```
+<emoji> <type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+## Commit Types
+
+| type | emoji | description | value |
+| --- | --- | --- | --- |
+| chore | 🧹 | Build process or auxiliary tool changes | chore |
+| ci | 👷 | CI related changes | ci |
+| docs | 📝 | Documentation only changes | docs |
+| feat | 💡 | A new feature | feat |
+| fix | 🪲 | A bug fix | fix |
+| hotfix | 🚨 | Emergency fix | hotfix |
+| perf | ⚡ | A code change that improves performance | perf |
+| refactor | 🧬 | A code change that neither fixes a bug or adds a feature | refactor |
+| release | 🎉 | Create a release commit | release |
+| style | 🚧 | Markup, white-space, formatting, missing semi-colons... | style |
+| test | 🧪 | Adding missing tests | test |
