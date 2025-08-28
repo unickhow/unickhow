@@ -10,8 +10,8 @@ export const sideProjects: SideProject[] = [
     cover: 'https://hackmd.io/_uploads/rJgcrXB42.png',
     color: '#e6564c',
     screens: [
-      '/projectScreens/slope-1.gif',
-      '/projectScreens/slope-2.gif',
+      '/projectScreens/slope-1.webp',
+      '/projectScreens/slope-2.webp',
       ''
     ],
     shortcut: 's'
@@ -25,8 +25,8 @@ export const sideProjects: SideProject[] = [
     cover: 'https://hackmd.io/_uploads/HyoQY8c8h.png',
     color: '#f7b600',
     screens: [
-      '/projectScreens/jirassic-1.gif',
-      '/projectScreens/jirassic-2.gif',
+      '/projectScreens/jirassic-1.webp',
+      '/projectScreens/jirassic-2.webp',
       '/projectScreens/jirassic-3.gif'
     ],
     shortcut: 'j'
@@ -71,7 +71,7 @@ export const sideProjects: SideProject[] = [
     color: '#466B7E',
     screens: [
       '/projectScreens/zhuyin-1.gif',
-      '/projectScreens/zhuyin-2.gif',
+      '/projectScreens/zhuyin-2.webp',
       ''
     ],
     shortcut: 'z'
