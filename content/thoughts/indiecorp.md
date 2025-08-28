@@ -64,3 +64,7 @@ UX 原本是產品跟用戶之間的膠水層，把複雜的功能轉換成使�
 _~我想做水電工 👨‍🔧~_
 
 _~@Compiled by ChatGPT~_
+
+
+> for en version: <a href="/thoughts/indiecorp-en">Approaching Another Turning Point: The Rise of IndieCorp</a>
+
