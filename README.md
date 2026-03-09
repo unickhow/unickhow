@@ -21,6 +21,7 @@
 
 [Leaver cards](https://leaver-cards.unick.how/) | A score-revealing animation implemented with cards
 
+[Tessora](https://tessora.unick.how/) | A kid-friendly jigsaw puzzle PWA built for children aged 3–12. Pick a sample image, upload your own, or snap a photo
 
 ### 🔌
 
