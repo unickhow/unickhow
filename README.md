@@ -42,3 +42,5 @@
 ### 🖥️
 
 [Jirassic](https://github.com/unickhow/jirassic) | Integrate Jira tickets and GitHub pull requests
+
+[Coopy](https://coopy.unick.how/) | A macOS clipboard manager
