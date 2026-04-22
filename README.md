@@ -44,3 +44,5 @@
 [Jirassic](https://github.com/unickhow/jirassic) | Integrate Jira tickets and GitHub pull requests
 
 [Coopy](https://coopy.unick.how/) | A macOS clipboard manager
+
+[Mole UI](https://mole-ui.unick.how/) | A GUI tool for deep cleaning and optimizing your Mac
